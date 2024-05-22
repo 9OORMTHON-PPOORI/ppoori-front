@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Drawer,
   DrawerClose,
@@ -35,6 +36,7 @@ export default function Home() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
+      <Calendar />
     </>
   );
 }
