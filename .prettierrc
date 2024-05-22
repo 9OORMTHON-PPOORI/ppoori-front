@@ -1,0 +1,37 @@
+{
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "arrowParens": "always",
+  "quoteProps": "as-needed",
+  "trailingComma": "es5",
+  "singleQuote": false,
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 80,
+  "parser": "typescript",
+  "vueIndentScriptAndStyle": true,
+  "endOfLine": "lf",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "requirePragma": false,
+  "insertPragma": false,
+  "overrides": [{
+    "files": "src/styles/*",
+    "options": {
+      "parser": "css"
+    }
+  },
+  {
+    "files": ".eslintrc.json",
+    "options": {
+      "parser": "json"
+    }
+  },
+  {
+    "files": "components.json",
+    "options": {
+      "parser": "json"
+    }
+  }
+  
+]
+}
