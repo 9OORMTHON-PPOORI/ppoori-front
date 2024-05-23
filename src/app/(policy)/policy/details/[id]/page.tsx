@@ -34,8 +34,28 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   const handleCommentSubmit = (e: any) => {
     e.preventDefault();
-
     policyComment({ comment, id: params.id });
+  };
+
+  const handleHate = () => {
+    try {
+      patchPolicyHate(params.id);
+      policyDetailsRefetch();
+      window.location.reload();
+      alert("등록에 성공했습니다.");
+    } catch (error) {
+      alert("등록에 실패했습니다.");
+    }
+  };
+
+  const handleLike = () => {
+    try {
+      patchPolicyLike(params.id);
+      alert("등록에 성공했습니다.");
+      window.location.reload();
+    } catch (error) {
+      alert("등록에 실패했습니다.");
+    }
   };
 
   return (
@@ -51,7 +71,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
-            <div className="mb-[10px] max-w-[200px] rounded-[6px] bg-[#FFF3F4] px-[8px] py-[7px] text-sm text-[#F3213B]">
+            <div className="mb-[10px] grid max-w-[200px] rounded-[6px] bg-[#FFF3F4] px-[8px] py-[7px] text-sm text-[#F3213B]">
               {policyDetails?.subject}
             </div>
             <div className="mb-4">
@@ -82,23 +102,27 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
               </div>
             </div>
             <div className="mb-5 flex justify-center gap-[10px]">
-              <div className="flex w-[112px] cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] px-[23px] py-[15px]">
-                <h5 className="text-xl font-bold">{policyDetails?.hateRate}</h5>
-                <div
-                  className="text-[14px] font-medium text-[#555555]"
-                  onClick={() => patchPolicyHate(params.id)}
-                >
+              <div
+                className="flex w-[166px] cursor-pointer items-center justify-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] px-[23px] py-[15px] hover:brightness-[90%]"
+                onClick={() => handleHate()}
+              >
+                <div className="text-[14px] font-medium text-[#555555]">
                   관심 없어요
                 </div>
+                <h5 className="ml-[6px] text-[15px] font-bold text-[#F7737C]">
+                  {policyDetails?.hateRate}
+                </h5>
               </div>
-              <div className="flex w-[112px] cursor-pointer flex-col items-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] p-[15px]">
-                <h5 className="text-xl font-bold">{policyDetails?.hateRate}</h5>
-                <p
-                  className="text-[14px] font-medium text-[#555555]"
-                  onClick={() => patchPolicyLike(params.id)}
-                >
+              <div
+                className="flex w-[166px] cursor-pointer items-center justify-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] px-[23px] py-[15px] hover:brightness-[90%]"
+                onClick={() => handleLike()}
+              >
+                <p className="text-[14px] font-medium text-[#555555]">
                   맘에 들어요
                 </p>
+                <h5 className="ml-[6px] text-[15px] font-bold text-[#F7737C]">
+                  {policyDetails?.likeRate}
+                </h5>
               </div>
             </div>
             <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
