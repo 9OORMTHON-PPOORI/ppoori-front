@@ -28,3 +28,23 @@ export const postPolicyComment = async (
   );
   return data.data;
 };
+
+export const patchPolicyHate = async (id: string): Promise<any> => {
+  const { data } = await axiosInstance.patch(
+    `${process.env.NEXT_PUBLIC_POLICY}/${id}/hate`
+  );
+
+  console.log({ data }, "Hate!!!");
+
+  return data.data;
+};
+
+export const patchPolicyLike = async (id: string): Promise<any> => {
+  const { data } = await axiosInstance.patch(
+    `${process.env.NEXT_PUBLIC_POLICY}/${id}/like`
+  );
+
+  console.log({ data }, "Like!!!");
+
+  return data.data;
+};

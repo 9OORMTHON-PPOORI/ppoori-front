@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export function PolicyCard({
@@ -16,14 +17,25 @@ export function PolicyCard({
       className="mb-[10px] max-w-sm cursor-pointer rounded-lg bg-[#F9F9F9] px-6 py-[17px]"
       onClick={() => router.push(`/policy/details/${id}`)}
     >
-      <div className="flex items-center">
+      <div className="flex">
         <div className="mb-6 flex-grow">
           <h2 className="mb-2 text-xl font-semibold">{title}</h2>
           <p className="text-[#222222]">{name}</p>
         </div>
         <div className="ml-4 flex-shrink-0">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FE4C40]">
-            <div className="text-center text-xs font-normal text-white">
+          <div className="items-center rounded-[16px] bg-[#FE4C40] object-center px-[15px] py-[20px] shadow-[0_4px_6px_1px_rgba(0,0,0,0.2)]">
+            <div className="flex justify-center">
+              <div className="relative flex h-[42px] w-[44px]">
+                <Image
+                  className="object-cover"
+                  src="/images/interestSmallImage1.svg"
+                  alt="관심사 이미지"
+                  fill
+                  sizes="100vw"
+                />
+              </div>
+            </div>
+            <div className="mt-[4px] text-center text-xs font-normal text-[#FFBEBA]">
               활동지원
             </div>
           </div>

@@ -9,7 +9,11 @@ import { Input } from "@/components/ui/input";
 
 import { usePolicyDetail } from "@/lib/hook/policy";
 import { useState } from "react";
-import { postPolicyComment } from "@/lib/api/policy";
+import {
+  patchPolicyHate,
+  patchPolicyLike,
+  postPolicyComment,
+} from "@/lib/api/policy";
 
 interface PolicyCommentType {
   writer: string;
@@ -71,13 +75,19 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             <div className="mb-5 flex justify-center gap-[10px]">
               <div className="flex w-[112px] cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] px-[23px] py-[15px]">
                 <h5 className="text-xl font-bold">{policyDetails?.hateRate}</h5>
-                <p className="text-[14px] font-medium text-[#555555]">
+                <div
+                  className="text-[14px] font-medium text-[#555555]"
+                  onClick={() => patchPolicyHate(params.id)}
+                >
                   관심 없어요
-                </p>
+                </div>
               </div>
               <div className="flex w-[112px] cursor-pointer flex-col items-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] p-[15px]">
                 <h5 className="text-xl font-bold">{policyDetails?.hateRate}</h5>
-                <p className="text-[14px] font-medium text-[#555555]">
+                <p
+                  className="text-[14px] font-medium text-[#555555]"
+                  onClick={() => patchPolicyLike(params.id)}
+                >
                   맘에 들어요
                 </p>
               </div>
