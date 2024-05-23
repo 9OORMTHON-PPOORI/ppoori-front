@@ -1,6 +1,10 @@
 "use client";
 
+import { faker } from "@faker-js/faker";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import PolicySwiper from "@/components/components/policy/policy-swiper";
 import {
   Select,
@@ -10,9 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Image from "next/image";
-import { faker } from "@faker-js/faker";
-import { useState } from "react";
 
 export default function Policy() {
   const [selectedValue, setSelectedValue] = useState<string | null>(
@@ -21,9 +22,9 @@ export default function Policy() {
   const router = useRouter();
 
   return (
-    <div className="relative bg-[#619EC9]">
+    <div className="h-full bg-[#619EC9]">
       <div
-        className="my-4 flex cursor-pointer justify-center"
+        className="flex cursor-pointer justify-center py-4"
         onClick={() => router.push("policy/list")}
       >
         <div
@@ -43,7 +44,7 @@ export default function Policy() {
           </div>
         </div>
       </div>
-      <div className="mt-[18px] flex justify-center text-[26px]">
+      <div className="ml-[15px] mt-[12px] flex justify-center text-[26px]">
         <Select
           onValueChange={(value) => {
             setSelectedValue(value);
@@ -64,7 +65,7 @@ export default function Policy() {
           </SelectContent>
         </Select>
       </div>
-      <div className="relative mt-[12px] flex h-[100px] w-full justify-center">
+      <div className="relative z-[1] mt-[12px] flex h-[100px] w-full justify-center">
         <Image
           className="object-cover"
           src="/images/interestImage.svg"
@@ -73,12 +74,12 @@ export default function Policy() {
           sizes="100vw"
         />
       </div>
-      <div className="mt-0">
+      <div className="relative z-50 mt-0">
         <PolicySwiper />
       </div>
-      <div className="text-md flex justify-center ">
+      <div className="text-md flex justify-center">
         <div
-          className="mb-[76px] mt-[20px] h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
+          className="h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
           onClick={() => router.push("/policy/list")}
         >
           정책 전체보기

@@ -31,11 +31,11 @@ export function PolicyCard({
       </div>
       <div className="flex justify-between border-t border-gray-200 px-6 pt-[16px]">
         <div className="text-sm font-medium text-[#555555]">
-          관심 없어요{" "}
+          관심 없어요
           <span className="text-[15px] font-semibold">{interestCount}</span>
         </div>
         <div className="text-sm font-medium text-[#555555]">
-          관심 있어요{" "}
+          관심 있어요
           <span className="text-[15px] font-semibold">{notInterestCount}</span>
         </div>
       </div>

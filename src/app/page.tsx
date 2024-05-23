@@ -1,11 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { faker } from "@faker-js/faker";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -39,7 +40,6 @@ export default function Home() {
               />
             </div>
           </div>
-
           <div className="my-6 w-full text-center text-lg">
             관심 대상군을 선택해주세요.
           </div>
