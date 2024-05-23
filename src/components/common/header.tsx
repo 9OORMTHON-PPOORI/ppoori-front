@@ -1,20 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
+import { CaretLeftIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <>
-      <nav className="z-50 m-auto flex h-[44px] w-full max-w-[390px] items-center border-b">
-        <div className="flex w-full items-center justify-center">
-          <Link href="/">
-            <Image
-              src="/images/logo.svg"
-              width={86}
-              height={26}
-              priority
-              alt="logo"
-            />
-          </Link>
+      <nav className="z-50 m-auto my-3 flex h-[44px] w-full max-w-[390px] items-center">
+        <div
+          className="flex w-full items-center justify-start"
+          onClick={() => router.back()}
+        >
+          <CaretLeftIcon className="h-7 w-7" />
         </div>
       </nav>
     </>
