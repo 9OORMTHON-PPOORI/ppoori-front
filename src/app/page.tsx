@@ -17,8 +17,10 @@ export default function Home() {
   const handleNextBtn = () => {
     if (page === 1) window.localStorage.setItem("성별", sex);
     else if (page === 2) window.localStorage.setItem("대상", target);
-    else if (page === 3) window.localStorage.setItem("관심사", interest);
-    else router.push("/policy");
+    else {
+      window.localStorage.setItem("관심사", interest);
+      router.push("/policy");
+    }
 
     setPage(page + 1);
   };
