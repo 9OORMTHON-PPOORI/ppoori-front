@@ -3,17 +3,18 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-
-import { usePolicyDetail } from "@/lib/hook/policy";
 import { useState } from "react";
+
 import {
   patchPolicyHate,
   patchPolicyLike,
   postPolicyComment,
 } from "@/lib/api/policy";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+import { usePolicyDetail } from "@/lib/hook/policy";
 
 interface PolicyCommentType {
   writer: string;
@@ -94,8 +95,8 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             </div>
             <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
               {policyDetails?.comments.map((data: PolicyCommentType) => (
-                <div>
-                  <div className="">
+                <div key={data.content}>
+                  <div>
                     <div className="flex items-center">
                       <Image
                         src="/icon/comment.png"
