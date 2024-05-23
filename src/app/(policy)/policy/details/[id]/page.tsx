@@ -27,6 +27,8 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
 
   const handleCommentSubmit = (e: any) => {
+    e.preventDefault();
+
     postPolicyComment(comment, params.id);
   };
 
