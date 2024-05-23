@@ -8,10 +8,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { usePolicyDetail } from "@/lib/hook/policy";
+import { useState } from "react";
+import { postPolicyComment } from "@/lib/api/policy";
+
+interface PolicyCommentType {
+  writer: string;
+  content: string;
+}
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const { data: policyDetails } = usePolicyDetail(params.id);
+  const [comment, setComment] = useState("");
   const router = useRouter();
+
+  const handleCommentSubmit = (e: any) => {
+    postPolicyComment(comment, params.id);
+  };
 
   return (
     <>
@@ -70,41 +82,45 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 </p>
               </div>
             </div>
-            <div>
-              <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
-                <div className="">
-                  <div className="flex items-center">
-                    <Image
-                      src="/icon/comment.png"
-                      alt="commentIcon"
-                      width={15}
-                      height={15}
-                      className="mr-[6px]"
-                    />
-                    <span>뿌리내린청년312</span>
-                    <span className="ml-2 mt-1 text-[12px] font-extralight text-[#AAAAAA]">
-                      30분전
-                    </span>
+            <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
+              {policyDetails?.comments.map((data: PolicyCommentType) => (
+                <div>
+                  <div className="">
+                    <div className="flex items-center">
+                      <Image
+                        src="/icon/comment.png"
+                        alt="commentIcon"
+                        width={15}
+                        height={15}
+                        className="mr-[6px]"
+                      />
+                      <span>{data.writer}</span>
+                      <span className="ml-2 mt-1 text-[12px] font-extralight text-[#AAAAAA]">
+                        30분전
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mb-4 ml-5 text-[14px] text-gray-900">
+                    {data.content}
                   </div>
                 </div>
-                <div className="mb-4 ml-5 text-[14px] text-gray-900">
-                  오 이거 좋은데요? 신청하러갑니다
-                </div>
-                <div className="flex">
-                  <Input
-                    placeholder="댓글을 입력하세요"
-                    className="mr-[10px] w-full flex-1 rounded-lg border border-gray-300 px-4 py-2"
+              ))}
+              <form className="flex" onSubmit={(e) => handleCommentSubmit(e)}>
+                <Input
+                  placeholder="댓글을 입력하세요"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  className="mr-[10px] w-full flex-1 rounded-lg border border-gray-300 px-4 py-2"
+                />
+                <Button type="submit" className="h-[42px] rounded-2xl">
+                  <Image
+                    src="/icon/airplane.png"
+                    alt="airplane"
+                    width={15}
+                    height={15}
                   />
-                  <Button className="h-[42px] rounded-2xl">
-                    <Image
-                      src="/icon/airplane.png"
-                      alt="airplane"
-                      width={15}
-                      height={15}
-                    />
-                  </Button>
-                </div>
-              </div>
+                </Button>
+              </form>
             </div>
           </div>
         </div>
