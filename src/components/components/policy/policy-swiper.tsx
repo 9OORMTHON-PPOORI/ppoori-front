@@ -44,7 +44,7 @@ export default function PolicySwiper() {
         {Temp.map((item, i) => (
           <SwiperSlide key={`house_swiper_${i}`}>
             <div
-              className="relative h-[350px] w-full cursor-pointer rounded-lg"
+              className="relative h-[446px] w-full cursor-pointer rounded-lg"
               onClick={() => router.push("policy/details")}
             >
               <Image
