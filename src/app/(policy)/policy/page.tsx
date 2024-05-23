@@ -30,7 +30,7 @@ export default function Policy() {
         >
           <Image
             className="rounded-full"
-            src={faker.image.urlLoremFlickr()}
+            src="/images/icon_profile.svg"
             alt="대상 이미지"
             width={25}
             height={25}
