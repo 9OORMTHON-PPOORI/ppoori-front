@@ -5,16 +5,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import {
-  patchPolicyHate,
-  patchPolicyLike,
-  postPolicyComment,
-} from "@/lib/api/policy";
+import { patchPolicyHate, patchPolicyLike } from "@/lib/api/policy";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { usePolicyDetail } from "@/lib/hook/policy";
+import { usePolicyComment, usePolicyDetail } from "@/lib/hook/policy";
 
 interface PolicyCommentType {
   writer: string;
@@ -22,14 +18,24 @@ interface PolicyCommentType {
 }
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
-  const { data: policyDetails } = usePolicyDetail(params.id);
+  const { data: policyDetails, refetch: policyDetailsRefetch } =
+    usePolicyDetail(params.id);
+  const { mutate: policyComment } = usePolicyComment({
+    onSuccess: () => {
+      alert("댓글이 등록되었습니다.");
+      policyDetailsRefetch();
+    },
+    onError: () => {
+      alert("댓글 등록에 실패하였습니다.");
+    },
+  });
   const [comment, setComment] = useState("");
   const router = useRouter();
 
   const handleCommentSubmit = (e: any) => {
     e.preventDefault();
 
-    postPolicyComment(comment, params.id);
+    policyComment({ comment, id: params.id });
   };
 
   return (

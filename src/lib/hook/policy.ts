@@ -1,7 +1,16 @@
-import { useQuery, UseQueryOptions } from "@tanstack/react-query";
+import {
+  useMutation,
+  UseMutationOptions,
+  useQuery,
+  UseQueryOptions,
+} from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
-import { getPolicy, getPolicyDetail } from "@/lib/api/policy";
+import {
+  getPolicy,
+  getPolicyDetail,
+  postPolicyComment,
+} from "@/lib/api/policy";
 
 export const usePolicy = (options?: UseQueryOptions<any, AxiosError>) => {
   return useQuery({
@@ -18,6 +27,15 @@ export const usePolicyDetail = (
   return useQuery({
     queryKey: ["policyDetail", policyId],
     queryFn: () => getPolicyDetail(policyId),
+    ...options,
+  });
+};
+
+export const usePolicyComment = (
+  options?: UseMutationOptions<any, Error, any>
+) => {
+  return useMutation<any, Error, any>({
+    mutationFn: postPolicyComment,
     ...options,
   });
 };

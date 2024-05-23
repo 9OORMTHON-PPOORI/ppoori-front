@@ -18,10 +18,7 @@ export const getPolicyDetail = async (id?: string): Promise<any> => {
   return data.data;
 };
 
-export const postPolicyComment = async (
-  comment: string,
-  id: string
-): Promise<any> => {
+export const postPolicyComment = async ({ comment, id }: any): Promise<any> => {
   const { data } = await axiosInstance.post(
     `${process.env.NEXT_PUBLIC_POLICY}/${id}/comment`,
     { content: comment }
