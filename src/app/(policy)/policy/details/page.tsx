@@ -1,96 +1,88 @@
-import { PaperPlaneIcon } from "@radix-ui/react-icons";
+"use client";
 
-import Header from "@/components/common/header";
+import { Cross1Icon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
+
 import { Input } from "@/components/ui/input";
 
 export default function PolicyDetails() {
+  const router = useRouter();
   return (
     <>
-      <Header />
+      <nav className="my-3 flex h-[44px] max-w-[390px] items-center px-6">
+        <div
+          className="flex w-full items-center justify-end"
+          onClick={() => router.back()}
+        >
+          <Cross1Icon className="h-[24px] w-[24px]" />
+        </div>
+      </nav>
       <div className="font-pretendard font-semibold">
-        <div className="mx-auto max-w-3xl rounded-lg bg-white p-6 shadow">
-          <h1 className="mb-4 text-2xl font-bold">
-            제주 청년문제와 해결방안은? 내가 한번 제안해 볼까?
-          </h1>
-          <p className="mb-6 text-gray-500">
-            #청년의 목소리 #청년의 손으로 만들어 나가는 #청년정책 #청년문제해결
-          </p>
-          <div className="mb-6">
-            <h2 className="mb-2 text-xl font-semibold">사업대상</h2>
-            <p className="text-gray-700">도내 청년 누구나(만 19세~39세)</p>
-          </div>
-
-          <div className="mb-6">
-            <h2 className="mb-2 text-xl font-semibold">주요내용</h2>
-            <ul className="ml-6 list-disc text-gray-700">
-              <li>
-                청년정책 추진 과정에 청년의 목소리를 반영하기 위하여 운영지원단,
-                청년위원을 도내 청년으로 구성하여 연중 운영
-              </li>
-              <li>청년의견 수렴 및 청년정책 제안, 청년문제 발굴 및 개선</li>
-              <li>
-                도의 청년교류 및 전체회의, 분과회의 등 다양한 프로그램 운영
-              </li>
-            </ul>
-          </div>
-
-          <div className="mb-6">
-            <h2 className="mb-2 text-xl font-semibold">신청방법</h2>
-            <p className="text-gray-700">
-              [제주청년센터 홈페이지] &rarr; [사업신청]
-            </p>
-          </div>
-
-          <div className="mb-6">
-            <h2 className="mb-2 text-xl font-semibold">꿀팁안내</h2>
-            <p className="text-gray-700">
-              제주청년원탁회의 청년위원 및 운영지원단은 매년 1월 모집.
-            </p>
-            <p>2022.12.23.(금) 09:00 ~ 2023.01.16.(월) 00:00</p>
-            <p>2023년 모집은 마감되었습니다. 2024년에 도전해보세요!</p>
-          </div>
-
-          <div className="mb-6 flex justify-around">
-            <div className="flex flex-col items-center">
-              <div className="mb-2 rounded-full bg-yellow-200 p-4 text-gray-800">
-                23
-              </div>
-              <button className="rounded-lg bg-yellow-100 px-4 py-2 text-gray-800">
-                관심 없어요
-              </button>
+        <div className="flex items-center justify-center">
+          <div className="w-full">
+            <div className="mb-[10px] w-[160px] rounded-[6px] bg-[#FFF3F4] px-[8px] py-[7px] text-sm text-[#F3213B]">
+              만 39세 이하 예비 창업자
             </div>
-            <div className="flex flex-col items-center">
-              <div className="mb-2 rounded-full bg-red-200 p-4 text-gray-800">
-                23
-              </div>
-              <button className="rounded-lg bg-red-100 px-4 py-2 text-gray-800">
-                맘에 들어요
-              </button>
-            </div>
-          </div>
-
-          <div className="rounded-lg bg-gray-50 p-4 shadow">
             <div className="mb-4">
-              <p className="text-gray-800">
-                <strong>김말똥</strong>{" "}
-                <span className="text-gray-500">14시간 전</span>
-              </p>
-              <p className="text-gray-700">음악도 크지 않고 좋았어요.</p>
+              <h2 className="mt-2 p-0 text-3xl font-extrabold text-black">
+                제주특별자치도 도민기
+              </h2>
+              <h2 className="text-3xl font-extrabold text-black">
+                자단 창업 청년 등록
+              </h2>
+            </div>
+            <div className="mb-12">
+              <h5 className="text-base">
+                제주 청년문제와 해결방안 한 번 제안해볼까?
+              </h5>
+            </div>
+            <div className="mb-8">
+              <div className="mb-2 font-bold text-black">지원내용</div>
+              <ul className="list-disc pl-5 font-medium text-[#666666]">
+                <li>예비 창업자 및 대학생에게 창업을 위한 열린 공간을 제공</li>
+                <li>디지털 장비 교육, 시제품 제작 등 사업화 지원</li>
+              </ul>
+            </div>
+            <div className="mb-[50px]">
+              <div className="mb-2 font-bold text-black">문의처</div>
+              <div className="font-medium text-[#666666]">
+                소상공인과
+                <a href="tel:0647103903" className="ml-1 text-[#56ACEA]">
+                  (064)710-3903
+                </a>
+              </div>
+            </div>
+            <div className="mb-5 flex justify-center gap-[10px]">
+              <div className="flex w-[112px] flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] px-[23px] py-[15px]">
+                <h5 className="text-xl font-bold">23</h5>
+                <p className="text-[14px] font-medium text-[#555555]">
+                  관심 없어요
+                </p>
+              </div>
+              <div className="flex w-[112px] flex-col items-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] p-[15px]">
+                <h5 className="text-xl font-bold">12</h5>
+                <p className="text-[14px] font-medium text-[#555555]">
+                  맘에 들어요
+                </p>
+              </div>
             </div>
             <div>
-              <p className="text-gray-800">
-                <strong>아무개</strong>{" "}
-                <span className="text-gray-500">14시간 전</span>
-              </p>
-              <p className="text-gray-700">정말 도움이 되는 정책이네요!</p>
+              <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
+                <div className="mb-2">
+                  뿌리내린청년312
+                  <span className="ml-2 text-[12px] font-extralight text-[#AAAAAA]">
+                    30분전
+                  </span>
+                </div>
+                <div className="mb-4 text-[14px] text-gray-900">
+                  오 이거 좋은데요? 신청하러갑니다
+                </div>
+                <Input
+                  placeholder="댓글을 입력하세요"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-2"
+                />
+              </div>
             </div>
-          </div>
-
-          <div className="mt-4 flex gap-3">
-            <Input placeholder="댓글을 입력하세요" className="h-[42px]" />
-            <button className="h-[42px] rounded-2xl bg-[#F63105] px-4 text-white">
-              <PaperPlaneIcon className="h-4 w-4 text-white" />
-            </button>
           </div>
         </div>
       </div>
