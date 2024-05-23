@@ -22,12 +22,9 @@ export default function Policy() {
 
   return (
     <div className="relative bg-[#619EC9]">
-      <div
-        className="my-4 flex cursor-pointer justify-center"
-        onClick={() => router.push("policy/list")}
-      >
+      <div className="my-4 flex justify-center">
         <div
-          className="flex items-center gap-2 pb-[13px] pt-[12px]"
+          className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
           onClick={() => router.push("/reset")}
         >
           <Image
@@ -67,7 +64,7 @@ export default function Policy() {
       <div className="relative mt-[12px] flex h-[100px] w-full justify-center">
         <Image
           className="object-cover"
-          src="/images/interestImage.svg"
+          src="/images/interestImage1.svg"
           alt="관심사 이미지"
           fill
           sizes="100vw"

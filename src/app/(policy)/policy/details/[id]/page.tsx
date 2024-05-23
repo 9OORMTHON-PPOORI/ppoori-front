@@ -8,10 +8,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { usePolicyDetail } from "@/lib/hook/policy";
+import { useState } from "react";
+import {
+  patchPolicyHate,
+  patchPolicyLike,
+  postPolicyComment,
+} from "@/lib/api/policy";
+
+interface PolicyCommentType {
+  writer: string;
+  content: string;
+}
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const { data: policyDetails } = usePolicyDetail(params.id);
+  const [comment, setComment] = useState("");
   const router = useRouter();
+
+  const handleCommentSubmit = (e: any) => {
+    postPolicyComment(comment, params.id);
+  };
 
   return (
     <>
@@ -59,52 +75,62 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             <div className="mb-5 flex justify-center gap-[10px]">
               <div className="flex w-[112px] cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] px-[23px] py-[15px]">
                 <h5 className="text-xl font-bold">{policyDetails?.hateRate}</h5>
-                <p className="text-[14px] font-medium text-[#555555]">
+                <div
+                  className="text-[14px] font-medium text-[#555555]"
+                  onClick={() => patchPolicyHate(params.id)}
+                >
                   관심 없어요
-                </p>
+                </div>
               </div>
               <div className="flex w-[112px] cursor-pointer flex-col items-center rounded-[16px] border-[1px] border-solid border-[#EEEEEE] p-[15px]">
                 <h5 className="text-xl font-bold">{policyDetails?.hateRate}</h5>
-                <p className="text-[14px] font-medium text-[#555555]">
+                <p
+                  className="text-[14px] font-medium text-[#555555]"
+                  onClick={() => patchPolicyLike(params.id)}
+                >
                   맘에 들어요
                 </p>
               </div>
             </div>
-            <div>
-              <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
-                <div className="">
-                  <div className="flex items-center">
-                    <Image
-                      src="/icon/comment.png"
-                      alt="commentIcon"
-                      width={15}
-                      height={15}
-                      className="mr-[6px]"
-                    />
-                    <span>뿌리내린청년312</span>
-                    <span className="ml-2 mt-1 text-[12px] font-extralight text-[#AAAAAA]">
-                      30분전
-                    </span>
+            <div className="rounded-[16px] bg-[#F9F9F9] p-5 font-normal">
+              {policyDetails?.comments.map((data: PolicyCommentType) => (
+                <div>
+                  <div className="">
+                    <div className="flex items-center">
+                      <Image
+                        src="/icon/comment.png"
+                        alt="commentIcon"
+                        width={15}
+                        height={15}
+                        className="mr-[6px]"
+                      />
+                      <span>{data.writer}</span>
+                      <span className="ml-2 mt-1 text-[12px] font-extralight text-[#AAAAAA]">
+                        30분전
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mb-4 ml-5 text-[14px] text-gray-900">
+                    {data.content}
                   </div>
                 </div>
-                <div className="mb-4 ml-5 text-[14px] text-gray-900">
-                  오 이거 좋은데요? 신청하러갑니다
-                </div>
-                <div className="flex">
-                  <Input
-                    placeholder="댓글을 입력하세요"
-                    className="mr-[10px] w-full flex-1 rounded-lg border border-gray-300 px-4 py-2"
+              ))}
+              <form className="flex" onSubmit={(e) => handleCommentSubmit(e)}>
+                <Input
+                  placeholder="댓글을 입력하세요"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  className="mr-[10px] w-full flex-1 rounded-lg border border-gray-300 px-4 py-2"
+                />
+                <Button type="submit" className="h-[42px] rounded-2xl">
+                  <Image
+                    src="/icon/airplane.png"
+                    alt="airplane"
+                    width={15}
+                    height={15}
                   />
-                  <Button className="h-[42px] rounded-2xl">
-                    <Image
-                      src="/icon/airplane.png"
-                      alt="airplane"
-                      width={15}
-                      height={15}
-                    />
-                  </Button>
-                </div>
-              </div>
+                </Button>
+              </form>
             </div>
           </div>
         </div>
