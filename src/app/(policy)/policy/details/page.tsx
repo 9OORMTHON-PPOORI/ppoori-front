@@ -9,7 +9,7 @@ export default function PolicyDetails() {
   const router = useRouter();
   return (
     <>
-      <nav className="my-3 flex h-[44px] max-w-[390px] items-center px-6">
+      <nav className="my-3 flex h-[44px] max-w-[390px] items-center">
         <div
           className="flex w-full items-center justify-end"
           onClick={() => router.back()}
@@ -17,7 +17,7 @@ export default function PolicyDetails() {
           <Cross1Icon className="h-[24px] w-[24px]" />
         </div>
       </nav>
-      <div className="font-pretendard font-semibold">
+      <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
             <div className="mb-[10px] w-[160px] rounded-[6px] bg-[#FFF3F4] px-[8px] py-[7px] text-sm text-[#F3213B]">
