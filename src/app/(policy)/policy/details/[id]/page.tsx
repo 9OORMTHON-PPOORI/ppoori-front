@@ -34,10 +34,6 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   const handleCommentSubmit = (e: any) => {
     e.preventDefault();
-<<<<<<< HEAD
-
-    policyComment({ comment, id: params.id });
-=======
     policyComment({ comment, id: params.id });
   };
 
@@ -60,7 +56,6 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
     } catch (error) {
       alert("등록에 실패했습니다.");
     }
->>>>>>> temp
   };
 
   return (

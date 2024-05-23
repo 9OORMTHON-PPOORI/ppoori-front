@@ -26,7 +26,7 @@ export default function Home() {
     <div className="relative">
       {page === 1 && (
         <div>
-          <div className="ml-[37px] mt-[26px] w-full text-left">
+          <div className="mx-[26px] mt-[40px] w-full text-left">
             <p className="text-[30px] font-extrabold">나는</p>
             <p className="text-[30px] font-extrabold">누구인가요?</p>
           </div>
@@ -81,25 +81,26 @@ export default function Home() {
       )}
       {page === 2 && (
         <div>
-          <div className="ml-[37px] mt-[26px] w-full text-left">
+          <div className="mt-[40px] w-full px-[26px] text-left">
             <p className="text-[30px] font-extrabold">어떤 정책이</p>
             <p className="text-[30px] font-extrabold">궁금하세요?</p>
           </div>
-          <div className="mt-8 grid grid-cols-1 place-items-center gap-[10px] px-6">
+          <div className="mt-8 grid grid-cols-1 place-items-center gap-[10px]">
             <Button
               className={`h-[112px] w-[342px] rounded-xl py-6 text-lg ${interest == "활동지원" ? "bg-[#FFF3F4] text-black" : "bg-white text-black"} hover:bg-[#FFF3F4]`}
               onClick={() => setInterest("활동지원")}
             >
-              <div className="flex items-center justify-between gap-[52px]">
-                <div className="relative h-[76px] w-[117px]">
-                  <Image
-                    className="object-cover"
-                    src="/images/interestCon1.svg"
-                    alt="활동지원콘"
-                    fill
-                  />
+              <div className="flex w-full justify-between">
+                <Image
+                  className="object-cover"
+                  src="/images/first-target1.svg"
+                  alt="활동지원"
+                  width={155}
+                  height={112}
+                />
+                <div className="m-auto">
+                  <p className="text-[22px] font-medium">활동지원</p>
                 </div>
-                <p className="text-[22px] font-medium">활동지원</p>
               </div>
             </Button>
             <Button
@@ -110,8 +111,8 @@ export default function Home() {
                 <div className="relative h-[76px] w-[117px]">
                   <Image
                     className="object-cover"
-                    src="/images/interestCon1.svg"
-                    alt="활동지원콘"
+                    src="/images/first-target2.svg"
+                    alt="역량개발"
                     fill
                   />
                 </div>
@@ -126,8 +127,8 @@ export default function Home() {
                 <div className="relative h-[76px] w-[117px]">
                   <Image
                     className="object-cover"
-                    src="/images/interestCon1.svg"
-                    alt="활동지원콘"
+                    src="/images/first-target3.svg"
+                    alt="생활지원"
                     fill
                   />
                 </div>
@@ -142,8 +143,8 @@ export default function Home() {
                 <div className="relative h-[76px] w-[117px]">
                   <Image
                     className="object-cover"
-                    src="/images/interestCon1.svg"
-                    alt="활동지원콘"
+                    src="/images/first-target4.svg"
+                    alt="진로지원"
                     fill
                   />
                 </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { faker } from "@faker-js/faker";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -16,14 +15,21 @@ import {
 } from "@/components/ui/select";
 
 export default function Policy() {
-  const [selectedValue, setSelectedValue] = useState<string | null>(
-    window.localStorage.getItem("관심사")
+  const [selectedValue, setSelectedValue] = useState<string>(
+    window.localStorage.getItem("관심사") || "활동지원"
   );
   const router = useRouter();
 
+  const mainImage: Record<string, string> = {
+    역량개발: "/images/interestImage1.svg",
+    생활지원: "/images/interestImage2.svg",
+    활동지원: "/images/interestImage3.svg",
+    진로지원: "/images/interestImage4.svg",
+  };
+
   return (
     <div className="h-full bg-[#619EC9]">
-      <div className="my-4 flex justify-center">
+      <div className="flex justify-center">
         <div
           className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
           onClick={() => router.push("/reset")}
@@ -63,13 +69,15 @@ export default function Policy() {
         </Select>
       </div>
       <div className="relative z-[1] mt-[12px] flex h-[100px] w-full justify-center">
-        <Image
-          className="object-cover"
-          src="/images/interestImage1.svg"
-          alt="관심사 이미지"
-          fill
-          sizes="100vw"
-        />
+        {selectedValue && (
+          <Image
+            className="object-cover"
+            src={mainImage[selectedValue]}
+            alt="관심사 이미지"
+            fill
+            sizes="100vw"
+          />
+        )}
       </div>
       <div className="relative z-50 mt-0">
         <PolicySwiper />
