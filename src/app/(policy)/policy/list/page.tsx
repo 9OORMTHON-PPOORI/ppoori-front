@@ -18,8 +18,8 @@ export default function PolicyList() {
                 id={policy.id}
                 name={policy.name}
                 title={policy.title}
-                interestCount={policy.interestCount}
-                notInterestCount={policy.notInterestCount}
+                interestCount={policy.likeRate}
+                notInterestCount={policy.hateRate}
               />
             </div>
           ))}
