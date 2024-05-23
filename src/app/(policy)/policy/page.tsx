@@ -22,7 +22,7 @@ export default function Policy() {
   const router = useRouter();
 
   return (
-    <div className="relative bg-[#619EC9]">
+    <div className="h-full bg-[#619EC9]">
       <div className="my-4 flex justify-center">
         <div
           className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
