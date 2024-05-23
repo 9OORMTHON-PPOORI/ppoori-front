@@ -49,6 +49,7 @@ package-lock.json
 package.json
 tsconfig.json
 README.md
+/src/components/ui/*
 
 # font
 /src/app/fonts/*
