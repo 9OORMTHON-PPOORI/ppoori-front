@@ -1,6 +1,5 @@
-const metaDataTitle = "WEPIK";
-const metaDataDescription =
-  "WEPIK은 연인과 친구들이 재미있는 질문에 답하며 소통을 즐길 수 있는 서비스입니다. 함께 대화하며 서로의 생각을 공유하고, 더 깊은 유대감을 형성하세요. WEPIK으로 의미 있는 대화를 시작해보세요!";
+const metaDataTitle = "뿌리";
+const metaDataDescription = "뿌리는 뿌리를 찾아가는 청년 정책을 제안합니다.";
 const metaDataUrl = "https://www.wipik.com";
 const metaDataAuthor = "WEPIK TEAM";
 const metaDataImageUrl = "/images/thumbnail.png";
@@ -26,14 +25,7 @@ export const MetaData = {
     title: metaDataTitle,
     description: metaDataDescription,
     siteName: metaDataTitle,
-    images: [
-      {
-        url: metaDataImageUrl,
-        width: "800",
-        height: "600",
-        alt: "위픽 썸네일",
-      },
-    ],
+    images: [],
     type: "website",
     locale: "ko_KR",
   },
