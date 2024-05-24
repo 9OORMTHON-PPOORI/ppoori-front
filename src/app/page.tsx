@@ -76,7 +76,7 @@ export default function Home() {
                   예술가
                 </Button>
               </div>
-              <div className="mt-[202px] flex w-full justify-center">
+              <div className="mt-[35px] flex w-full justify-center">
                 <Button
                   className="h-[60px] w-[120px] rounded-full"
                   onClick={() => handleNextBtn()}
@@ -162,7 +162,7 @@ export default function Home() {
               </div>
               <div className="mt-4 flex w-full justify-center">
                 <Button
-                  className="mt-[40px] h-[60px] w-[120px] rounded-full"
+                  className="mt-[35px] h-[60px] w-[120px] rounded-full"
                   onClick={() =>
                     router.push(
                       `/policy/?target=${target}&interest=${interest}`
