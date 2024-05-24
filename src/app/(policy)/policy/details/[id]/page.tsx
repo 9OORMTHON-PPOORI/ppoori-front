@@ -69,7 +69,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <nav className="my-3 flex h-[44px] max-w-[390px] items-center">
+      <nav className="my-3 flex h-[44px] max-w-[390px] items-center px-2">
         <div
           className="flex w-full items-center justify-end"
           onClick={() => router.back()}
@@ -77,7 +77,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
           <Cross1Icon className="h-[24px] w-[24px]" />
         </div>
       </nav>
-      <div className="mb-5 font-pretendard font-semibold">
+      <div className="mb-5 px-2 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
             <div className="flex gap-2">
