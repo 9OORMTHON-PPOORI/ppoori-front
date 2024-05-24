@@ -155,7 +155,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                       />
                       <span>{data.writer}</span>
                       <span className="ml-2 mt-1 text-[12px] font-extralight text-[#AAAAAA]">
-                        30분전
+                        방금 전
                       </span>
                     </div>
                   </div>
