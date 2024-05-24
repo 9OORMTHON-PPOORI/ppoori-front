@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import PolicySwiper from "@/components/components/policy/policy-swiper";
 import {
@@ -14,10 +14,40 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { usePolicyRecommend } from "@/lib/hook/policy";
+
+const selectedValueMapping: Record<string, string> = {
+  역량개발: "COMPETENCY_DEVELOPMENT",
+  생활지원: "LIVING_SUPPORT",
+  활동지원: "ACTIVITY_SUPPORT",
+  진로지원: "CAREER_SUPPORT",
+};
+
 export default function Policy() {
-  const [selectedValue, setSelectedValue] = useState<string>(
-    window.localStorage.getItem("관심사") || "활동지원"
-  );
+  const searchParams = useSearchParams();
+
+  const target = searchParams.get("target") ?? "";
+  const interest = searchParams.get("interest") ?? "";
+
+  const [res, setRes] = useState<any>();
+  const { mutate: policyRecommend } = usePolicyRecommend({
+    onSuccess: (res) => {
+      setRes(res);
+    },
+    onError: () => {
+      alert("데이터 요청에 실패하였습니다.");
+    },
+  });
+
+  useEffect(() => {
+    if (target && interest) {
+      policyRecommend({
+        comment: selectedValueMapping[interest],
+        target: "U",
+      });
+    }
+  }, [policyRecommend, target, interest]);
+
   const router = useRouter();
 
   const mainImage: Record<string, string> = {
@@ -26,6 +56,8 @@ export default function Policy() {
     활동지원: "/images/interestImage3.svg",
     진로지원: "/images/interestImage4.svg",
   };
+
+  if (!res && !target && !interest) return;
 
   return (
     <div className="h-full bg-[#619EC9]">
@@ -42,7 +74,7 @@ export default function Policy() {
             height={25}
             style={{ height: 25 }}
           />
-          <div className="text-md text-white/50">
+          <div className="text-sm text-white/50">
             {window.localStorage.getItem("대상")}
           </div>
         </div>
@@ -50,10 +82,9 @@ export default function Policy() {
       <div className="ml-[15px] mt-[12px] flex justify-center text-[26px]">
         <Select
           onValueChange={(value) => {
-            setSelectedValue(value);
-            localStorage.setItem("관심사", value);
+            router.push(`/policy/?target=${target}&interest=${value}`);
           }}
-          defaultValue={selectedValue ? selectedValue : ""}
+          defaultValue={interest}
         >
           <SelectTrigger className="w-28 border-none text-[26px] text-white/80">
             <SelectValue />
@@ -69,25 +100,23 @@ export default function Policy() {
         </Select>
       </div>
       <div className="relative z-[1] mt-[12px] flex h-[100px] w-full justify-center">
-        {selectedValue && (
-          <Image
-            className="object-cover"
-            src={mainImage[selectedValue]}
-            alt="관심사 이미지"
-            fill
-            sizes="100vw"
-          />
-        )}
+        <Image
+          className="object-cover"
+          src={mainImage[interest]}
+          alt="관심사 이미지"
+          fill
+          sizes="100vw"
+        />
       </div>
       <div className="relative z-50 mt-0">
-        <PolicySwiper />
+        <PolicySwiper policyCards={res} />
       </div>
       <div className="text-md flex justify-center">
         <div
           className="h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
           onClick={() => router.push("/policy/list")}
         >
-          정책 전체보기
+          카테고리 전체
         </div>
       </div>
     </div>

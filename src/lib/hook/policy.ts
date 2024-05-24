@@ -10,6 +10,7 @@ import {
   getPolicy,
   getPolicyDetail,
   postPolicyComment,
+  postPolicyRecommend,
 } from "@/lib/api/policy";
 
 export const usePolicy = (options?: UseQueryOptions<any, AxiosError>) => {
@@ -36,6 +37,15 @@ export const usePolicyComment = (
 ) => {
   return useMutation<any, Error, any>({
     mutationFn: postPolicyComment,
+    ...options,
+  });
+};
+
+export const usePolicyRecommend = (
+  options?: UseMutationOptions<any, Error, any>
+) => {
+  return useMutation<any, Error, any>({
+    mutationFn: postPolicyRecommend,
     ...options,
   });
 };

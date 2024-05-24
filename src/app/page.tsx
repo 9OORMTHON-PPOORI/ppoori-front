@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -163,7 +163,11 @@ export default function Home() {
               <div className="mt-4 flex w-full justify-center">
                 <Button
                   className="mt-[40px] h-[60px] w-[120px] rounded-full"
-                  onClick={() => handleNextBtn()}
+                  onClick={() =>
+                    router.push(
+                      `/policy/?target=${target}&interest=${interest}`
+                    )
+                  }
                   disabled={target === ""}
                 >
                   완료

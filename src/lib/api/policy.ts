@@ -41,3 +41,14 @@ export const patchPolicyLike = async (id: string): Promise<any> => {
 
   return data.data;
 };
+
+export const postPolicyRecommend = async ({
+  comment,
+  target,
+}: any): Promise<any> => {
+  const { data } = await axiosInstance.post(
+    `${process.env.NEXT_PUBLIC_RECOMMEND}`,
+    { category: comment, target: target }
+  );
+  return data.data;
+};

@@ -17,6 +17,15 @@ interface PolicyCommentType {
   content: string;
 }
 
+const TargetData: Record<string, string> = {
+  U: "대학생",
+  R: "취준생",
+  W: "재직자",
+  M: "신혼부부",
+  F: "농어입인",
+  A: "예술가",
+};
+
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const { data: policyDetails, refetch: policyDetailsRefetch } =
     usePolicyDetail(params.id);
@@ -71,8 +80,15 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
-            <div className="mb-[10px] grid max-w-[200px] rounded-[6px] bg-[#FFF3F4] px-[8px] py-[7px] text-sm text-[#F3213B]">
-              {policyDetails?.subject}
+            <div className="flex gap-2">
+              {policyDetails?.subject.split("").map((subject: string) => (
+                <div
+                  className="mb-[10px] grid w-fit rounded-[6px] bg-[#FFF3F4] px-[8px] py-[7px] text-sm text-[#F3213B]"
+                  key={subject}
+                >
+                  {TargetData[subject]}
+                </div>
+              ))}
             </div>
             <div className="mb-4">
               <h2 className="mt-2 p-0 text-3xl font-extrabold text-black">

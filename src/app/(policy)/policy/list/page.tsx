@@ -7,6 +7,7 @@ import { usePolicy } from "@/lib/hook/policy";
 
 export default function PolicyList() {
   const { data: policyList } = usePolicy();
+
   return (
     <>
       <Header />
@@ -17,6 +18,7 @@ export default function PolicyList() {
               <PolicyCard
                 id={policy.id}
                 name={policy.name}
+                category={policy.category}
                 title={policy.title}
                 interestCount={policy.likeRate}
                 notInterestCount={policy.hateRate}
