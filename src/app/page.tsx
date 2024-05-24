@@ -15,7 +15,7 @@ export default function Home() {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    setTimeout(() => setLoading(true), 1000);
+    setTimeout(() => setLoading(true), 4000);
   }, []);
 
   const handleNextBtn = () => {
