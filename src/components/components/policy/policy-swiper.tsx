@@ -106,7 +106,7 @@ export default function PolicySwiper(res?: any) {
                   </p>
                   <div className="flex items-center pb-4">
                     <p className="text-[12px] font-medium text-[#3FB9CB]">
-                      141개의 리뷰 요약
+                      43개의 리뷰가 있어요!
                     </p>
                   </div>
                 </div>

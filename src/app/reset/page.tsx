@@ -11,7 +11,7 @@ export default function Reset() {
 
   const handleModifyBtn = () => {
     window.localStorage.setItem("대상", target);
-    router.push("/policy");
+    router.push(`/policy/?target=${target}&interest=역량개발`);
   };
 
   return (
