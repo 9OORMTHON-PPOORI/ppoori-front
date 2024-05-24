@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import PolicySwiper from "@/components/components/policy/policy-swiper";
 import {
@@ -60,65 +60,67 @@ export default function Policy() {
   if (!res && !target && !interest) return;
 
   return (
-    <div className="h-full bg-[#619EC9]">
-      <div className="flex justify-center">
-        <div
-          className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
-          onClick={() => router.push("/reset")}
-        >
+    <Suspense fallback={<div></div>}>
+      <div className="h-full bg-[#619EC9]">
+        <div className="flex justify-center">
+          <div
+            className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
+            onClick={() => router.push("/reset")}
+          >
+            <Image
+              className="rounded-full"
+              src="/images/icon_profile.svg"
+              alt="대상 이미지"
+              width={25}
+              height={25}
+              style={{ height: 25 }}
+            />
+            <div className="text-sm text-white/50">
+              {window.localStorage.getItem("대상")}
+            </div>
+          </div>
+        </div>
+        <div className="ml-[15px] mt-[12px] flex justify-center text-[26px]">
+          <Select
+            onValueChange={(value) => {
+              router.push(`/policy/?target=${target}&interest=${value}`);
+            }}
+            defaultValue={interest}
+          >
+            <SelectTrigger className="w-28 border-none text-[26px] text-white/80">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="활동지원">활동지원</SelectItem>
+                <SelectItem value="역량개발">역량개발</SelectItem>
+                <SelectItem value="생활지원">생활지원</SelectItem>
+                <SelectItem value="진로지원">진로지원</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="relative z-[1] mt-[12px] flex h-[100px] w-full justify-center">
           <Image
-            className="rounded-full"
-            src="/images/icon_profile.svg"
-            alt="대상 이미지"
-            width={25}
-            height={25}
-            style={{ height: 25 }}
+            className="object-cover"
+            src={mainImage[interest]}
+            alt="관심사 이미지"
+            fill
+            sizes="100vw"
           />
-          <div className="text-sm text-white/50">
-            {window.localStorage.getItem("대상")}
+        </div>
+        <div className="relative z-50 mt-0">
+          <PolicySwiper policyCards={res} />
+        </div>
+        <div className="text-md flex justify-center">
+          <div
+            className="h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
+            onClick={() => router.push("/policy/list")}
+          >
+            카테고리 전체
           </div>
         </div>
       </div>
-      <div className="ml-[15px] mt-[12px] flex justify-center text-[26px]">
-        <Select
-          onValueChange={(value) => {
-            router.push(`/policy/?target=${target}&interest=${value}`);
-          }}
-          defaultValue={interest}
-        >
-          <SelectTrigger className="w-28 border-none text-[26px] text-white/80">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="활동지원">활동지원</SelectItem>
-              <SelectItem value="역량개발">역량개발</SelectItem>
-              <SelectItem value="생활지원">생활지원</SelectItem>
-              <SelectItem value="진로지원">진로지원</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="relative z-[1] mt-[12px] flex h-[100px] w-full justify-center">
-        <Image
-          className="object-cover"
-          src={mainImage[interest]}
-          alt="관심사 이미지"
-          fill
-          sizes="100vw"
-        />
-      </div>
-      <div className="relative z-50 mt-0">
-        <PolicySwiper policyCards={res} />
-      </div>
-      <div className="text-md flex justify-center">
-        <div
-          className="h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
-          onClick={() => router.push("/policy/list")}
-        >
-          카테고리 전체
-        </div>
-      </div>
-    </div>
+    </Suspense>
   );
 }
