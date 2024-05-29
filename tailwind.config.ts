@@ -18,6 +18,88 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        "title-1": [
+          "30px",
+          {
+            lineHeight: "38px",
+            letterSpacing: "-0.5",
+            fontWeight: "800",
+          },
+        ],
+        "title-2": [
+          "20px",
+          {
+            lineHeight: "30px",
+            letterSpacing: "-1",
+            fontWeight: "800",
+          },
+        ],
+        "title-3": [
+          "20px",
+          {
+            lineHeight: "30px",
+            letterSpacing: "-0.5",
+            fontWeight: "700",
+          },
+        ],
+        "title-4": [
+          "20px",
+          {
+            lineHeight: "30px",
+            letterSpacing: "-0.5",
+            fontWeight: "500",
+          },
+        ],
+        "subtitle-1": [
+          "16px",
+          {
+            lineHeight: "20px",
+            letterSpacing: "-0.5",
+            fontWeight: "700",
+          },
+        ],
+        "text-1": [
+          "16px",
+          {
+            lineHeight: "20px",
+            letterSpacing: "-0.5",
+            fontWeight: "500",
+          },
+        ],
+        "text-2": [
+          "16px",
+          {
+            lineHeight: "24px",
+            letterSpacing: "-0.5",
+            fontWeight: "400",
+          },
+        ],
+        "text-3": [
+          "14px",
+          {
+            lineHeight: "22px",
+            letterSpacing: "-0.5",
+            fontWeight: "600",
+          },
+        ],
+        "text-4": [
+          "14px",
+          {
+            lineHeight: "22px",
+            letterSpacing: "-0.5",
+            fontWeight: "500",
+          },
+        ],
+        caption: [
+          "12px",
+          {
+            lineHeight: "18px",
+            letterSpacing: "-0.5",
+            fontWeight: "500",
+          },
+        ],
+      },
       fontFamily: {
         pretendard: ["var(--font-pretendard)"],
         allroundgothic: ["var(--font-allroundgothic)"],
