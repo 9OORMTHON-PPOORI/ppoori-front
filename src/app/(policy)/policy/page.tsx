@@ -112,7 +112,7 @@ export default function Policy() {
         <div className="relative z-50 mt-0">
           <PolicySwiper policyCards={res} />
         </div>
-        <div className="text-md flex justify-center">
+        <div className="flex justify-center text-sm">
           <div
             className="h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
             onClick={() => router.push("/policy/list")}

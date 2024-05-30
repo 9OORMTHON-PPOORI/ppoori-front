@@ -3,8 +3,6 @@ import localFont from "next/font/local";
 
 import "@/styles/globals.css";
 
-import Layout from "@/components/common/layout";
-
 import { MetaData } from "@/constants/config";
 import ReactQueryProvider from "@/provider/query-provider";
 
@@ -60,9 +58,7 @@ export default function RootLayout({
       className={`${pretendard.variable} ${allRoundGothic.variable}`}
     >
       <body className={`${pretendard.className}`}>
-        <ReactQueryProvider>
-          <Layout>{children}</Layout>
-        </ReactQueryProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
