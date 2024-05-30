@@ -138,6 +138,43 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "po-gray": {
+          "000": "hsl(var(--po-gray-000))",
+          "50": "hsl(var(--po-gray-050))",
+          "200": "hsl(var(--po-gray-200))",
+          "300": "hsl(var(--po-gray-300))",
+          "400": "hsl(var(--po-gray-400))",
+          "500": "hsl(var(--po-gray-500))",
+          "600": "hsl(var(--po-gray-600))",
+          "700": "hsl(var(--po-gray-700))",
+          "800": "hsl(var(--po-gray-800))",
+        },
+        "po-darkcyan": {
+          "1": "hsl(var(--po-darkcyan-1))",
+          "2": "hsl(var(--po-darkcyan-2))",
+          "3": "hsl(var(--po-darkcyan-3))",
+          "4": "hsl(var(--po-darkcyan-4))",
+        },
+        "po-cyan": {
+          "1": "hsl(var(--po-cyan-1))",
+          "2": "hsl(var(--po-cyan-2))",
+        },
+        "po-red": {
+          "1": "hsl(var(--po-red-1))",
+          "2": "hsl(var(--po-red-2))",
+        },
+        "po-green": {
+          "1": "hsl(var(--po-green-1))",
+          "2": "hsl(var(--po-green-2))",
+        },
+        "po-blue": {
+          "1": "hsl(var(--po-blue-1))",
+          "2": "hsl(var(--po-blue-2))",
+        },
+        "po-pink": {
+          "1": "hsl(var(--po-pink-1))",
+          "2": "hsl(var(--po-pink-2))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
