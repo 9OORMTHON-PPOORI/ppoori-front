@@ -2,19 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export function SplashScreen() {
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setKey((prevKey) => prevKey + 1);
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const container = {
     initial: {
       opacity: 1,
@@ -24,16 +13,9 @@ export function SplashScreen() {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.5,
         delayChildren: 0.2,
-        staggerChildren: 0.2,
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0,
-      transition: {
-        duration: 0.4,
+        staggerChildren: 0.4,
       },
     },
   };
@@ -47,21 +29,15 @@ export function SplashScreen() {
       y: 0,
       opacity: 1,
     },
-    exit: {
-      y: 20,
-      opacity: 0,
-    },
   };
 
   return (
     <div className="relative h-screen w-full bg-[#252730]">
       <motion.div
-        key={key}
         className="relative top-[127px] m-auto flex h-[500px] w-[326px] justify-center"
         variants={container}
         initial="initial"
         animate="animate"
-        exit="exit"
       >
         <motion.div className="absolute bottom-0" variants={item}>
           <Image
@@ -72,38 +48,41 @@ export function SplashScreen() {
           />
         </motion.div>
         <motion.div
-          className="absolute right-[8px] top-[301px]"
+          className="absolute right-[8px] top-[286px]"
           variants={item}
         >
           <Image
             src="/images/splash-icon2.svg"
             alt="splashIcon2"
-            width={150}
-            height={119}
+            width={164}
+            height={128}
           />
         </motion.div>
-        <motion.div className="absolute left-0 top-[219px]" variants={item}>
+        <motion.div className="absolute left-0 top-[192px]" variants={item}>
           <Image
             src="/images/splash-icon1.svg"
             alt="splashIcon1"
-            width={156}
-            height={113}
+            width={170}
+            height={136}
           />
         </motion.div>
-        <motion.div className="absolute right-0 top-[140px]" variants={item}>
-          <Image
-            src="/images/splash-icon4.svg"
-            alt="splashIcon4"
-            width={159}
-            height={108}
-          />
-        </motion.div>
-        <motion.div className="absolute left-[22px] top-[48px]" variants={item}>
+        <motion.div
+          className="absolute right-[-6px] top-[100px]"
+          variants={item}
+        >
           <Image
             src="/images/splash-icon3.svg"
             alt="splashIcon3"
-            width={159}
-            height={112}
+            width={180}
+            height={141}
+          />
+        </motion.div>
+        <motion.div className="absolute left-[8px] top-[20px]" variants={item}>
+          <Image
+            src="/images/splash-icon4.svg"
+            alt="splashIcon4"
+            width={172}
+            height={144}
           />
         </motion.div>
         <motion.div
