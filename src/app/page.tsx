@@ -37,8 +37,8 @@ export default function Home() {
           {page === 1 && (
             <div>
               <div className="w-full text-left">
-                <p className="text-po-gray-800 text-title-1">나는</p>
-                <p className="text-po-gray-800 text-title-1">누구인가요?</p>
+                <p className="text-title-1 text-po-gray-800">나는</p>
+                <p className="text-title-1 text-po-gray-800">누구인가요?</p>
               </div>
               <div className="mb-[48px] mt-6 grid grid-cols-2 place-items-center gap-3">
                 {[
@@ -71,8 +71,8 @@ export default function Home() {
           {page === 2 && (
             <div>
               <div className="w-full text-left">
-                <p className="text-po-gray-800 text-title-1">어떤 정책이</p>
-                <p className="text-po-gray-800 text-title-1">궁금하세요?</p>
+                <p className="text-title-1 text-po-gray-800">어떤 정책이</p>
+                <p className="text-title-1 text-po-gray-800">궁금하세요?</p>
               </div>
               <div className="mb-[48px] mt-6 grid grid-cols-2 place-items-center gap-3">
                 {[

@@ -4,7 +4,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className="font-pretendard">
       <body>
         <main className="m-auto h-full w-full max-w-[390px] flex-grow">
           {children}
