@@ -32,7 +32,7 @@ export function SplashScreen() {
   };
 
   return (
-    <div className="relative h-screen w-full bg-[#252730]">
+    <div className="relative h-screen w-full max-w-[390px] bg-[#252730]">
       <motion.div
         className="relative top-[15%] m-auto flex h-[500px] w-[326px] justify-center"
         variants={container}
