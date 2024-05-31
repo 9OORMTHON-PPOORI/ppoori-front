@@ -70,7 +70,7 @@ export default function PolicySwiper(res?: any) {
 
         return (
           <SwiperSlide key={index}>
-            <div className="relative z-[100] flex w-full justify-center pb-[43px]">
+            <div className="relative z-[100] flex w-full justify-center pb-[32px]">
               <div
                 className={`h-[446px] w-[280px] rounded-[32px] ${targetColor} px-4 pb-[42px] pt-[12px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
