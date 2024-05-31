@@ -115,7 +115,7 @@ export default function PolicySwiper(res?: any) {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Image
-                            className="absolute right-0 cursor-help"
+                            className="absolute right-0 cursor-help "
                             src="/icon/helpIcon.svg"
                             alt="도움말 아이콘"
                             width={18}
@@ -124,7 +124,7 @@ export default function PolicySwiper(res?: any) {
                         </TooltipTrigger>
                         <TooltipContent side="bottom">
                           <Image
-                            className="absolute right-0 top-0"
+                            className="animate-fadeIn absolute right-0 top-0 z-50"
                             src="/images/tooltip-triangle.svg"
                             alt="툴팁"
                             width={80}
