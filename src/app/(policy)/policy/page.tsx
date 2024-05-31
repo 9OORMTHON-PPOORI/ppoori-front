@@ -114,10 +114,10 @@ export default function Policy() {
         </div>
         <div className="flex justify-center text-sm">
           <div
-            className="h-[48px] w-[121px] content-center rounded-[100px] border-[1px] border-solid border-white/60 px-4 text-center text-white/60 hover:cursor-pointer"
+            className="w-[160px] content-center text-center text-[16px] font-medium leading-[20px] tracking-tighter text-[#B4E0FF] hover:cursor-pointer"
             onClick={() => router.push("/policy/list")}
           >
-            카테고리 전체
+            카테고리 전체보기
           </div>
         </div>
       </div>
