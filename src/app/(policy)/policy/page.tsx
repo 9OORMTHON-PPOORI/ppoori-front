@@ -32,7 +32,6 @@ export default function Policy() {
   const [res, setRes] = useState<any>();
   const { mutate: policyRecommend } = usePolicyRecommend({
     onSuccess: (res) => {
-      console.log({ res });
       setRes(res);
     },
     onError: () => {
@@ -88,7 +87,7 @@ export default function Policy() {
             }}
             defaultValue={interest}
           >
-            <SelectTrigger className="w-[120px] border-none px-[6px] text-[20px] font-medium leading-[30px] tracking-tighter text-white/80">
+            <SelectTrigger className="w-[120px] border-none px-[12px] text-[20px] font-medium leading-[30px] tracking-tighter text-po-darkcyan-1">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -114,7 +113,7 @@ export default function Policy() {
         </div>
         <div className="flex justify-center text-sm">
           <div
-            className="w-[160px] content-center text-center text-[16px] font-medium leading-[20px] tracking-tighter text-[#B4E0FF] hover:cursor-pointer"
+            className="w-[160px] content-center text-center text-text-1 text-[#B4E0FF] hover:cursor-pointer"
             onClick={() => router.push("/policy/list")}
           >
             카테고리 전체보기
