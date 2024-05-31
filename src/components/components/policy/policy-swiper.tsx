@@ -1,9 +1,16 @@
 "use client";
 
 import { faker } from "@faker-js/faker";
+import { Tooltip } from "@radix-ui/react-tooltip";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+
+import {
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Import Swiper styles
 import "swiper/css";
@@ -104,13 +111,32 @@ export default function PolicySwiper(res?: any) {
                         AI의 정책 내용 요약
                       </p>
                     </div>
-                    <Image
-                      className="absolute right-0 cursor-help"
-                      src="/icon/helpIcon.svg"
-                      alt="도움말 아이콘"
-                      width={18}
-                      height={18}
-                    />
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Image
+                            className="absolute right-0 cursor-help"
+                            src="/icon/helpIcon.svg"
+                            alt="도움말 아이콘"
+                            width={18}
+                            height={18}
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent side="bottom">
+                          <Image
+                            className="absolute right-0 top-0"
+                            src="/images/tooltip-triangle.svg"
+                            alt="툴팁"
+                            width={80}
+                            height={6}
+                          />
+                          <p className="text-center text-[12px] font-extralight leading-[18px] tracking-[-0.1px] text-[#F0F0F5]">
+                            현재 ChatGPT가 처리할 수 있는 범위 내에서 정책의
+                            주요 내용을 요약했습니다.
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
                   </div>
                 </div>
                 <div
