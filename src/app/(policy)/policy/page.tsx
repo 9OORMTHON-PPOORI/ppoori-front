@@ -32,6 +32,7 @@ export default function Policy() {
   const [res, setRes] = useState<any>();
   const { mutate: policyRecommend } = usePolicyRecommend({
     onSuccess: (res) => {
+      console.log({ res });
       setRes(res);
     },
     onError: () => {
@@ -61,7 +62,7 @@ export default function Policy() {
 
   return (
     <Suspense fallback={<div></div>}>
-      <div className="h-full bg-[#619EC9]">
+      <div className="min-h-full bg-[#619EC9] pb-[40px]">
         <div className="flex justify-center">
           <div
             className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
@@ -75,38 +76,37 @@ export default function Policy() {
               height={25}
               style={{ height: 25 }}
             />
-            <div className="text-sm text-white/50">
+            <div className="text-text-1 text-white/50">
               {window.localStorage.getItem("대상")}
             </div>
           </div>
         </div>
-        <div className="ml-[15px] mt-[12px] flex justify-center text-[26px]">
+        <div className="ml-[15px] mt-[12px] flex justify-center">
           <Select
             onValueChange={(value) => {
               router.push(`/policy/?target=${target}&interest=${value}`);
             }}
             defaultValue={interest}
           >
-            <SelectTrigger className="w-28 border-none text-[26px] text-white/80">
+            <SelectTrigger className="w-[120px] border-none px-[6px] text-[20px] font-medium leading-[30px] tracking-tighter text-white/80">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="활동지원">활동지원</SelectItem>
-                <SelectItem value="역량개발">역량개발</SelectItem>
-                <SelectItem value="생활지원">생활지원</SelectItem>
-                <SelectItem value="진로지원">진로지원</SelectItem>
+                <SelectItem value="활동지원">활동 지원</SelectItem>
+                <SelectItem value="역량개발">역량 개발</SelectItem>
+                <SelectItem value="생활지원">생활 지원</SelectItem>
+                <SelectItem value="진로지원">진로 지원</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
         </div>
-        <div className="relative z-[1] mt-[12px] flex h-[100px] w-full justify-center">
+        <div className="relative z-[1] mb-[-20px] mt-[12px] flex w-full justify-center">
           <Image
-            className="object-cover"
             src={mainImage[interest]}
             alt="관심사 이미지"
-            fill
-            sizes="100vw"
+            width={164}
+            height={120}
           />
         </div>
         <div className="relative z-50 mt-0">

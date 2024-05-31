@@ -6,7 +6,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <main className="m-auto h-full w-full max-w-[390px] flex-grow px-6">
+        <main className="m-auto h-full w-full max-w-[390px] flex-grow">
           {children}
         </main>
       </body>
