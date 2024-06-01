@@ -34,7 +34,7 @@ export function PolicyCard({
 
   return (
     <div
-      className="mb-[10px] cursor-pointer rounded-2xl bg-white px-[20px] py-[24px] leading-[140%]  shadow-[0_4px_6px_#0000000A] duration-500 hover:-translate-y-1"
+      className="mb-[10px] cursor-pointer rounded-2xl border-[1px] border-white bg-white px-[20px]  py-[24px] leading-[140%] shadow-[0_4px_6px_#0000000A] duration-500 hover:-translate-y-1 hover:border-po-cyan-2"
       onClick={() => router.push(`/policy/details/${id}`)}
     >
       <div className="flex">

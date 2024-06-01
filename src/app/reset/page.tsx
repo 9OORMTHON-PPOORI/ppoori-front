@@ -18,10 +18,10 @@ export default function Reset() {
 
   return (
     <Layout>
-      <div>
+      <div className="w-full">
         <div className="w-full text-left">
-          <p className="text-po-gray-800 text-title-1">나는</p>
-          <p className="text-po-gray-800 text-title-1">누구인가요?</p>
+          <p className="text-title-1 text-po-gray-800">나는</p>
+          <p className="text-title-1 text-po-gray-800">누구인가요?</p>
         </div>
         <div className="mb-[48px] mt-6 grid grid-cols-2 place-items-center gap-3">
           {[
