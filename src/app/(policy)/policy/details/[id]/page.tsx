@@ -156,7 +156,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                     width={16}
                     height={16}
                   />
-                  <span className="min-w-[120px]">
+                  <span className="min-w-[115px] truncate">
                     {policyDetails?.contact}
                   </span>
                 </a>
