@@ -60,33 +60,15 @@ export default function Policy() {
   if (!res && !target && !interest) return;
 
   return (
-    <div className="min-h-full bg-[#619EC9] pb-[40px]">
-      <div className="flex justify-center">
-        <div
-          className="flex items-center gap-2 pb-[13px] pt-[12px] hover:cursor-pointer"
-          onClick={() => router.push("/reset")}
-        >
-          <Image
-            className="rounded-full"
-            src="/images/icon_profile.svg"
-            alt="대상 이미지"
-            width={25}
-            height={25}
-            style={{ height: 25 }}
-          />
-          <div className="mt-1 text-text-1 text-white/50">
-            {window.localStorage.getItem("대상")}
-          </div>
-        </div>
-      </div>
-      <div className="ml-[15px] mt-[12px] flex justify-center">
+    <div>
+      <div className="mt-[12px] flex justify-center text-title-4">
         <Select
           onValueChange={(value) => {
             router.push(`/policy/?target=${target}&interest=${value}`);
           }}
           defaultValue={interest}
         >
-          <SelectTrigger className="w-[120px] border-none px-[12px] text-[20px] font-medium leading-[30px] tracking-tighter text-po-darkcyan-1">
+          <SelectTrigger className="w-[120px] border-none text-title-4 tracking-tighter text-po-darkcyan-1">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -99,7 +81,7 @@ export default function Policy() {
           </SelectContent>
         </Select>
       </div>
-      <div className="relative z-[1] mb-[-20px] mt-[12px] flex w-full justify-center">
+      <div className="relative mb-[-20px] mt-[12px] flex w-full justify-center">
         <Image
           src={mainImage[interest]}
           alt="관심사 이미지"
@@ -107,16 +89,14 @@ export default function Policy() {
           height={120}
         />
       </div>
-      <div className="relative z-50 mt-0">
+      <div>
         <PolicySwiper policyCards={res} />
       </div>
-      <div className="flex justify-center text-sm">
-        <div
-          className="w-[160px] content-center text-center text-text-1 text-[#B4E0FF] hover:cursor-pointer"
-          onClick={() => router.push("/policy/list")}
-        >
-          카테고리 전체보기
-        </div>
+      <div
+        className="flex cursor-pointer content-center justify-center text-center text-text-1 text-po-darkcyan-2"
+        onClick={() => router.push("/policy/list")}
+      >
+        카테고리 전체보기
       </div>
     </div>
   );

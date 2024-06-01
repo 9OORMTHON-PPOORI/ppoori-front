@@ -70,9 +70,9 @@ export default function PolicySwiper(res?: any) {
 
         return (
           <SwiperSlide key={index}>
-            <div className="relative z-[100] flex w-full justify-center pb-[43px]">
+            <div className="relative flex w-full justify-center px-10 pb-[43px]">
               <div
-                className={`min-h-[446px] w-[280px] rounded-[32px] ${targetColor} px-4 pb-[42px] pt-[12px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
+                className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
                 <div className="flex flex-col justify-center">
                   <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center">
@@ -81,25 +81,25 @@ export default function PolicySwiper(res?: any) {
                   <h5 className="mb-[4px] text-center text-text-4">
                     {item.target}
                   </h5>
-                  <h3 className="mx-5 mb-[18px] text-center text-title-2">
+                  <h3 className="mb-[18px] line-clamp-2 text-center text-title-2">
                     {item.title}
                   </h3>
                 </div>
-                <div className="relative min-h-[186px] w-[246px] rounded-[16px] bg-[#E8FCFF] p-[20px]">
-                  <p className="mb-3 flex text-text-3 text-po-cyan-2">
+                <div className="relative min-h-[186px] rounded-[16px] bg-po-cyan-1 p-[20px]">
+                  <p className="mb-[18px] line-clamp-5 flex text-text-3 text-po-cyan-2">
                     청년들의 다양한 요구와 필요에 부응하기 위해 설계되었습니다.
                     이를 활용하여 제주의 청년들에게 경제적 지원과 기술을 습득할
                     수 있기를 기대중입니다.
                   </p>
-                  <div className="absolute bottom-0 flex w-[206px] items-center pb-[20px]">
-                    <div className="flex">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-[3px]">
                       <Image
                         src="/icon/aiIcon.svg"
                         alt="AI 아이콘"
                         width={12}
                         height={12}
                       />
-                      <p className="ml-[4px] mt-1 text-caption text-po-cyan-2">
+                      <p className="mt-[2px] text-caption text-po-cyan-2">
                         AI의 정책 내용 요약
                       </p>
                     </div>
@@ -107,7 +107,7 @@ export default function PolicySwiper(res?: any) {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Image
-                            className="absolute right-0 cursor-help"
+                            className="cursor-help"
                             src="/icon/helpIcon.svg"
                             alt="도움말 아이콘"
                             width={18}
@@ -132,7 +132,7 @@ export default function PolicySwiper(res?: any) {
                   </div>
                 </div>
                 <div
-                  className="mt-[10px] flex h-[48px] w-[246px] cursor-pointer items-center justify-center rounded-[16px] border-[1px] border-po-gray-300 bg-[#CDCED614] text-text-4 text-po-gray-600 hover:bg-[#E8FCFF] hover:text-[#1FA8BD]"
+                  className="mt-[10px] flex h-[48px] cursor-pointer items-center justify-center rounded-[16px] border-[1px] border-po-gray-300 bg-[#CDCED614] text-text-4 text-po-gray-600 duration-500 hover:bg-po-cyan-1 hover:text-po-cyan-2"
                   onClick={() => router.push(`policy/details/${item.id}`)}
                 >
                   상세 보기
