@@ -226,7 +226,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                   onChange={(e) => setComment(e.target.value)}
                   className="mr-[6px] h-[48px] w-full flex-1 rounded-2xl px-4 py-[9px]"
                 />
-                <Button type="submit" className="h-[48px] rounded-2xl">
+                <Button
+                  type="submit"
+                  className="h-[48px] rounded-2xl"
+                  disabled={!comment}
+                >
                   <Image
                     src="/icon/airplane.svg"
                     alt="airplane"
