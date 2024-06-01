@@ -50,5 +50,6 @@ export const postPolicyRecommend = async ({
     `${process.env.NEXT_PUBLIC_RECOMMEND}`,
     { category: comment, target: target }
   );
+
   return data.data;
 };

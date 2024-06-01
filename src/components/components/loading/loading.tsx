@@ -7,7 +7,7 @@ import lottieJson from "../../../../public/lottie/loading-bubble.json";
 
 const LoadingPresenter = () => {
   return (
-    <div className="relative h-screen w-screen bg-[#F7F7FA]">
+    <div className="relative z-50 h-full w-full bg-[#F7F7FA]">
       <div className="absolute top-[35%] h-[150px] w-full py-4">
         <div className="flex w-full justify-center">
           <Lottie

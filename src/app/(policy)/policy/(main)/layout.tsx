@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
-
-import Loading from "@/app/loading";
+import { useEffect, useState } from "react";
 
 export default function RootLayout({
   children,
@@ -38,9 +36,7 @@ export default function RootLayout({
           <div className="text-text-1 text-po-darkcyan-2">{target}</div>
         </div>
       </div>
-      <main className="m-auto max-w-[390px]">
-        <Suspense fallback={<Loading />}>{children}</Suspense>
-      </main>
+      <main className="m-auto max-w-[390px]">{children}</main>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export default function Policy() {
         target: "U",
       });
     }
-  }, []);
+  }, [policyRecommend, target, interest]);
 
   const router = useRouter();
 
