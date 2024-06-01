@@ -41,6 +41,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
+    "react-lottie-player": "^2.0.0",
     "shadcn-ui": "^0.8.0",
     "sharp": "^0.33.3",
     "swiper": "^11.1.3",
