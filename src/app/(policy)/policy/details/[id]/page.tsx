@@ -3,14 +3,17 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-
-import { patchPolicyHate, patchPolicyLike } from "@/lib/api/policy";
+import { FormEvent, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { usePolicyComment, usePolicyDetail } from "@/lib/hook/policy";
+import {
+  usePolicyComment,
+  usePolicyDetail,
+  usePolicyHate,
+  usePolicyLike,
+} from "@/lib/hook/policy";
 
 interface PolicyCommentType {
   writer: string;
@@ -27,45 +30,61 @@ const TargetData: Record<string, string> = {
 };
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
-  const { data: policyDetails, refetch: policyDetailsRefetch } =
-    usePolicyDetail(params.id);
+  const router = useRouter();
+  const [liked, setLiked] = useState(false);
+  const [hated, setHated] = useState(false);
+
+  const { data: policyDetails, refetch: detailsRefetch } = usePolicyDetail(
+    params.id
+  );
   const { mutate: policyComment } = usePolicyComment({
     onSuccess: () => {
-      alert("댓글이 등록되었습니다.");
-      policyDetailsRefetch();
-    },
-    onError: () => {
-      alert("댓글 등록에 실패하였습니다.");
+      detailsRefetch();
     },
   });
-  const [comment, setComment] = useState("");
-  const router = useRouter();
+  const { mutate: policyLike } = usePolicyLike({
+    onSuccess: () => {
+      detailsRefetch();
+    },
+  });
+  const { mutate: policyHate } = usePolicyHate({
+    onSuccess: () => {
+      detailsRefetch();
+    },
+  });
 
-  const handleCommentSubmit = (e: any) => {
+  const [comment, setComment] = useState("");
+  const handleCommentSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     policyComment({ comment, id: params.id });
   };
 
   const handleHate = () => {
-    try {
-      patchPolicyHate(params.id);
-      policyDetailsRefetch();
-      window.location.reload();
-      alert("등록에 성공했습니다.");
-    } catch (error) {
-      alert("등록에 실패했습니다.");
-    }
+    const newHatedStatus = !hated;
+    policyHate(params.id);
+    setHated(newHatedStatus);
+    localStorage.setItem("hated", newHatedStatus.toString());
   };
 
   const handleLike = () => {
-    try {
-      patchPolicyLike(params.id);
-      alert("등록에 성공했습니다.");
-      window.location.reload();
-    } catch (error) {
-      alert("등록에 실패했습니다.");
-    }
+    const newLikedStatus = !liked;
+    policyLike(params.id);
+    setLiked(newLikedStatus);
+    localStorage.setItem("liked", newLikedStatus.toString());
   };
+
+  useEffect(() => {
+    const savedLikedStatus = localStorage.getItem("liked");
+    const savedHatedStatus = localStorage.getItem("hated");
+
+    if (savedLikedStatus === "true") {
+      setLiked(true);
+    }
+
+    if (savedHatedStatus === "true") {
+      setHated(true);
+    }
+  }, []);
 
   return (
     <>
@@ -145,24 +164,32 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             </div>
             <div className="mb-5 flex justify-center gap-[10px]">
               <div
-                className="flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-gray-300 bg-[#CDCED614] px-[23px] py-[15px] duration-500 hover:border-po-cyan-2 hover:brightness-[90%]"
-                onClick={() => handleHate()}
+                className={`group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-gray-300 bg-[#CDCED614] px-[23px] py-[15px] duration-500 hover:border-po-red-2 hover:bg-po-red-1 ${liked ? "border-po-red-2 bg-po-red-1" : "text-po-gray-600"}`}
+                onClick={() => handleLike()}
               >
-                <h5 className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.hateRate}
+                <h5
+                  className={`text-2xl font-black text-po-gray-700 group-hover:text-po-red-2 ${liked ? "text-po-red-2" : "text-po-gray-700"}`}
+                >
+                  {policyDetails?.likeRate}
                 </h5>
-                <div className="text-text-4 font-medium text-po-gray-600">
+                <div
+                  className={`text-text-4 font-medium group-hover:text-po-red-2 ${liked ? "text-po-red-2" : "text-po-gray-600"}`}
+                >
                   좋아요
                 </div>
               </div>
               <div
-                className="flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-gray-300 bg-[#CDCED614] px-[23px] py-[15px] duration-500 hover:border-po-cyan-2 hover:brightness-[90%]"
-                onClick={() => handleLike()}
+                className={`group hover:border-po-blue-2 hover:bg-po-blue-1 ${hated ? "border-po-blue-2 bg-po-blue-1" : "text-po-gray-600"} flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-gray-300 bg-[#CDCED614] px-[23px] py-[15px] duration-500`}
+                onClick={() => handleHate()}
               >
-                <h5 className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.likeRate}
+                <h5
+                  className={`text-2xl font-black group-hover:text-po-blue-2 ${hated ? "text-po-blue-2" : "text-po-gray-700"}`}
+                >
+                  {policyDetails?.hateRate}
                 </h5>
-                <div className="text-text-4 font-medium text-po-gray-600">
+                <div
+                  className={`text-text-4 font-medium group-hover:text-po-blue-2 ${hated ? "text-po-blue-2" : "text-po-gray-600"}`}
+                >
                   별로에요
                 </div>
               </div>
