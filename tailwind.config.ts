@@ -140,7 +140,7 @@ const config = {
         },
         "po-gray": {
           "000": "hsl(var(--po-gray-000))",
-          "50": "hsl(var(--po-gray-050))",
+          "050": "hsl(var(--po-gray-050))",
           "200": "hsl(var(--po-gray-200))",
           "300": "hsl(var(--po-gray-300))",
           "400": "hsl(var(--po-gray-400))",

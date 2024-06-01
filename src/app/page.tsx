@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout>
       {loading ? (
-        <div className="relative">
+        <div className="relative w-full">
           {page === 1 && (
             <div>
               <div className="w-full text-left">

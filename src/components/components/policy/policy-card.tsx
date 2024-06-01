@@ -13,45 +13,64 @@ export function PolicyCard({
 }: Record<string, string>) {
   const router = useRouter();
 
-  const mainImage: Record<string, string> = {
-    COMPETENCY_DEVELOPMENT: "/images/third-target1.svg",
-    LIVING_SUPPORT: "/images/third-target2.svg",
-    ACTIVITY_SUPPORT: "/images/third-target3.svg",
-    CAREER_SUPPORT: "/images/third-target4.svg",
+  const tags: Record<string, Record<string, string>> = {
+    COMPETENCY_DEVELOPMENT: {
+      title: "역량 개발",
+      color: "text-po-green-2 bg-po-green-1",
+    },
+    LIVING_SUPPORT: {
+      title: "생활 지원",
+      color: "text-po-blue-2 bg-po-blue-1",
+    },
+    ACTIVITY_SUPPORT: {
+      title: "활동 지원",
+      color: "text-po-red-2 bg-po-red-1",
+    },
+    CAREER_SUPPORT: {
+      title: "진로 지원",
+      color: "text-po-pink-2 bg-po-pink-1",
+    },
   };
 
   return (
     <div
-      className="shadow-[0_4px_6px_1px_rgba(0,0,0,0.2) mb-[10px] max-w-sm cursor-pointer rounded-2xl bg-[#F0F0F5] px-[20px] py-[24px] leading-[140%] leading-[140%] duration-500 hover:brightness-[90%]"
+      className="mb-[10px] cursor-pointer rounded-2xl bg-white px-[20px] py-[24px] leading-[140%]  shadow-[0_4px_6px_#0000000A] duration-500 hover:-translate-y-1"
       onClick={() => router.push(`/policy/details/${id}`)}
     >
       <div className="flex">
         <div className="flex-grow">
-          <h2 className="mb-[6px] line-clamp-2 text-lg font-bold">{title}</h2>
-          <p className="mb-[16px] text-sm font-light">{name}</p>
-          <div className="mr-[33px] flex justify-between border-gray-200">
-            <div className="flex items-center text-[13px] font-medium text-[#858899]">
-              <span className="text-[13px] font-medium">관심 없어요</span>
-              <span className="ml-1 text-[15px] font-semibold text-[#525463]">
-                {interestCount}
-              </span>
+          {tags[category] && (
+            <div
+              className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${tags[category].color}`}
+            >
+              {tags[category].title}
             </div>
-            <div className="flex items-center text-[13px] font-medium text-[#858899]">
-              <span className="text-[13px] font-medium">관심 없어요</span>
-              <span className="ml-1 text-[15px] font-semibold text-[#525463]">
-                {notInterestCount}
-              </span>
+          )}
+          <h2 className="mb-[6px] text-title-2">{title}</h2>
+          <p className="text-text-4 text-po-gray-800">{name}</p>
+          <div className="my-2 border-[1px] border-t-0 border-po-gray-300" />
+          <div className="flex justify-between">
+            <div className="flex gap-6">
+              <div className="flex items-center gap-1 text-po-gray-600">
+                <span className="text-caption">좋아요</span>
+                <span className="text-[13px] font-black">{interestCount}</span>
+              </div>
+              <div className="flex items-center gap-1 text-po-gray-600">
+                <span className="text-caption">별로예요</span>
+                <span className="text-[13px] font-black">
+                  {notInterestCount}
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="ml-[14px] flex-shrink-0">
-          <div className="px-[15px]x items-center rounded-[16px] object-center">
-            <Image
-              src={mainImage[category]}
-              alt="관심사 이미지"
-              width={90}
-              height={104}
-            />
+            <div className="flex items-center gap-1 text-po-gray-600">
+              <Image
+                src="/icon/speech-bubble.svg"
+                alt="speech-bubble"
+                width={16}
+                height={16}
+              />
+              <p className="text-[13px] font-black">23</p>
+            </div>
           </div>
         </div>
       </div>

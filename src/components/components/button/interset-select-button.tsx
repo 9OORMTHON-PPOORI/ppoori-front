@@ -17,7 +17,7 @@ export function InterestSelectButton({
 }: InterestSelectButtonProps) {
   return (
     <Button
-      className={`text-po-gray-700 hover:text-po-cyan-2 h-[166px] w-[166px] rounded-[16px] px-[35px] py-[29px] ${interest === label ? "bg-po-cyan-1 text-po-cyan-2 border-po-cyan-2" : "bg-white"} hover:border-po-cyan-2 hover:bg-po-cyan-1`}
+      className={`h-[166px] w-full rounded-[16px] px-[35px] py-[29px] text-po-gray-700 hover:text-po-cyan-2 ${interest === label ? "border-po-cyan-2 bg-po-cyan-1 text-po-cyan-2" : "bg-white"} hover:border-po-cyan-2 hover:bg-po-cyan-1`}
       onClick={() => setInterest(label)}
     >
       <div className="flex flex-col items-center">
