@@ -46,7 +46,7 @@ export default function Policy() {
         target: "U",
       });
     }
-  }, [policyRecommend, target, interest]);
+  }, []);
 
   const router = useRouter();
 
@@ -57,7 +57,7 @@ export default function Policy() {
     진로지원: "/images/interestImage4.svg",
   };
 
-  if (!res && !target && !interest) return;
+  if (!res) return null;
 
   return (
     <div>

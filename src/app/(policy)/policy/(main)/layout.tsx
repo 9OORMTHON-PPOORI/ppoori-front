@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+
+import Loading from "@/app/loading";
 
 export default function RootLayout({
   children,
@@ -17,6 +19,7 @@ export default function RootLayout({
       setTarget(localStorage.getItem("대상"));
     }
   }, []);
+
   return (
     <div className="min-h-full bg-po-darkcyan-4 pb-20 pt-4">
       <div className="flex justify-center">
@@ -35,7 +38,9 @@ export default function RootLayout({
           <div className="text-text-1 text-po-darkcyan-2">{target}</div>
         </div>
       </div>
-      <main className="m-auto max-w-[390px]">{children}</main>
+      <main className="m-auto max-w-[390px]">
+        <Suspense fallback={<Loading />}>{children}</Suspense>
+      </main>
     </div>
   );
 }
