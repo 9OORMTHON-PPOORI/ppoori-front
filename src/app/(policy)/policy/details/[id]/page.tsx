@@ -63,19 +63,19 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
     const newHatedStatus = !hated;
     policyHate(params.id);
     setHated(newHatedStatus);
-    localStorage.setItem("hated", newHatedStatus.toString());
+    localStorage.setItem(`hated-${params.id}`, newHatedStatus.toString());
   };
 
   const handleLike = () => {
     const newLikedStatus = !liked;
     policyLike(params.id);
     setLiked(newLikedStatus);
-    localStorage.setItem("liked", newLikedStatus.toString());
+    localStorage.setItem(`liked-${params.id}`, newLikedStatus.toString());
   };
 
   useEffect(() => {
-    const savedLikedStatus = localStorage.getItem("liked");
-    const savedHatedStatus = localStorage.getItem("hated");
+    const savedLikedStatus = localStorage.getItem(`liked-${params.id}`);
+    const savedHatedStatus = localStorage.getItem(`hated-${params.id}`);
 
     if (savedLikedStatus === "true") {
       setLiked(true);
