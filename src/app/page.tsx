@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Transition from "@/components/common/aniamte-presence";
 import Layout from "@/components/common/layout";
@@ -10,24 +10,20 @@ import { UserSelectButton } from "@/components/components/button/user-select-but
 import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
 import { Button } from "@/components/ui/button";
 
+import useUserInfoStore from "@/store/user-info-store";
+
 export default function Home() {
   const [page, setPage] = useState(1);
-  const [target, setTarget] = useState("");
-  const [interest, setInterest] = useState("");
-  const router = useRouter();
   const [loading, setLoading] = React.useState(false);
+  const { target, interest, setTarget, setInterest } = useUserInfoStore();
 
-  React.useEffect(() => {
+  const router = useRouter();
+
+  useEffect(() => {
     setTimeout(() => setLoading(true), 4500);
   }, []);
 
   const handleNextBtn = () => {
-    if (page === 1) window.localStorage.setItem("대상", target);
-    else if (page === 2) {
-      window.localStorage.setItem("관심사", interest);
-      router.push("/policy");
-    }
-
     setPage(page + 1);
   };
 
@@ -98,11 +94,7 @@ export default function Home() {
               <div className="flex w-full justify-center">
                 <Button
                   className="h-[60px] w-[120px] rounded-full"
-                  onClick={() =>
-                    router.push(
-                      `/policy/?target=${target}&interest=${interest}`
-                    )
-                  }
+                  onClick={() => router.push(`/policy`)}
                   disabled={interest === ""}
                 >
                   완료

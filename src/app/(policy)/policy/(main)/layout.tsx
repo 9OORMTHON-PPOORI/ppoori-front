@@ -2,21 +2,17 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
+
+import useUserInfoStore from "@/store/user-info-store";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { target } = useUserInfoStore();
   const router = useRouter();
-  const [target, setTarget] = useState<string | null>("미정");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setTarget(localStorage.getItem("대상"));
-    }
-  }, []);
 
   return (
     <Suspense fallback="">

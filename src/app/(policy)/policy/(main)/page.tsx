@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import PolicySwiper from "@/components/components/policy/policy-swiper";
@@ -14,6 +14,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import useUserInfoStore from "@/store/user-info-store";
+
 import { usePolicyRecommend } from "@/lib/hook/policy";
 
 const selectedValueMapping: Record<string, string> = {
@@ -24,11 +26,7 @@ const selectedValueMapping: Record<string, string> = {
 };
 
 export default function Policy() {
-  const searchParams = useSearchParams();
-
-  const target = searchParams.get("target") ?? "";
-  const interest = searchParams.get("interest") ?? "";
-
+  const { target, interest, setInterest } = useUserInfoStore();
   const [res, setRes] = useState<any>();
   const { mutate: policyRecommend } = usePolicyRecommend({
     onSuccess: (res) => {
@@ -63,8 +61,8 @@ export default function Policy() {
     <div>
       <div className="mt-[12px] flex justify-center text-title-4">
         <Select
-          onValueChange={(value) => {
-            router.push(`/policy/?target=${target}&interest=${value}`);
+          onValueChange={(value: string) => {
+            setInterest(value);
           }}
           defaultValue={interest}
         >

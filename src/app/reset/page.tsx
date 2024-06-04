@@ -1,19 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 import Layout from "@/components/common/layout";
 import { UserSelectButton } from "@/components/components/button/user-select-button";
 import { Button } from "@/components/ui/button";
 
+import useUserInfoStore from "@/store/user-info-store";
+
 export default function Reset() {
-  const [target, setTarget] = useState("");
+  const { target, setTarget } = useUserInfoStore();
   const router = useRouter();
 
   const handleModifyBtn = () => {
-    window.localStorage.setItem("대상", target);
-    router.push(`/policy/?target=${target}&interest=역량개발`);
+    router.push(`/policy`);
   };
 
   return (
