@@ -45,7 +45,7 @@ export default function Home() {
                   "취준생",
                   "재직자",
                   "신혼부부",
-                  "농,어업인",
+                  "농어업인",
                   "예술가",
                 ].map((label) => (
                   <UserSelectButton

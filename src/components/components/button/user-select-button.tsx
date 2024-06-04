@@ -16,7 +16,7 @@ export function UserSelectButton({
   return (
     <>
       <Button
-        className={`h-[106px] w-full rounded-[16px] text-title-3 hover:border-po-cyan-2 hover:bg-po-cyan-1 hover:text-po-cyan-2 ${target === label ? "border-po-cyan-2 bg-po-cyan-1 text-po-cyan-2" : "bg-white text-black"} `}
+        className={`h-[106px] w-full rounded-[16px] text-title-4 ${target === label ? "border-po-cyan-2 bg-po-cyan-1 text-po-cyan-2" : "border-po-gray-300 bg-[#CDCED614] text-po-gray-700 hover:border-[#E1E1E8] hover:bg-[#CDCED633]"}`}
         onClick={() => setTarget(label)}
       >
         {label}
