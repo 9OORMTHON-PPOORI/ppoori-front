@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Suspense } from "react";
 
 import "@/styles/globals.css";
-
-import Loading from "@/components/components/loading/loading";
 
 import { MetaData } from "@/constants/config";
 import ReactQueryProvider from "@/provider/query-provider";
@@ -61,9 +58,7 @@ export default function RootLayout({
       className={`${pretendard.variable} ${allRoundGothic.variable}`}
     >
       <body className={`${pretendard.className}`}>
-        <ReactQueryProvider>
-          <Suspense fallback={<Loading />}>{children}</Suspense>
-        </ReactQueryProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
