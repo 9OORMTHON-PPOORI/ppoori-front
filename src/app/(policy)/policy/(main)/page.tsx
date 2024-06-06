@@ -59,7 +59,7 @@ export default function Policy() {
 
   return (
     <div>
-      <div className="mt-[12px] flex justify-center text-title-4">
+      <div className="flex justify-center text-title-4">
         <Select
           onValueChange={(value: string) => {
             setInterest(value);

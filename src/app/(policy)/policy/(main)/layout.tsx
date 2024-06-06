@@ -15,15 +15,17 @@ export default function RootLayout({
 
   return (
     <Suspense fallback="">
-      <div className="min-h-full bg-po-darkcyan-4 pb-20 pt-4">
-        <div className="m-auto flex max-w-[390px] justify-end">
+      <div className="m-auto max-w-[390px]">
+        <div className="fixed flex min-w-[390px] justify-end">
           <div
-            className="w-[72px] items-center gap-2 rounded-full bg-[#3978A5] py-[6px] text-center text-text-4 text-po-darkcyan-2 hover:cursor-pointer"
+            className="mr-[24px] mt-[8px] w-[72px] items-center gap-2 rounded-full bg-[#3978A5] py-[6px] text-center text-text-4 text-po-darkcyan-2 hover:cursor-pointer"
             onClick={() => router.push("/reset")}
           >
             {target}
           </div>
         </div>
+      </div>
+      <div className="flex min-h-full flex-col justify-center bg-po-darkcyan-4 pb-20 pt-[42px]">
         <main className="m-auto max-w-[390px]">{children}</main>
       </div>
     </Suspense>
