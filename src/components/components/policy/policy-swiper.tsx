@@ -78,8 +78,8 @@ export default function PolicySwiper(res?: any) {
                   <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center">
                     {item.index}
                   </div>
-                  <h5 className="mb-[4px] text-center text-text-4">
-                    {item.target}
+                  <h5 className="mb-[4px] line-clamp-1 text-center text-text-4">
+                    {item.name}
                   </h5>
                   <h3 className="mb-[18px] line-clamp-2 text-center text-title-2">
                     {item.title}
