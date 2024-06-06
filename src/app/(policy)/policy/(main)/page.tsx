@@ -87,7 +87,7 @@ export default function Policy() {
           height={120}
         />
       </div>
-      <div>
+      <div className="mt-[-70px]">
         <PolicySwiper policyCards={res} />
       </div>
       <div

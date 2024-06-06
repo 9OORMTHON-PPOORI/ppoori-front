@@ -69,8 +69,8 @@ export default function PolicySwiper(res?: any) {
         const targetColor = activeIndex === index ? "bg-white" : "bg-white";
 
         return (
-          <SwiperSlide key={index}>
-            <div className="relative flex w-full justify-center px-10 pb-[43px]">
+          <SwiperSlide key={index} className="pt-[50px]">
+            <div className="relative flex w-full justify-center overflow-visible px-10 pb-[43px]">
               <div
                 className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
