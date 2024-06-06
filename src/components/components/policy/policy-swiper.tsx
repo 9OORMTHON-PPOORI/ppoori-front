@@ -22,9 +22,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 export default function PolicySwiper(res?: any) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
+  };
+
+  const handleTooltipChange = () => {
+    setIsTooltipOpen(!isTooltipOpen);
   };
 
   const datas: any[] = res.policyCards;
@@ -104,14 +109,18 @@ export default function PolicySwiper(res?: any) {
                       </p>
                     </div>
                     <TooltipProvider>
-                      <Tooltip>
+                      <Tooltip
+                        open={isTooltipOpen}
+                        onOpenChange={handleTooltipChange}
+                      >
                         <TooltipTrigger asChild>
                           <Image
-                            className="cursor-help"
+                            className="cursor-pointer"
                             src="/icon/helpIcon.svg"
                             alt="도움말 아이콘"
                             width={18}
                             height={18}
+                            onClick={handleTooltipChange}
                           />
                         </TooltipTrigger>
                         <TooltipContent side="bottom">
