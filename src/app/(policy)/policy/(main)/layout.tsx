@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 
@@ -17,20 +16,12 @@ export default function RootLayout({
   return (
     <Suspense fallback="">
       <div className="min-h-full bg-po-darkcyan-4 pb-20 pt-4">
-        <div className="flex justify-center">
+        <div className="m-auto flex max-w-[390px] justify-end">
           <div
-            className="flex items-center gap-2 pb-[13px] hover:cursor-pointer"
+            className="w-[72px] items-center gap-2 rounded-full bg-[#3978A5] py-[6px] text-center text-text-4 text-po-darkcyan-2 hover:cursor-pointer"
             onClick={() => router.push("/reset")}
           >
-            <Image
-              className="rounded-full"
-              src="/icon/profile.svg"
-              alt="대상 이미지"
-              width={25}
-              height={25}
-              style={{ height: 25 }}
-            />
-            <div className="text-text-1 text-po-darkcyan-2">{target}</div>
+            {target}
           </div>
         </div>
         <main className="m-auto max-w-[390px]">{children}</main>
