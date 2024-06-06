@@ -41,7 +41,7 @@ export default function Policy() {
     if (target && interest) {
       policyRecommend({
         comment: selectedValueMapping[interest],
-        target: "U",
+        target: "JOBSEEKER",
       });
     }
   }, [policyRecommend, target, interest]);
