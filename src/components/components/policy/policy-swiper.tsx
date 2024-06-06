@@ -116,7 +116,7 @@ export default function PolicySwiper(res?: any) {
                         </TooltipTrigger>
                         <TooltipContent side="bottom">
                           <Image
-                            className="animate-fadeIns absolute right-0 top-0 z-50"
+                            className="absolute right-0 top-0 z-50 animate-fadeIn"
                             src="/images/tooltip-triangle.svg"
                             alt="툴팁"
                             width={80}

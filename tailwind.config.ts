@@ -183,7 +183,7 @@ const config = {
       },
       keyframes: {
         fadeIn: {
-          "0%": { opacity: "0", transform: "scale(0.9) translateY(8px)" },
+          "0%": { opacity: "0", transform: "scale(0.9) translateY(2px)" },
           "100%": { opacity: "1", transform: "scale(1) translateY(0)" },
         },
         "accordion-down": {
@@ -196,7 +196,7 @@ const config = {
         },
       },
       animation: {
-        fadeIn: "fadeIn 0.25s ease-out forwards",
+        fadeIn: "fadeIn 0.25s ease-in",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
