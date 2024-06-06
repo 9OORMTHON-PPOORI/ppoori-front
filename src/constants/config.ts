@@ -1,5 +1,5 @@
 const metaDataTitle = "뿌리";
-const metaDataDescription = "뿌리는 뿌리를 찾아가는 청년 정책을 제안합니다.";
+const metaDataDescription = "뿌리를 찾아가는 청년 정책을 제안합니다.";
 const metaDataUrl = "https://www.wipik.com";
 const metaDataAuthor = "WEPIK TEAM";
 const metaDataImageUrl = "/images/thumbnail.png";
@@ -25,7 +25,7 @@ export const MetaData = {
     title: metaDataTitle,
     description: metaDataDescription,
     siteName: metaDataTitle,
-    images: [],
+    image: metaDataImageUrl,
     type: "website",
     locale: "ko_KR",
   },
