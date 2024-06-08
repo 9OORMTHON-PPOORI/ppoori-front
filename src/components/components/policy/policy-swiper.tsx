@@ -1,16 +1,11 @@
 "use client";
 
 import { faker } from "@faker-js/faker";
-import { Tooltip } from "@radix-ui/react-tooltip";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import {
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import TooltipModal from "./policy-tooltip-modal";
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,14 +17,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 export default function PolicySwiper(res?: any) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
-  };
-
-  const handleTooltipChange = () => {
-    setIsTooltipOpen(!isTooltipOpen);
   };
 
   const datas: any[] = res.policyCards;
@@ -107,36 +97,7 @@ export default function PolicySwiper(res?: any) {
                           AI의 정책 내용 요약
                         </p>
                       </div>
-                      <TooltipProvider>
-                        <Tooltip
-                          open={isTooltipOpen}
-                          onOpenChange={handleTooltipChange}
-                        >
-                          <TooltipTrigger asChild>
-                            <Image
-                              className="cursor-pointer"
-                              src="/icon/helpIcon.svg"
-                              alt="도움말 아이콘"
-                              width={18}
-                              height={18}
-                              onClick={handleTooltipChange}
-                            />
-                          </TooltipTrigger>
-                          <TooltipContent side="bottom">
-                            <Image
-                              className="absolute bottom-20 right-0 z-50 animate-fadeIn"
-                              src="/images/tooltip-triangle.svg"
-                              alt="툴팁"
-                              width={80}
-                              height={6}
-                            />
-                            <p className="text-center text-[12px] font-extralight leading-[18px] tracking-[-0.1px] text-[#F0F0F5]">
-                              현재 ChatGPT가 처리할 수 있는 범위 내에서 정책의
-                              주요 내용을 요약했습니다.
-                            </p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                      <TooltipModal />
                     </div>
                   </div>
                 </div>
