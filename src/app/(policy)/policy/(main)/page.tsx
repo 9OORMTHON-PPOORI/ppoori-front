@@ -18,11 +18,20 @@ import useUserInfoStore from "@/store/user-info-store";
 
 import { usePolicyRecommend } from "@/lib/hook/policy";
 
-const selectedValueMapping: Record<string, string> = {
+const selectedInterestMapping: Record<string, string> = {
   "역량 개발": "COMPETENCY_DEVELOPMENT",
   "생활 지원": "LIVING_SUPPORT",
   "활동 지원": "ACTIVITY_SUPPORT",
   "진로 지원": "CAREER_SUPPORT",
+};
+
+const selectedTargetMapping: Record<string, string> = {
+  대학생: "STUDENT",
+  취준생: "JOBSEEKER",
+  재직자: "WORKER",
+  신혼부부: "NEWLYWEDS",
+  농어업인: "INDUSTRY",
+  예술가: "ARTIST",
 };
 
 export default function Policy() {
@@ -31,7 +40,6 @@ export default function Policy() {
   const { mutate: policyRecommend } = usePolicyRecommend({
     onSuccess: (res) => {
       setRes(res);
-      console.log({ res });
     },
     onError: () => {
       alert("데이터 요청에 실패하였습니다.");
@@ -41,8 +49,8 @@ export default function Policy() {
   useEffect(() => {
     if (target && interest) {
       policyRecommend({
-        comment: selectedValueMapping[interest],
-        target: "JOBSEEKER",
+        comment: selectedInterestMapping[interest],
+        target: selectedTargetMapping[target],
       });
     }
   }, [policyRecommend, target, interest]);
