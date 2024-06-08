@@ -20,7 +20,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 4500);
+    setTimeout(() => setLoading(true), 5000);
   }, []);
 
   const handleNextBtn = () => {

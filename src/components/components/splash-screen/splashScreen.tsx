@@ -13,6 +13,7 @@ export function SplashScreen() {
       opacity: 1,
       scale: 1,
       transition: {
+        delay: 0,
         duration: 0.5,
         delayChildren: 0.2,
         staggerChildren: 0.4,
@@ -22,23 +23,23 @@ export function SplashScreen() {
 
   const item = {
     initial: {
-      y: 20,
+      y: 10,
       opacity: 0,
     },
     animate: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.1,
         ease: "easeOut",
       },
     },
   };
 
   return (
-    <div className="relative h-screen w-full bg-[#252730]">
+    <div className="relative flex h-[100vh] w-full items-center bg-[#252730]">
       <motion.div
-        className="relative top-[15%] m-auto flex h-[500px] w-[326px] justify-center"
+        className="relative m-auto flex h-[500px] w-[326px] justify-center"
         variants={container}
         initial="initial"
         animate="animate"
@@ -49,6 +50,39 @@ export function SplashScreen() {
             alt="splashBackground"
             width={266}
             height={416}
+          />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[34px] left-[62px]"
+          variants={item}
+        >
+          <Image
+            src="/images/palmtree.svg"
+            alt="splashBackground"
+            width={38}
+            height={37}
+          />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[34px] left-[200px]"
+          variants={item}
+        >
+          <Image
+            src="/images/dolhareubang.svg"
+            alt="splashBackground"
+            width={19}
+            height={26}
+          />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[34px] right-[58px]"
+          variants={item}
+        >
+          <Image
+            src="/images/horse.svg"
+            alt="splashBackground"
+            width={46}
+            height={26}
           />
         </motion.div>
         <motion.div
