@@ -52,6 +52,7 @@ export default function PolicySwiper(res?: any) {
   ];
   return (
     <Swiper
+      className="max-w-[460px]"
       effect="cards"
       onSlideChange={handleSlideChange}
       grabCursor={true}
@@ -64,14 +65,16 @@ export default function PolicySwiper(res?: any) {
         const targetColor = activeIndex === index ? "bg-white" : "bg-white";
 
         return (
-          <SwiperSlide key={index} className="w-full pt-[50px]">
+          <SwiperSlide key={index} className="pt-[50px]">
             <div className="relative m-auto max-w-[390px] px-10 pb-[43px]">
               <div
                 className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
                 <div className="flex flex-col justify-center">
-                  <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center">
-                    {item.index}
+                  <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px]">
+                    <p>{item.curr_idx}</p>
+                    <p>/</p>
+                    <p>{item.total_idx}</p>
                   </div>
                   <h5 className="mb-[4px] line-clamp-1 text-center text-text-4">
                     {item.name}
