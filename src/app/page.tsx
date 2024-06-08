@@ -77,10 +77,10 @@ export default function Home() {
               </div>
               <div className="mb-[48px] mt-6 grid grid-cols-2 place-items-center gap-3">
                 {[
-                  { label: "활동지원", imageSrc: "/svgs/interest-1.svg" },
-                  { label: "역량개발", imageSrc: "/svgs/interest-2.svg" },
-                  { label: "생활지원", imageSrc: "/svgs/interest-3.svg" },
-                  { label: "진로지원", imageSrc: "/svgs/interest-4.svg" },
+                  { label: "활동 지원", imageSrc: "/svgs/interest-1.svg" },
+                  { label: "역량 개발", imageSrc: "/svgs/interest-2.svg" },
+                  { label: "생활 지원", imageSrc: "/svgs/interest-3.svg" },
+                  { label: "진로 지원", imageSrc: "/svgs/interest-4.svg" },
                 ].map(({ label, imageSrc }) => (
                   <InterestSelectButton
                     key={label}

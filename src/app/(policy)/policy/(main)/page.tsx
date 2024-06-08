@@ -18,11 +18,20 @@ import useUserInfoStore from "@/store/user-info-store";
 
 import { usePolicyRecommend } from "@/lib/hook/policy";
 
-const selectedValueMapping: Record<string, string> = {
-  역량개발: "COMPETENCY_DEVELOPMENT",
-  생활지원: "LIVING_SUPPORT",
-  활동지원: "ACTIVITY_SUPPORT",
-  진로지원: "CAREER_SUPPORT",
+const selectedInterestMapping: Record<string, string> = {
+  "역량 개발": "COMPETENCY_DEVELOPMENT",
+  "생활 지원": "LIVING_SUPPORT",
+  "활동 지원": "ACTIVITY_SUPPORT",
+  "진로 지원": "CAREER_SUPPORT",
+};
+
+const selectedTargetMapping: Record<string, string> = {
+  대학생: "STUDENT",
+  취준생: "JOBSEEKER",
+  재직자: "WORKER",
+  신혼부부: "NEWLYWEDS",
+  농어업인: "INDUSTRY",
+  예술가: "ARTIST",
 };
 
 export default function Policy() {
@@ -40,8 +49,8 @@ export default function Policy() {
   useEffect(() => {
     if (target && interest) {
       policyRecommend({
-        comment: selectedValueMapping[interest],
-        target: "JOBSEEKER",
+        comment: selectedInterestMapping[interest],
+        target: selectedTargetMapping[target],
       });
     }
   }, [policyRecommend, target, interest]);
@@ -49,10 +58,10 @@ export default function Policy() {
   const router = useRouter();
 
   const mainImage: Record<string, string> = {
-    활동지원: "/images/interestImage1.svg",
-    역량개발: "/images/interestImage2.svg",
-    생활지원: "/images/interestImage3.svg",
-    진로지원: "/images/interestImage4.svg",
+    "활동 지원": "/images/interestImage1.svg",
+    "역량 개발": "/images/interestImage2.svg",
+    "생활 지원": "/images/interestImage3.svg",
+    "진로 지원": "/images/interestImage4.svg",
   };
 
   if (!res) return null;
@@ -78,10 +87,10 @@ export default function Policy() {
             <DrawerFooter>
               <div className="mt-[24px] grid grid-cols-2 place-items-center gap-3">
                 {[
-                  { label: "활동지원", imageSrc: "/svgs/interest-1.svg" },
-                  { label: "역량개발", imageSrc: "/svgs/interest-2.svg" },
-                  { label: "생활지원", imageSrc: "/svgs/interest-3.svg" },
-                  { label: "진로지원", imageSrc: "/svgs/interest-4.svg" },
+                  { label: "활동 지원", imageSrc: "/svgs/interest-1.svg" },
+                  { label: "역량 개발", imageSrc: "/svgs/interest-2.svg" },
+                  { label: "생활 지원", imageSrc: "/svgs/interest-3.svg" },
+                  { label: "진로 지원", imageSrc: "/svgs/interest-4.svg" },
                 ].map(({ label, imageSrc }) => (
                   <InterestSelectButton
                     key={label}
@@ -101,7 +110,7 @@ export default function Policy() {
           </DrawerContent>
         </Drawer>
       </div>
-      <div className="relative mb-[-20px] mt-[12px] flex w-full justify-center">
+      <div className="relative mt-[12px] flex w-full justify-center">
         <Image
           src={mainImage[interest]}
           alt="관심사 이미지"
@@ -116,7 +125,7 @@ export default function Policy() {
         className="flex cursor-pointer content-center justify-center text-center text-text-1 text-po-darkcyan-2"
         onClick={() => router.push("/policy/list")}
       >
-        카테고리 전체보기
+        정책 전체보기
       </div>
     </div>
   );

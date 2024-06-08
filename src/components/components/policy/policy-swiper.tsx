@@ -1,16 +1,11 @@
 "use client";
 
 import { faker } from "@faker-js/faker";
-import { Tooltip } from "@radix-ui/react-tooltip";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import {
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import TooltipModal from "./policy-tooltip-modal";
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,14 +17,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 export default function PolicySwiper(res?: any) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
-  };
-
-  const handleTooltipChange = () => {
-    setIsTooltipOpen(!isTooltipOpen);
   };
 
   const datas: any[] = res.policyCards;
@@ -62,10 +52,11 @@ export default function PolicySwiper(res?: any) {
   ];
   return (
     <Swiper
+      className="max-w-[460px]"
       effect="cards"
       onSlideChange={handleSlideChange}
       grabCursor={true}
-      initialSlide={1}
+      initialSlide={0}
       modules={[EffectCards]}
       centeredSlides={false}
       loop={true}
@@ -75,13 +66,15 @@ export default function PolicySwiper(res?: any) {
 
         return (
           <SwiperSlide key={index} className="pt-[50px]">
-            <div className="relative flex w-full justify-center overflow-visible px-10 pb-[43px]">
+            <div className="relative m-auto max-w-[390px] px-10 pb-[43px]">
               <div
                 className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
                 <div className="flex flex-col justify-center">
-                  <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center">
-                    {item.index}
+                  <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px]">
+                    <p>{item.curr_idx}</p>
+                    <p>/</p>
+                    <p>{item.total_idx}</p>
                   </div>
                   <h5 className="mb-[4px] line-clamp-1 text-center text-text-4">
                     {item.name}
@@ -91,7 +84,7 @@ export default function PolicySwiper(res?: any) {
                   </h3>
                 </div>
                 <div className="relative min-h-[186px] rounded-[16px] bg-po-cyan-1">
-                  <p className="mb-[18px] line-clamp-5 flex px-[20px] pt-[20px] text-text-3 text-po-cyan-2">
+                  <p className="mb-[18px] line-clamp-5 flex max-h-[130px] px-[20px] pt-[20px] text-text-3 text-po-cyan-2">
                     {item.summary}
                   </p>
                   <div className="absolute bottom-[20px] w-full px-[20px]">
@@ -107,36 +100,7 @@ export default function PolicySwiper(res?: any) {
                           AI의 정책 내용 요약
                         </p>
                       </div>
-                      <TooltipProvider>
-                        <Tooltip
-                          open={isTooltipOpen}
-                          onOpenChange={handleTooltipChange}
-                        >
-                          <TooltipTrigger asChild>
-                            <Image
-                              className="cursor-pointer"
-                              src="/icon/helpIcon.svg"
-                              alt="도움말 아이콘"
-                              width={18}
-                              height={18}
-                              onClick={handleTooltipChange}
-                            />
-                          </TooltipTrigger>
-                          <TooltipContent side="bottom">
-                            <Image
-                              className="z-50 animate-fadeIn"
-                              src="/images/tooltip-triangle.svg"
-                              alt="툴팁"
-                              width={80}
-                              height={6}
-                            />
-                            <p className="text-center text-[12px] font-extralight leading-[18px] tracking-[-0.1px] text-[#F0F0F5]">
-                              현재 ChatGPT가 처리할 수 있는 범위 내에서 정책의
-                              주요 내용을 요약했습니다.
-                            </p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                      <TooltipModal />
                     </div>
                   </div>
                 </div>
