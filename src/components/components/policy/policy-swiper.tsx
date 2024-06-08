@@ -62,6 +62,7 @@ export default function PolicySwiper(res?: any) {
   ];
   return (
     <Swiper
+      className="w-full"
       effect="cards"
       onSlideChange={handleSlideChange}
       grabCursor={true}
