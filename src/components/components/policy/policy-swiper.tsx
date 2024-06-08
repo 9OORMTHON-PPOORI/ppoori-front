@@ -65,7 +65,7 @@ export default function PolicySwiper(res?: any) {
       effect="cards"
       onSlideChange={handleSlideChange}
       grabCursor={true}
-      initialSlide={1}
+      initialSlide={0}
       modules={[EffectCards]}
       centeredSlides={false}
       loop={true}
