@@ -22,7 +22,7 @@ export default function RootLayout({
 
   return (
     <Suspense fallback="">
-      <div className="flex min-h-full flex-col justify-center bg-po-darkcyan-4 pb-20">
+      <div className="flex min-h-[100vh] flex-col justify-center bg-po-darkcyan-4 pb-20">
         <Drawer>
           <DrawerTrigger>
             <div className="m-auto flex max-w-[390px] justify-end">
