@@ -91,7 +91,7 @@ export default function PolicySwiper(res?: any) {
                   </h3>
                 </div>
                 <div className="relative min-h-[186px] rounded-[16px] bg-po-cyan-1">
-                  <p className="mb-[18px] line-clamp-5 flex px-[20px] pt-[20px] text-text-3 text-po-cyan-2">
+                  <p className="mb-[18px] line-clamp-5 flex max-h-[130px] px-[20px] pt-[20px] text-text-3 text-po-cyan-2">
                     {item.summary}
                   </p>
                   <div className="absolute bottom-[20px] w-full px-[20px]">
