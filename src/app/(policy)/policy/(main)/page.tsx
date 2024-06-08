@@ -19,10 +19,10 @@ import useUserInfoStore from "@/store/user-info-store";
 import { usePolicyRecommend } from "@/lib/hook/policy";
 
 const selectedValueMapping: Record<string, string> = {
-  역량개발: "COMPETENCY_DEVELOPMENT",
-  생활지원: "LIVING_SUPPORT",
-  활동지원: "ACTIVITY_SUPPORT",
-  진로지원: "CAREER_SUPPORT",
+  "역량 개발": "COMPETENCY_DEVELOPMENT",
+  "생활 지원": "LIVING_SUPPORT",
+  "활동 지원": "ACTIVITY_SUPPORT",
+  "진로 지원": "CAREER_SUPPORT",
 };
 
 export default function Policy() {
@@ -31,6 +31,7 @@ export default function Policy() {
   const { mutate: policyRecommend } = usePolicyRecommend({
     onSuccess: (res) => {
       setRes(res);
+      console.log({ res });
     },
     onError: () => {
       alert("데이터 요청에 실패하였습니다.");
@@ -49,10 +50,10 @@ export default function Policy() {
   const router = useRouter();
 
   const mainImage: Record<string, string> = {
-    활동지원: "/images/interestImage1.svg",
-    역량개발: "/images/interestImage2.svg",
-    생활지원: "/images/interestImage3.svg",
-    진로지원: "/images/interestImage4.svg",
+    "활동 지원": "/images/interestImage1.svg",
+    "역량 개발": "/images/interestImage2.svg",
+    "생활 지원": "/images/interestImage3.svg",
+    "진로 지원": "/images/interestImage4.svg",
   };
 
   if (!res) return null;
@@ -78,10 +79,10 @@ export default function Policy() {
             <DrawerFooter>
               <div className="mt-[24px] grid grid-cols-2 place-items-center gap-3">
                 {[
-                  { label: "활동지원", imageSrc: "/svgs/interest-1.svg" },
-                  { label: "역량개발", imageSrc: "/svgs/interest-2.svg" },
-                  { label: "생활지원", imageSrc: "/svgs/interest-3.svg" },
-                  { label: "진로지원", imageSrc: "/svgs/interest-4.svg" },
+                  { label: "활동 지원", imageSrc: "/svgs/interest-1.svg" },
+                  { label: "역량 개발", imageSrc: "/svgs/interest-2.svg" },
+                  { label: "생활 지원", imageSrc: "/svgs/interest-3.svg" },
+                  { label: "진로 지원", imageSrc: "/svgs/interest-4.svg" },
                 ].map(({ label, imageSrc }) => (
                   <InterestSelectButton
                     key={label}
