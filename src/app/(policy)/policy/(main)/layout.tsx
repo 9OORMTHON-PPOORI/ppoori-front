@@ -25,8 +25,8 @@ export default function RootLayout({
       <div className="flex min-h-[100vh] flex-col justify-center bg-po-darkcyan-4 pb-20">
         <Drawer>
           <DrawerTrigger>
-            <div className="m-auto flex justify-center">
-              <div className="mt-[8px] w-[72px] items-center gap-2 rounded-full bg-[#3978A5] py-[6px] text-center text-text-4 text-po-darkcyan-2 hover:cursor-pointer">
+            <div className="flex justify-center">
+              <div className="fixed top-0 m-auto mt-[8px] w-[72px] items-center gap-2 rounded-full bg-[#3978A5] py-[6px] text-center text-text-4 text-po-darkcyan-2 hover:cursor-pointer">
                 {target}
               </div>
             </div>
@@ -58,7 +58,7 @@ export default function RootLayout({
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-        <main className="m-auto max-w-[390px] overflow-hidden">{children}</main>
+        <main className="pt-[56px]">{children}</main>
       </div>
     </Suspense>
   );
