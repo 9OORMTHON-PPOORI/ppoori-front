@@ -116,7 +116,7 @@ export default function Policy() {
         className="flex cursor-pointer content-center justify-center text-center text-text-1 text-po-darkcyan-2"
         onClick={() => router.push("/policy/list")}
       >
-        카테고리 전체보기
+        정책 전체보기
       </div>
     </div>
   );
