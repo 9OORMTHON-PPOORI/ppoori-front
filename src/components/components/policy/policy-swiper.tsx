@@ -62,7 +62,6 @@ export default function PolicySwiper(res?: any) {
   ];
   return (
     <Swiper
-      className="w-full"
       effect="cards"
       onSlideChange={handleSlideChange}
       grabCursor={true}
@@ -75,8 +74,8 @@ export default function PolicySwiper(res?: any) {
         const targetColor = activeIndex === index ? "bg-white" : "bg-white";
 
         return (
-          <SwiperSlide key={index} className="pt-[50px]">
-            <div className="relative flex w-full justify-center overflow-visible px-10 pb-[43px]">
+          <SwiperSlide key={index} className="w-full pt-[50px]">
+            <div className="relative m-auto max-w-[390px] px-10 pb-[43px]">
               <div
                 className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
@@ -125,7 +124,7 @@ export default function PolicySwiper(res?: any) {
                           </TooltipTrigger>
                           <TooltipContent side="bottom">
                             <Image
-                              className="z-50 animate-fadeIn"
+                              className="absolute bottom-20 right-0 z-50 animate-fadeIn"
                               src="/images/tooltip-triangle.svg"
                               alt="툴팁"
                               width={80}

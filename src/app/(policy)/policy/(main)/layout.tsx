@@ -58,7 +58,7 @@ export default function RootLayout({
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-        <main className="pt-[56px]">{children}</main>
+        <main className="w-full">{children}</main>
       </div>
     </Suspense>
   );

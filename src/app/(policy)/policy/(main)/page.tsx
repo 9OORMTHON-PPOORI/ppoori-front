@@ -101,7 +101,7 @@ export default function Policy() {
           </DrawerContent>
         </Drawer>
       </div>
-      <div className="relative mb-[-20px] mt-[12px] flex w-full justify-center">
+      <div className="relative mt-[12px] flex w-full justify-center">
         <Image
           src={mainImage[interest]}
           alt="관심사 이미지"
