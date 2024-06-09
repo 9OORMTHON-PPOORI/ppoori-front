@@ -8,25 +8,26 @@ export function PolicyCard({
   name,
   title,
   category,
-  interestCount,
-  notInterestCount,
+  likeCount,
+  hateCount,
+  totalComment,
 }: Record<string, string>) {
   const router = useRouter();
 
   const tags: Record<string, Record<string, string>> = {
-    COMPETENCY_DEVELOPMENT: {
+    "역량 개발": {
       title: "역량 개발",
       color: "text-po-green-2 bg-po-green-1",
     },
-    LIVING_SUPPORT: {
+    "생활 지원": {
       title: "생활 지원",
       color: "text-po-blue-2 bg-po-blue-1",
     },
-    ACTIVITY_SUPPORT: {
+    "활동 지원": {
       title: "활동 지원",
       color: "text-po-red-2 bg-po-red-1",
     },
-    CAREER_SUPPORT: {
+    "진로 지원": {
       title: "진로 지원",
       color: "text-po-pink-2 bg-po-pink-1",
     },
@@ -46,20 +47,18 @@ export function PolicyCard({
               {tags[category].title}
             </div>
           )}
-          <h2 className="mb-[6px] text-title-2">{title}</h2>
-          <p className="text-text-4 text-po-gray-800">{name}</p>
+          <h2 className="mb-[6px] w-[300px] truncate text-title-2">{name}</h2>
+          <p className="text-text-4 text-po-gray-800">{title}</p>
           <div className="my-2 border-[1px] border-t-0 border-po-gray-300" />
           <div className="flex justify-between">
             <div className="flex gap-6">
               <div className="flex items-center gap-1 text-po-gray-600">
                 <span className="text-caption">좋아요</span>
-                <span className="text-[13px] font-black">{interestCount}</span>
+                <span className="text-[13px] font-black">{likeCount}</span>
               </div>
               <div className="flex items-center gap-1 text-po-gray-600">
                 <span className="text-caption">별로예요</span>
-                <span className="text-[13px] font-black">
-                  {notInterestCount}
-                </span>
+                <span className="text-[13px] font-black">{hateCount}</span>
               </div>
             </div>
             <div className="flex items-center gap-1 text-po-gray-600">
@@ -69,7 +68,7 @@ export function PolicyCard({
                 width={16}
                 height={16}
               />
-              <p className="text-[13px] font-black">23</p>
+              <p className="text-[13px] font-black">{totalComment}</p>
             </div>
           </div>
         </div>

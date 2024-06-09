@@ -31,8 +31,9 @@ export default function PolicyList() {
                 name={policy.name}
                 category={policy.category}
                 title={policy.title}
-                interestCount={policy.likeRate}
-                notInterestCount={policy.hateRate}
+                likeCount={policy.like_count}
+                hateCount={policy.hate_count}
+                totalComment={policy.total_comment}
               />
             </div>
           ))}

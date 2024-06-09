@@ -20,8 +20,8 @@ export const getPolicyDetail = async (id?: string): Promise<any> => {
 
 export const postPolicyComment = async ({ comment, id }: any): Promise<any> => {
   const { data } = await axiosInstance.post(
-    `${process.env.NEXT_PUBLIC_POLICY}/${id}/comment`,
-    { content: comment }
+    `${process.env.NEXT_PUBLIC_POLICY}/comment`,
+    { id: id, content: comment }
   );
   return data.data;
 };
@@ -45,7 +45,7 @@ export const patchPolicyLike = async (id: string): Promise<any> => {
 export const postPolicyRecommend = async ({
   comment,
   target,
-}: any): Promise<any> => {
+}: Record<string, string>): Promise<any> => {
   const { data } = await axiosInstance.post(
     `${process.env.NEXT_PUBLIC_RECOMMEND}`,
     { category: comment, target: target }

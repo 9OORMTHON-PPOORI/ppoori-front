@@ -20,13 +20,23 @@ interface PolicyCommentType {
   content: string;
 }
 
-const TargetData: Record<string, string> = {
-  U: "대학생",
-  R: "취준생",
-  W: "재직자",
-  M: "신혼부부",
-  F: "농어입인",
-  A: "예술가",
+const Tags: Record<string, Record<string, string>> = {
+  "역량 개발": {
+    title: "역량 개발",
+    color: "text-po-green-2 bg-po-green-1",
+  },
+  "생활 지원": {
+    title: "생활 지원",
+    color: "text-po-blue-2 bg-po-blue-1",
+  },
+  "활동 지원": {
+    title: "활동 지원",
+    color: "text-po-red-2 bg-po-red-1",
+  },
+  "진로 지원": {
+    title: "진로 지원",
+    color: "text-po-pink-2 bg-po-pink-1",
+  },
 };
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
@@ -85,16 +95,13 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
-            <div className="flex gap-2">
-              {policyDetails?.subject.split("").map((subject: string) => (
-                <div
-                  className="mb-[27px] grid w-fit rounded-[6px] bg-po-red-1 px-[8px] py-[3px] text-sm text-po-red-2"
-                  key={subject}
-                >
-                  {TargetData[subject]}
-                </div>
-              ))}
-            </div>
+            {Tags[policyDetails?.category] && (
+              <div
+                className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${Tags[policyDetails?.category].color}`}
+              >
+                {Tags[policyDetails?.category].title}
+              </div>
+            )}
             <div className="mb-2">
               <h2 className="p-0 text-title-1 text-po-gray-800">
                 {policyDetails?.name}
@@ -106,14 +113,13 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
               </h5>
             </div>
             <div className="mb-12 mt-4 border-[1px] border-b-0 border-po-gray-300" />
-
             <div className="mr-12">
               <div className="mb-8">
                 <div className="mb-[10px] text-title-3 text-po-gray-800">
                   지원대상
                 </div>
                 <div className="text-text-2 text-po-gray-700">
-                  {policyDetails?.name}
+                  {policyDetails?.subject}
                 </div>
               </div>
               <div className="mb-8">
@@ -160,7 +166,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 onClick={() => handleLike()}
               >
                 <h5 className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.likeRate}
+                  {policyDetails?.like_count}
                 </h5>
                 <div className="text-text-4 font-medium text-po-gray-600 group-active:text-po-cyan-2">
                   좋아요
@@ -171,7 +177,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 onClick={() => handleHate()}
               >
                 <h5 className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.hateRate}
+                  {policyDetails?.hate_count}
                 </h5>
                 <div className="text-text-4 font-medium text-po-gray-600 group-active:text-po-cyan-2">
                   별로예요
