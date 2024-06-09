@@ -16,8 +16,6 @@ export function SplashScreen() {
         delay: 0,
         delayChildren: 0.2,
         staggerChildren: 0.4,
-        ease: "easeInOut",
-        duration: 0.65,
       },
     },
   };
@@ -32,7 +30,7 @@ export function SplashScreen() {
       opacity: 1,
       transition: {
         ease: "easeInOut",
-        duration: 0.95,
+        duration: 0.75,
       },
     },
   };
@@ -53,30 +51,6 @@ export function SplashScreen() {
             height={416}
           />
         </motion.div>
-        <div className="absolute bottom-[34px] left-[62px]">
-          <Image
-            src="/images/palmtree.svg"
-            alt="splashBackground"
-            width={38}
-            height={37}
-          />
-        </div>
-        <div className="absolute bottom-[34px] left-[200px]">
-          <Image
-            src="/images/dolhareubang.svg"
-            alt="splashBackground"
-            width={19}
-            height={26}
-          />
-        </div>
-        <div className="absolute bottom-[34px] right-[58px]">
-          <Image
-            src="/images/horse.svg"
-            alt="splashBackground"
-            width={46}
-            height={26}
-          />
-        </div>
         <motion.div
           className="absolute right-[4px] top-[301px]"
           variants={item}

@@ -71,15 +71,21 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
   };
 
   const handleHate = () => {
-    const newHatedStatus = !hated;
     policyHate(params.id);
-    setHated(newHatedStatus);
+    setHated(true);
+
+    setTimeout(() => {
+      setHated(false);
+    }, 500);
   };
 
   const handleLike = () => {
-    const newLikedStatus = !liked;
+    setLiked(true);
     policyLike(params.id);
-    setLiked(newLikedStatus);
+
+    setTimeout(() => {
+      setLiked(false);
+    }, 500);
   };
 
   return (
@@ -162,24 +168,28 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
             <div className="mb-5 flex justify-center gap-[10px]">
               <div
-                className="group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-gray-300 bg-[#CDCED614] px-[23px] py-[15px] text-po-gray-600 duration-500 hover:border-po-gray-300 hover:bg-[#CDCED633] active:border-po-cyan-2 active:bg-po-cyan-1"
+                className={`group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500  ${liked ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
                 onClick={() => handleLike()}
               >
                 <h5 className="text-2xl font-black text-po-gray-700">
                   {policyDetails?.like_count}
                 </h5>
-                <div className="text-text-4 font-medium text-po-gray-600 group-active:text-po-cyan-2">
+                <div
+                  className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${liked ? "text-po-cyan-2" : "text-po-gray-600"}`}
+                >
                   좋아요
                 </div>
               </div>
               <div
-                className="group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid border-gray-300 bg-[#CDCED614] px-[23px] py-[15px] text-po-gray-600 duration-500 hover:border-po-gray-300 hover:bg-[#CDCED633] active:border-po-cyan-2 active:bg-po-cyan-1"
+                className={`group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500  ${hated ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
                 onClick={() => handleHate()}
               >
                 <h5 className="text-2xl font-black text-po-gray-700">
                   {policyDetails?.hate_count}
                 </h5>
-                <div className="text-text-4 font-medium text-po-gray-600 group-active:text-po-cyan-2">
+                <div
+                  className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${hated ? "text-po-cyan-2" : "text-po-gray-600"}`}
+                >
                   별로예요
                 </div>
               </div>
