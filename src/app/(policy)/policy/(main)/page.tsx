@@ -104,7 +104,7 @@ export default function Policy() {
                 ))}
               </div>
               <DrawerClose>
-                <button className="mt-[32px] h-[60px] w-full rounded-[16px] bg-[#1FA8BD] text-subtitle-1 text-[#FFFFFF] hover:opacity-70">
+                <button className="mt-[32px] h-[60px] w-full rounded-[16px] bg-po-cyan-2 text-subtitle-1 text-po-gray-000 duration-300 hover:brightness-90">
                   선택
                 </button>
               </DrawerClose>

@@ -50,7 +50,7 @@ export default function PolicySwiper({
                 className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
                 <div className="flex flex-col justify-center">
-                  <div className="text-number-3 mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px]">
+                  <div className="font-lato mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px] text-[13px] font-black text-po-gray-500">
                     <p>{item.curr_idx}</p>
                     <p>/</p>
                     <p>{item.total_idx}</p>

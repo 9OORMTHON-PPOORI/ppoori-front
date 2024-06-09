@@ -45,6 +45,23 @@ const allRoundGothic = localFont({
   variable: "--font-allroundgothic",
 });
 
+const lato = localFont({
+  src: [
+    {
+      path: "./fonts/Lato-Black.ttf",
+      weight: "900",
+      style: "black",
+    },
+    {
+      path: "./fonts/Lato-Regular.ttf",
+      weight: "400",
+      style: "reqular",
+    },
+  ],
+  display: "swap",
+  variable: "--font-lato",
+});
+
 export const metadata: Metadata = MetaData;
 
 export default function RootLayout({
@@ -55,7 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} ${allRoundGothic.variable}`}
+      className={`${pretendard.variable} ${allRoundGothic.variable} ${lato.variable}`}
     >
       <body className={`${pretendard.className}`}>
         <ReactQueryProvider>{children}</ReactQueryProvider>

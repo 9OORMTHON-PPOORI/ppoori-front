@@ -103,6 +103,7 @@ const config = {
       fontFamily: {
         pretendard: ["var(--font-pretendard)"],
         allroundgothic: ["var(--font-allroundgothic)"],
+        lato: ["var(--font-lato)"],
       },
       colors: {
         border: "hsl(var(--border))",
