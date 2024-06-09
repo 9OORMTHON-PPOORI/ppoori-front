@@ -5,7 +5,7 @@ export default function RootLayout({
 }>) {
   return (
     <main className="bg-white">
-      <div className="m-auto max-w-[390px] px-8 pb-20">{children}</div>
+      <div className="m-auto h-full max-w-[390px] px-8 pb-20">{children}</div>
     </main>
   );
 }

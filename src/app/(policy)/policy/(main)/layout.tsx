@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { UserSelectButton } from "@/components/components/button/user-select-button";
+import LoadingPresenter from "@/components/components/loading/loading";
 import {
   Drawer,
   DrawerClose,
@@ -20,6 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { target, setTarget } = useUserInfoStore();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, []); //
+
+  if (loading) return <LoadingPresenter />;
 
   return (
     <Suspense fallback="">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
+import LoadingSpinner from "@/components/components/loading/loading-spinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -45,9 +46,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
   const [hated, setHated] = useState(false);
   const [comment, setComment] = useState("");
 
-  const { data: policyDetails, refetch: detailsRefetch } = usePolicyDetail(
-    params.id
-  );
+  const {
+    data: policyDetails,
+    refetch: detailsRefetch,
+    isLoading: policyDetailsLoading,
+  } = usePolicyDetail(params.id);
   const { mutate: policyComment } = usePolicyComment({
     onSuccess: () => {
       detailsRefetch();
@@ -87,6 +90,8 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       setLiked(false);
     }, 500);
   };
+
+  if (policyDetailsLoading) return <LoadingSpinner />;
 
   return (
     <>
