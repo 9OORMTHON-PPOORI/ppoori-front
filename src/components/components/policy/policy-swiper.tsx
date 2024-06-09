@@ -1,11 +1,12 @@
 "use client";
 
-import { faker } from "@faker-js/faker";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 import TooltipModal from "./policy-tooltip-modal";
+
+import { PolicyRecommend } from "@/types/policy";
 
 // Import Swiper styles
 import "swiper/css";
@@ -14,42 +15,20 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-export default function PolicySwiper(res?: any) {
+import { Swiper as SwiperCore } from "swiper/types";
+
+export default function PolicySwiper({
+  policyCards,
+}: {
+  policyCards: PolicyRecommend[];
+}) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper: SwiperCore) => {
     setActiveIndex(swiper.activeIndex);
   };
 
-  const datas: any[] = res.policyCards;
-
-  const Temp = [
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-    {
-      image: faker.image.urlLoremFlickr(),
-    },
-  ];
   return (
     <Swiper
       className="max-w-[460px]"
@@ -61,7 +40,7 @@ export default function PolicySwiper(res?: any) {
       centeredSlides={false}
       loop={true}
     >
-      {datas?.map((item: any, index: any) => {
+      {policyCards?.map((item: PolicyRecommend, index: number) => {
         const targetColor = activeIndex === index ? "bg-white" : "bg-white";
 
         return (

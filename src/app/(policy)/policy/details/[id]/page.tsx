@@ -95,11 +95,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
-            {Tags[policyDetails?.category] && (
+            {policyDetails?.category && Tags[policyDetails.category] && (
               <div
-                className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${Tags[policyDetails?.category].color}`}
+                className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${Tags[policyDetails.category].color}`}
               >
-                {Tags[policyDetails?.category].title}
+                {Tags[policyDetails.category].title}
               </div>
             )}
             <div className="mb-2">

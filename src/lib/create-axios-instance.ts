@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 export const createAxiosInstance = () => {
   const axiosInstance = axios.create({
@@ -12,10 +12,11 @@ export const createAxiosInstance = () => {
   return axiosInstance;
 };
 
-const onRequest = (config: any): any => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onRequest = (config: AxiosRequestConfig): any => {
   return config;
 };
 
-const onResponseError = (error: any): Promise<any> => {
+const onResponseError = (error: AxiosError): Promise<AxiosError> => {
   return Promise.reject(error);
 };

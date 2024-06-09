@@ -3,15 +3,17 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import { Policy } from "@/types/policy";
+
 export function PolicyCard({
   id,
   name,
   title,
   category,
-  likeCount,
-  hateCount,
-  totalComment,
-}: Record<string, string>) {
+  like_count,
+  hate_count,
+  total_comment,
+}: Policy) {
   const router = useRouter();
 
   const tags: Record<string, Record<string, string>> = {
@@ -54,11 +56,11 @@ export function PolicyCard({
             <div className="flex gap-6">
               <div className="flex items-center gap-1 text-po-gray-600">
                 <span className="text-caption">좋아요</span>
-                <span className="text-[13px] font-black">{likeCount}</span>
+                <span className="text-[13px] font-black">{like_count}</span>
               </div>
               <div className="flex items-center gap-1 text-po-gray-600">
                 <span className="text-caption">별로예요</span>
-                <span className="text-[13px] font-black">{hateCount}</span>
+                <span className="text-[13px] font-black">{hate_count}</span>
               </div>
             </div>
             <div className="flex items-center gap-1 text-po-gray-600">
@@ -68,7 +70,7 @@ export function PolicyCard({
                 width={16}
                 height={16}
               />
-              <p className="text-[13px] font-black">{totalComment}</p>
+              <p className="text-[13px] font-black">{total_comment}</p>
             </div>
           </div>
         </div>

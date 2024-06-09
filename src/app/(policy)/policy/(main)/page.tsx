@@ -18,6 +18,8 @@ import useUserInfoStore from "@/store/user-info-store";
 
 import { usePolicyRecommend } from "@/lib/hook/policy";
 
+import { PolicyRecommend } from "@/types/policy";
+
 const selectedInterestMapping: Record<string, string> = {
   "역량 개발": "COMPETENCY_DEVELOPMENT",
   "생활 지원": "LIVING_SUPPORT",
@@ -36,7 +38,7 @@ const selectedTargetMapping: Record<string, string> = {
 
 export default function Policy() {
   const { target, interest, setInterest } = useUserInfoStore();
-  const [res, setRes] = useState<any>();
+  const [res, setRes] = useState<PolicyRecommend[]>();
   const { mutate: policyRecommend } = usePolicyRecommend({
     onSuccess: (res) => {
       setRes(res);

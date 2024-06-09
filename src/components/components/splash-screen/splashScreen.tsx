@@ -14,9 +14,10 @@ export function SplashScreen() {
       scale: 1,
       transition: {
         delay: 0,
-        duration: 0.5,
         delayChildren: 0.2,
         staggerChildren: 0.4,
+        ease: "easeInOut",
+        duration: 0.65,
       },
     },
   };
@@ -30,8 +31,8 @@ export function SplashScreen() {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.1,
-        ease: "easeOut",
+        ease: "easeInOut",
+        duration: 0.95,
       },
     },
   };
@@ -52,39 +53,30 @@ export function SplashScreen() {
             height={416}
           />
         </motion.div>
-        <motion.div
-          className="absolute bottom-[34px] left-[62px]"
-          variants={item}
-        >
+        <div className="absolute bottom-[34px] left-[62px]">
           <Image
             src="/images/palmtree.svg"
             alt="splashBackground"
             width={38}
             height={37}
           />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-[34px] left-[200px]"
-          variants={item}
-        >
+        </div>
+        <div className="absolute bottom-[34px] left-[200px]">
           <Image
             src="/images/dolhareubang.svg"
             alt="splashBackground"
             width={19}
             height={26}
           />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-[34px] right-[58px]"
-          variants={item}
-        >
+        </div>
+        <div className="absolute bottom-[34px] right-[58px]">
           <Image
             src="/images/horse.svg"
             alt="splashBackground"
             width={46}
             height={26}
           />
-        </motion.div>
+        </div>
         <motion.div
           className="absolute right-[4px] top-[301px]"
           variants={item}
@@ -127,7 +119,7 @@ export function SplashScreen() {
           />
         </motion.div>
         <motion.div
-          className="absolute top-[-9px] w-full text-center font-pretendard text-[22px] text-[#B4E0FF]/80"
+          className="absolute top-[-9px] w-full text-center font-pretendard text-[22px] text-gray-50"
           variants={item}
         >
           제주시 청년 정책 통합 플랫폼

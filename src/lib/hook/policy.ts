@@ -15,7 +15,14 @@ import {
   postPolicyRecommend,
 } from "@/lib/api/policy";
 
-export const usePolicy = (options?: UseQueryOptions<any, AxiosError>) => {
+import {
+  Policy,
+  PolicyDetail,
+  PolicyRecommend,
+  PostPolicyCommentProps,
+} from "@/types/policy";
+
+export const usePolicy = (options?: UseQueryOptions<Policy[], AxiosError>) => {
   return useQuery({
     queryKey: ["policy"],
     queryFn: () => getPolicy(),
@@ -25,7 +32,7 @@ export const usePolicy = (options?: UseQueryOptions<any, AxiosError>) => {
 
 export const usePolicyDetail = (
   policyId: string,
-  options?: UseQueryOptions<any, AxiosError>
+  options?: UseQueryOptions<PolicyDetail, AxiosError>
 ) => {
   return useQuery({
     queryKey: ["policyDetail", policyId],
@@ -35,36 +42,36 @@ export const usePolicyDetail = (
 };
 
 export const usePolicyLike = (
-  options?: UseMutationOptions<any, Error, any>
+  options?: UseMutationOptions<number, Error, string>
 ) => {
-  return useMutation<any, Error, any>({
+  return useMutation<number, Error, string>({
     mutationFn: patchPolicyLike,
     ...options,
   });
 };
 
 export const usePolicyHate = (
-  options?: UseMutationOptions<any, Error, any>
+  options?: UseMutationOptions<number, Error, string>
 ) => {
-  return useMutation<any, Error, any>({
+  return useMutation<number, Error, string>({
     mutationFn: patchPolicyHate,
     ...options,
   });
 };
 
 export const usePolicyComment = (
-  options?: UseMutationOptions<any, Error, any>
+  options?: UseMutationOptions<string, Error, PostPolicyCommentProps>
 ) => {
-  return useMutation<any, Error, any>({
+  return useMutation<string, Error, PostPolicyCommentProps>({
     mutationFn: postPolicyComment,
     ...options,
   });
 };
 
 export const usePolicyRecommend = (
-  options?: UseMutationOptions<any, Error, any>
+  options?: UseMutationOptions<PolicyRecommend[], Error, Record<string, string>>
 ) => {
-  return useMutation<any, Error, any>({
+  return useMutation<PolicyRecommend[], Error, Record<string, string>>({
     mutationFn: postPolicyRecommend,
     ...options,
   });
