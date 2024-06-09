@@ -13,6 +13,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import usePolicyLoadingStore from "@/store/policy-loading-store";
 import useUserInfoStore from "@/store/user-info-store";
 
 export default function RootLayout({
@@ -21,21 +22,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { target, setTarget } = useUserInfoStore();
-  const [loading, setLoading] = useState(true);
+  const { hasVisitedMain, setHasVisitedMain } = usePolicyLoadingStore();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setLoading(false);
+      setHasVisitedMain(false);
     }, 3000);
 
     return () => clearTimeout(timeout);
-  }, []); //
+  }, []);
 
-  if (loading) return <LoadingPresenter />;
+  if (hasVisitedMain) return <LoadingPresenter />;
 
   return (
     <Suspense fallback="">
-      <div className="flex min-h-[100vh] flex-col justify-center bg-po-darkcyan-4 pb-20">
+      <div className="flex min-h-[100vh] flex-col justify-center bg-po-darkcyan-4">
         <Drawer>
           <DrawerTrigger>
             <div className="absolute left-[50%] top-0 m-auto mt-[12px] flex max-w-[90px] translate-x-[-50%] content-center items-center gap-[4px] rounded-full bg-[#3978A5] py-[6px] pl-[10px] pr-[11px]">

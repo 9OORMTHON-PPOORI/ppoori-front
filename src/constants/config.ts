@@ -1,6 +1,6 @@
 const metaDataTitle = "뿌리";
 const metaDataDescription = "뿌리를 찾아가는 청년 정책을 제안합니다.";
-const metaDataUrl = "https://www.wipik.com";
+const metaDataUrl = "https://ppoori.vercel.app";
 const metaDataAuthor = "WEPIK TEAM";
 const metaDataImageUrl = "/images/thumbnail.png";
 

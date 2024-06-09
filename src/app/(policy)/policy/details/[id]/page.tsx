@@ -108,7 +108,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
           <div className="w-full">
             {policyDetails?.category && Tags[policyDetails.category] && (
               <div
-                className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${Tags[policyDetails.category].color}`}
+                className={`mb-6 flex h-[28px] w-[68px] items-center rounded-[6px] px-[8px] py-[3px] text-caption text-sm font-medium leading-[22px] ${Tags[policyDetails.category].color}`}
               >
                 {Tags[policyDetails.category].title}
               </div>

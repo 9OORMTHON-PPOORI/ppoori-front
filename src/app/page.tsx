@@ -10,17 +10,20 @@ import { UserSelectButton } from "@/components/components/button/user-select-but
 import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
 import { Button } from "@/components/ui/button";
 
+import usePolicyLoadingStore from "@/store/policy-loading-store";
 import useUserInfoStore from "@/store/user-info-store";
 
 export default function Home() {
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
+  const { setHasVisitedMain } = usePolicyLoadingStore();
   const { target, interest, setTarget, setInterest } = useUserInfoStore();
 
   const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => setLoading(true), 5000);
+    setHasVisitedMain(true);
   }, []);
 
   const handleNextBtn = () => {

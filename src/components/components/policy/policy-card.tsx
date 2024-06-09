@@ -49,7 +49,9 @@ export function PolicyCard({
               {tags[category].title}
             </div>
           )}
-          <h2 className="mb-[6px] w-[300px] truncate text-title-2">{name}</h2>
+          <h2 className="mb-[6px] max-w-[300px] truncate text-title-2">
+            {name}
+          </h2>
           <p className="text-text-4 text-po-gray-800">{title}</p>
           <div className="my-2 border-[1px] border-t-0 border-po-gray-300" />
           <div className="flex justify-between">

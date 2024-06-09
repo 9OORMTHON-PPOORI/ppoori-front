@@ -70,7 +70,7 @@ export default function Policy() {
 
   return (
     <div>
-      <div className="flex justify-center text-title-4">
+      <div className="mt-8 flex justify-center text-title-4">
         <Drawer>
           <DrawerTrigger>
             <div className="flex gap-[8px]">
@@ -124,7 +124,7 @@ export default function Policy() {
         <PolicySwiper policyCards={res} />
       </div>
       <div
-        className="flex cursor-pointer content-center justify-center text-center text-text-1 text-po-darkcyan-2"
+        className="flex cursor-pointer content-center justify-center pb-6 text-center text-text-1 text-po-darkcyan-2"
         onClick={() => router.push("/policy/list")}
       >
         정책 전체보기

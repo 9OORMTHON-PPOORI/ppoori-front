@@ -22,7 +22,7 @@ export default function PolicyList() {
         >
           <CaretLeftIcon className="h-8 w-8" />
         </div>
-        <h3 className="text-title-4 font-medium">카테고리 전체</h3>
+        <h3 className="text-title-4 font-medium">정책 전체</h3>
       </div>
       <div className="mt-5 font-pretendard font-semibold">
         {Array.isArray(policyList) &&
