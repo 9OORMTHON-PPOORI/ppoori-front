@@ -1,0 +1,32 @@
+{
+  "background_color": "#ffffff",
+  "description": "제주 청년 정책 통합 플랫폼",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "뿌리",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ppoori",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon/192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/400.png",
+      "type": "image/png",
+      "sizes": "400x400",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

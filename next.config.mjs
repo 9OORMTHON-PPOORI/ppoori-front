@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const withPWA = require("@ducanh2912/next-pwa").default({
+  dest: "public",
+});
+
 const nextConfig = {
   images: {
     domains: ["*", "loremflickr.com"],
@@ -7,4 +13,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);

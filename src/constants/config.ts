@@ -13,6 +13,7 @@ export const MetaData = {
     default: metaDataTitle,
     template: `%s | ${metaDataTitle}`,
   },
+  manifest: "/manifest.json",
   description: metaDataDescription,
   robots: { index: true, follow: true },
   icons: {
@@ -42,4 +43,8 @@ export const MetaData = {
       url: metaDataUrl,
     },
   ],
+};
+
+export const ViewPort = {
+  themeColor: "#FFFFFF",
 };
