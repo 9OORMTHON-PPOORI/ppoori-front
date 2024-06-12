@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 
 import "@/styles/globals.css";
 
-import { MetaData } from "@/constants/config";
+import { MetaData, ViewPort } from "@/constants/config";
 import ReactQueryProvider from "@/provider/query-provider";
 
 const pretendard = localFont({
@@ -63,6 +63,7 @@ const lato = localFont({
 });
 
 export const metadata: Metadata = MetaData;
+export const viewport: Viewport = ViewPort;
 
 export default function RootLayout({
   children,
