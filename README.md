@@ -66,7 +66,7 @@
 > 최상위 폴더에 .env 파일을 생성하고 다음과 같은 환경변수를 설정한다. <br>
 
 ```jsx
-EXT_PUBLIC_API_KEY=[백엑드 서버 주소 (ex. https://)]
+EXT_PUBLIC_API_KEY=[백엔드 서버 주소 (ex. https://)]
 NEXT_PUBLIC_POLICY=[전체 정책 API 주소]
 NEXT_PUBLIC_RECOMMEND=[맞춤 정책 API 주소]
 ```
@@ -89,7 +89,7 @@ yarn dev
 >
 > 소통: 
 >
-> 개발 기간: 24/5/21 ~ 24/5/24(해커톤 기간) 이후 유지보수 중<br>
+> 개발 기간: 24/5/21 ~ 24/5/24(해커톤 기간)<br>
 
 ## 기타
 
