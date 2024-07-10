@@ -75,7 +75,7 @@ export default function RootLayout({
       lang="ko"
       className={`${pretendard.variable} ${allRoundGothic.variable} ${lato.variable}`}
     >
-      <body className={`${pretendard.className}`}>
+      <body className={`${pretendard.className} bg-[#f2f3f8]`}>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

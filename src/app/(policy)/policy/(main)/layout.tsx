@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 
 import { UserSelectButton } from "@/components/components/button/user-select-button";
 import LoadingPresenter from "@/components/components/loading/loading";
