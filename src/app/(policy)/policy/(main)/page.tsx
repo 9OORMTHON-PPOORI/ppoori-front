@@ -2,21 +2,9 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-import { InterestSelectButton } from "@/components/components/button/interset-select-button";
-import PolicySwiper from "@/components/components/policy/policy-swiper";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { useState } from "react";
 
 import useUserInfoStore from "@/store/user-info-store";
-
-import { usePolicyRecommend } from "@/lib/hook/policy";
 
 import { PolicyRecommend } from "@/types/policy";
 
@@ -39,23 +27,23 @@ const selectedTargetMapping: Record<string, string> = {
 export default function Policy() {
   const { target, interest, setInterest } = useUserInfoStore();
   const [res, setRes] = useState<PolicyRecommend[]>();
-  const { mutate: policyRecommend } = usePolicyRecommend({
-    onSuccess: (res) => {
-      setRes(res);
-    },
-    onError: () => {
-      alert("데이터 요청에 실패하였습니다.");
-    },
-  });
+  // const { mutate: policyRecommend } = usePolicyRecommend({
+  //   onSuccess: (res) => {
+  //     setRes(res);
+  //   },
+  //   onError: () => {
+  //     alert("데이터 요청에 실패하였습니다.");
+  //   },
+  // });
 
-  useEffect(() => {
-    if (target && interest) {
-      policyRecommend({
-        comment: selectedInterestMapping[interest],
-        target: selectedTargetMapping[target],
-      });
-    }
-  }, [policyRecommend, target, interest]);
+  // useEffect(() => {
+  //   if (target && interest) {
+  //     policyRecommend({
+  //       comment: selectedInterestMapping[interest],
+  //       target: selectedTargetMapping[target],
+  //     });
+  //   }
+  // }, [policyRecommend, target, interest]);
 
   const router = useRouter();
 
@@ -66,11 +54,32 @@ export default function Policy() {
     "진로 지원": "/images/interestImage4.svg",
   };
 
-  if (!res) return null;
+  // if (!res) return null;
 
   return (
     <div>
-      <div className="mt-8 flex justify-center text-title-4">
+      <div className="flex h-full flex-col items-center justify-center">
+        <div className="relative mt-[12px] flex w-full justify-center">
+          <Image
+            src={mainImage["진로 지원"]}
+            alt="관심사 이미지"
+            width={164}
+            height={120}
+          />
+        </div>
+        <h3 className="mb-[18px] text-center text-title-1 text-white">
+          서비스 종료 안내
+        </h3>
+        <p className="mb-[18px] text-center text-text-3 text-white">
+          안녕하세요, 뿌리 서비스를 사랑해 주신 여러분
+          <br />
+          아쉽게도 저희 서비스가 종료되었음을 알려드립니다
+          <br />
+          그동안 보내주신 관심과 사랑에 진심으로 감사드립니다
+          <br />
+        </p>
+      </div>
+      {/* <div className="mt-8 flex justify-center text-title-4">
         <Drawer>
           <DrawerTrigger>
             <div className="flex gap-[8px]">
@@ -111,24 +120,24 @@ export default function Policy() {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-      </div>
-      <div className="relative mt-[12px] flex w-full justify-center">
+      </div> */}
+      {/* <div className="relative mt-[12px] flex w-full justify-center">
         <Image
           src={mainImage[interest]}
           alt="관심사 이미지"
           width={164}
           height={120}
         />
-      </div>
-      <div className="mt-[-70px]">
+      </div> */}
+      {/* <div className="mt-[-70px]">
         <PolicySwiper policyCards={res} />
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className="flex cursor-pointer content-center justify-center pb-6 text-center text-text-1 text-po-darkcyan-2"
         onClick={() => router.push("/policy/list")}
       >
         정책 전체보기
-      </div>
+      </div> */}
     </div>
   );
 }
