@@ -11,6 +11,18 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     formats: ["image/webp"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/policy/:path*",
+        destination: `${process.env.NEXT_PUBLIC_POLICY}/:path*`,
+      },
+      {
+        source: "/api/recommend/:path*",
+        destination: `${process.env.NEXT_PUBLIC_RECOMMEND}/:path*`,
+      },
+    ];
+  },
 };
 
 export default withPWA(nextConfig);
