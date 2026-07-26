@@ -62,8 +62,11 @@ export default function PolicyRecommendation() {
   } = usePolicyRecommend(recommendParams);
 
   // 저장된 선택을 복원하기 전에는 선택 없음과 구분되지 않는다.
+  // localStorage 복원은 즉시 끝나므로 "정책을 찾고 있어요"라는 로딩 화면을
+  // 띄우면 실제로 기다리지 않는 작업을 기다리는 것처럼 알리게 된다.
+  // 자리만 잡아 두고 다음 렌더를 기다린다.
   if (!isHydrated) {
-    return <LoadingPresenter />;
+    return <div className="min-h-[320px]" />;
   }
 
   if (!selectedTarget || !selectedCategory) {

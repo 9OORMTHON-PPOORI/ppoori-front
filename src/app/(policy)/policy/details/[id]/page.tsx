@@ -11,6 +11,7 @@ import {
   usePolicyHate,
   usePolicyLike,
 } from "@/lib/hooks/policy";
+import { useTemporaryFlag } from "@/lib/hooks/use-temporary-flag";
 
 import { findPolicyCategory } from "@/constants/policy";
 
@@ -19,10 +20,13 @@ import LoadingSpinner from "@/components/loading/loading-spinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+/** 반응을 누른 뒤 버튼이 강조되어 있는 시간. */
+const REACTION_FEEDBACK_MS = 500;
+
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
-  const [liked, setLiked] = useState(false);
-  const [hated, setHated] = useState(false);
+  const [liked, markLiked] = useTemporaryFlag(REACTION_FEEDBACK_MS);
+  const [hated, markHated] = useTemporaryFlag(REACTION_FEEDBACK_MS);
   const [comment, setComment] = useState("");
   const commentInputId = useId();
 
@@ -49,20 +53,12 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   const handleHate = () => {
     policyHate();
-    setHated(true);
-
-    setTimeout(() => {
-      setHated(false);
-    }, 500);
+    markHated();
   };
 
   const handleLike = () => {
-    setLiked(true);
     policyLike();
-
-    setTimeout(() => {
-      setLiked(false);
-    }, 500);
+    markLiked();
   };
 
   if (policyDetailsLoading) return <LoadingSpinner />;
