@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import usePolicyLoadingStore from "@/store/policy-loading-store";
 import useUserInfoStore from "@/store/user-info-store";
 
+import { POLICY_CATEGORIES, YOUTH_TARGETS } from "@/constants/policy";
+
 export default function Home() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -43,14 +45,7 @@ export default function Home() {
                 <p className="text-title-1 text-po-gray-800">누구인가요?</p>
               </div>
               <div className="mb-[48px] mt-6 grid grid-cols-2 place-items-center gap-3">
-                {[
-                  "대학생",
-                  "취준생",
-                  "재직자",
-                  "신혼부부",
-                  "농어업인",
-                  "예술가",
-                ].map((label) => (
+                {YOUTH_TARGETS.map(({ label }) => (
                   <UserSelectButton
                     key={label}
                     target={target}
@@ -79,18 +74,13 @@ export default function Home() {
                 <p className="text-title-1 text-po-gray-800">궁금하세요?</p>
               </div>
               <div className="mb-[48px] mt-6 grid grid-cols-2 place-items-center gap-3">
-                {[
-                  { label: "활동 지원", imageSrc: "/svgs/interest-1.svg" },
-                  { label: "역량 개발", imageSrc: "/svgs/interest-2.svg" },
-                  { label: "생활 지원", imageSrc: "/svgs/interest-3.svg" },
-                  { label: "진로 지원", imageSrc: "/svgs/interest-4.svg" },
-                ].map(({ label, imageSrc }) => (
+                {POLICY_CATEGORIES.map(({ label, iconSrc }) => (
                   <InterestSelectButton
                     key={label}
                     interest={interest}
                     setInterest={setInterest}
                     label={label}
-                    imageSrc={imageSrc}
+                    imageSrc={iconSrc}
                   />
                 ))}
               </div>

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import { findPolicyCategory } from "@/constants/policy";
+
 import { Policy } from "@/types/policy";
 
 export function PolicyCard({
@@ -15,25 +17,7 @@ export function PolicyCard({
   total_comment,
 }: Policy) {
   const router = useRouter();
-
-  const tags: Record<string, Record<string, string>> = {
-    "역량 개발": {
-      title: "역량 개발",
-      color: "text-po-green-2 bg-po-green-1",
-    },
-    "생활 지원": {
-      title: "생활 지원",
-      color: "text-po-blue-2 bg-po-blue-1",
-    },
-    "활동 지원": {
-      title: "활동 지원",
-      color: "text-po-red-2 bg-po-red-1",
-    },
-    "진로 지원": {
-      title: "진로 지원",
-      color: "text-po-pink-2 bg-po-pink-1",
-    },
-  };
+  const policyCategory = findPolicyCategory(category);
 
   return (
     <div
@@ -42,13 +26,13 @@ export function PolicyCard({
     >
       <div className="flex">
         <div className="flex-grow">
-          {tags[category] && (
+          {policyCategory ? (
             <div
-              className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${tags[category].color}`}
+              className={`mb-3 flex h-[20px] w-[57px] items-center rounded-[6px] px-[6px] text-caption ${policyCategory.tagClassName}`}
             >
-              {tags[category].title}
+              {policyCategory.label}
             </div>
-          )}
+          ) : null}
           <h2 className="mb-[6px] max-w-[300px] truncate text-title-2">
             {name}
           </h2>

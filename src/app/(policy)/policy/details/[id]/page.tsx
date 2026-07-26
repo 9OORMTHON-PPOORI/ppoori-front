@@ -9,6 +9,7 @@ import LoadingSpinner from "@/components/components/loading/loading-spinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { findPolicyCategory } from "@/constants/policy";
 import {
   usePolicyComment,
   usePolicyDetail,
@@ -20,25 +21,6 @@ interface PolicyCommentType {
   writer: string;
   content: string;
 }
-
-const Tags: Record<string, Record<string, string>> = {
-  "역량 개발": {
-    title: "역량 개발",
-    color: "text-po-green-2 bg-po-green-1",
-  },
-  "생활 지원": {
-    title: "생활 지원",
-    color: "text-po-blue-2 bg-po-blue-1",
-  },
-  "활동 지원": {
-    title: "활동 지원",
-    color: "text-po-red-2 bg-po-red-1",
-  },
-  "진로 지원": {
-    title: "진로 지원",
-    color: "text-po-pink-2 bg-po-pink-1",
-  },
-};
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -67,6 +49,10 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       detailsRefetch();
     },
   });
+
+  const policyCategory = policyDetails
+    ? findPolicyCategory(policyDetails.category)
+    : undefined;
 
   const handleCommentSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -106,13 +92,13 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
       <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
           <div className="w-full">
-            {policyDetails?.category && Tags[policyDetails.category] && (
+            {policyCategory ? (
               <div
-                className={`mb-6 flex h-[28px] w-[68px] items-center rounded-[6px] px-[8px] py-[3px] text-caption text-sm font-medium leading-[22px] ${Tags[policyDetails.category].color}`}
+                className={`mb-6 flex h-[28px] w-[68px] items-center rounded-[6px] px-[8px] py-[3px] text-caption text-sm font-medium leading-[22px] ${policyCategory.tagClassName}`}
               >
-                {Tags[policyDetails.category].title}
+                {policyCategory.label}
               </div>
-            )}
+            ) : null}
             <div className="mb-2">
               <h2 className="p-0 text-title-1 text-po-gray-800">
                 {policyDetails?.name}
