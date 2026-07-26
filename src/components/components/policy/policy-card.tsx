@@ -7,15 +7,9 @@ import { findPolicyCategory } from "@/constants/policy";
 
 import { Policy } from "@/types/policy";
 
-export function PolicyCard({
-  id,
-  name,
-  title,
-  category,
-  like_count,
-  hate_count,
-  total_comment,
-}: Policy) {
+export function PolicyCard({ policy }: { policy: Policy }) {
+  const { id, name, title, category, likeCount, hateCount, commentCount } =
+    policy;
   const router = useRouter();
   const policyCategory = findPolicyCategory(category);
 
@@ -42,11 +36,11 @@ export function PolicyCard({
             <div className="flex gap-6">
               <div className="flex items-center gap-1 text-po-gray-600">
                 <span className="text-caption">좋아요</span>
-                <span className="text-[13px] font-black">{like_count}</span>
+                <span className="text-[13px] font-black">{likeCount}</span>
               </div>
               <div className="flex items-center gap-1 text-po-gray-600">
                 <span className="text-caption">별로예요</span>
-                <span className="text-[13px] font-black">{hate_count}</span>
+                <span className="text-[13px] font-black">{hateCount}</span>
               </div>
             </div>
             <div className="flex items-center gap-1 text-po-gray-600">
@@ -56,7 +50,7 @@ export function PolicyCard({
                 width={16}
                 height={16}
               />
-              <p className="text-[13px] font-black">{total_comment}</p>
+              <p className="text-[13px] font-black">{commentCount}</p>
             </div>
           </div>
         </div>
