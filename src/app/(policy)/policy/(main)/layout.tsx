@@ -11,7 +11,9 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import useUserInfoStore from "@/store/user-info-store";
+import useUserInfoStore, {
+  useUserInfoHydrated,
+} from "@/store/user-info-store";
 
 import { YOUTH_TARGETS } from "@/constants/policy";
 
@@ -21,6 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { target, setTarget } = useUserInfoStore();
+  const isHydrated = useUserInfoHydrated();
 
   return (
     <div className="z-10 flex min-h-[100vh] flex-col justify-center bg-po-darkcyan-4">
@@ -34,7 +37,8 @@ export default function RootLayout({
               height={16}
             />
             <div className="text-text-4 text-po-darkcyan-2 hover:cursor-pointer">
-              {target}
+              {/* 복원 전에 값을 그리면 서버 렌더 결과와 어긋난다. */}
+              {isHydrated ? target : ""}
             </div>
           </div>
         </DrawerTrigger>

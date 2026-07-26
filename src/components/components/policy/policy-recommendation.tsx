@@ -14,7 +14,9 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import useUserInfoStore from "@/store/user-info-store";
+import useUserInfoStore, {
+  useUserInfoHydrated,
+} from "@/store/user-info-store";
 
 import {
   findPolicyCategory,
@@ -41,6 +43,7 @@ function CenteredNotice({ children }: { children: React.ReactNode }) {
  */
 export default function PolicyRecommendation() {
   const { target, interest, setInterest } = useUserInfoStore();
+  const isHydrated = useUserInfoHydrated();
 
   const selectedTarget = findYouthTarget(target);
   const selectedCategory = findPolicyCategory(interest);
@@ -57,6 +60,11 @@ export default function PolicyRecommendation() {
     isError,
     error,
   } = usePolicyRecommend(recommendParams);
+
+  // 저장된 선택을 복원하기 전에는 선택 없음과 구분되지 않는다.
+  if (!isHydrated) {
+    return <LoadingPresenter />;
+  }
 
   if (!selectedTarget || !selectedCategory) {
     return (
