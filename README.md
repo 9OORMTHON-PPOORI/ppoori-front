@@ -44,22 +44,19 @@
 
 <img alt="뿌리 프로젝트 아키텍처" src="https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/071d0286-c37d-43a9-8418-658b56f97fb1"/>
 
-
 ## 📌 기술 스택
 
 <img alt="뿌리 기술 스택" src="https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/a6b7d01d-7ec0-427b-a835-d4b884ad8348"/>
 
 ## 📌 주요 기능 소개
 
-| [🔗 스플래시](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%8A%A4%ED%94%8C%EB%9E%98%EC%8B%9C) | [🔗 정보 선택](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%A0%95%EB%B3%B4-%EC%84%A0%ED%83%9D) | [🔗 로딩](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EB%A1%9C%EB%94%A9) |[🔗 메인](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EB%A9%94%EC%9D%B8) |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|              <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/a9be7ac9-b61f-47af-8f91-ab20469ab081'>              |                   <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/d0d99565-0c41-405d-ae33-bc736e8a6988'>                    |                    <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/bb5a0228-922a-48de-9603-89aa559ecbab'>                     |                    <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/55945e3a-f672-4fc4-b59d-180181bef483'>                     |
-
+| [🔗 스플래시](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%8A%A4%ED%94%8C%EB%9E%98%EC%8B%9C) | [🔗 정보 선택](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%A0%95%EB%B3%B4-%EC%84%A0%ED%83%9D) | [🔗 로딩](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EB%A1%9C%EB%94%A9) | [🔗 메인](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EB%A9%94%EC%9D%B8) |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: |
+|                   <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/a9be7ac9-b61f-47af-8f91-ab20469ab081'>                    |                    <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/d0d99565-0c41-405d-ae33-bc736e8a6988'>                     |        <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/bb5a0228-922a-48de-9603-89aa559ecbab'>         |        <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/55945e3a-f672-4fc4-b59d-180181bef483'>         |
 
 | [🔗 정보 재설정](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%A0%95%EB%B3%B4-%EC%9E%AC%EC%84%A4%EC%A0%95) | [🔗 정책 전체 보기](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%A0%95%EC%B1%85-%EC%A0%84%EC%B2%B4-%EB%B3%B4%EA%B8%B0) | [🔗 정책 상세 보기](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EC%A0%95%EC%B1%85-%EC%83%81%EC%84%B8) | [🔗 반응 남기기](https://github.com/9OORMTHON-PPOORI/ppoori-front/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C#-%EB%B0%98%EC%9D%91-%EB%82%A8%EA%B8%B0%EA%B8%B0) |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                          <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/c921def1-67b0-421d-b23b-020cd793cdfd'>                          |                                   <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/825fa8c5-84cc-4285-a601-a52cdd691f3b'>                                   |                                   <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/30077176-10cd-4a94-94c7-2f1615f046e7'>                                    |                                   <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/ae52bc81-00e9-4341-9e97-26163e600c4f'>                                    |
-
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                          <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/c921def1-67b0-421d-b23b-020cd793cdfd'>                          |                                <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/825fa8c5-84cc-4285-a601-a52cdd691f3b'>                                 |                       <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/30077176-10cd-4a94-94c7-2f1615f046e7'>                       |                          <img width='400' src='https://github.com/9OORMTHON-PPOORI/ppoori-front/assets/100774811/ae52bc81-00e9-4341-9e97-26163e600c4f'>                          |
 
 ## 🕹 프로젝트 구동 방식
 
@@ -79,15 +76,14 @@ yarn dev
 ```
 
 ## 🗄 문서
->
->
 
+>
 
 ## 🤝 협업 방식
+
+> 프로젝트 관리:
 >
-> 프로젝트 관리: 
->
-> 소통: 
+> 소통:
 >
 > 개발 기간: 24/5/21 ~ 24/5/24(해커톤 기간)<br>
 
