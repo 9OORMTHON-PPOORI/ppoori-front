@@ -41,7 +41,10 @@ const TooltipModal = () => {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onKeyDown={handleKeyDown}
-        className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2"
+        // 아이콘 크기는 18px로 두고 after 의사요소로 44x44 터치 타깃만 넓힌다.
+        // 버튼 박스를 44px로 키우면 이 버튼이 든 절대배치 행이 위로 자라
+        // 요약이 5줄을 채운 카드에서 본문과 겹친다.
+        className="relative flex h-[18px] w-[18px] items-center justify-center rounded-full after:absolute after:-inset-[13px] after:content-[''] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2"
       >
         <Image
           src="/icon/helpIcon.svg"

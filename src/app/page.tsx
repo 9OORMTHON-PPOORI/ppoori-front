@@ -14,8 +14,11 @@ import { Button } from "@/components/ui/button";
 
 import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
 
-/** 스플래시 애니메이션이 끝까지 재생되는 시간. */
-const SPLASH_DURATION_MS = 5000;
+/**
+ * 스플래시를 넘기는 시점은 애니메이션 완료 콜백이 결정한다(약 2.9초).
+ * 이 값은 탭이 비활성 상태로 진입하는 등 콜백이 오지 않는 경우의 안전장치다.
+ */
+const SPLASH_FALLBACK_MS = 4000;
 
 export default function Home() {
   const [step, setStep] = useState(1);
@@ -27,7 +30,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsSplashDone(true), SPLASH_DURATION_MS);
+    const timer = setTimeout(() => setIsSplashDone(true), SPLASH_FALLBACK_MS);
 
     return () => clearTimeout(timer);
   }, []);
@@ -36,7 +39,9 @@ export default function Home() {
     setStep((previousStep) => previousStep + 1);
   };
 
-  if (!isSplashDone) return <SplashScreen />;
+  if (!isSplashDone) {
+    return <SplashScreen onComplete={() => setIsSplashDone(true)} />;
+  }
 
   return (
     <Layout>
