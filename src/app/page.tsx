@@ -10,34 +10,36 @@ import { UserSelectButton } from "@/components/components/button/user-select-but
 import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
 import { Button } from "@/components/ui/button";
 
-import usePolicyLoadingStore from "@/store/policy-loading-store";
 import useUserInfoStore from "@/store/user-info-store";
 
 import { POLICY_CATEGORIES, YOUTH_TARGETS } from "@/constants/policy";
 
+/** 스플래시 애니메이션이 끝까지 재생되는 시간. */
+const SPLASH_DURATION_MS = 5000;
+
 export default function Home() {
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const { setHasVisitedMain } = usePolicyLoadingStore();
+  const [step, setStep] = useState(1);
+  const [isSplashDone, setIsSplashDone] = useState(false);
   const { target, interest, setTarget, setInterest } = useUserInfoStore();
 
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 5000);
-    setHasVisitedMain(true);
+    const timer = setTimeout(() => setIsSplashDone(true), SPLASH_DURATION_MS);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleNextBtn = () => {
-    setPage(page + 1);
+    setStep((previousStep) => previousStep + 1);
   };
 
-  if (!loading) return <SplashScreen />;
+  if (!isSplashDone) return <SplashScreen />;
 
   return (
     <Layout>
       <div className="relative w-full">
-        {page === 1 && (
+        {step === 1 && (
           <Transition>
             <div>
               <div className="w-full text-left">
@@ -66,7 +68,7 @@ export default function Home() {
             </div>
           </Transition>
         )}
-        {page === 2 && (
+        {step === 2 && (
           <Transition>
             <div>
               <div className="w-full text-left">
