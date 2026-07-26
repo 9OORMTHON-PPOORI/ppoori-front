@@ -5,11 +5,15 @@ import { useRouter } from "next/navigation";
 
 import { usePolicyList } from "@/lib/hooks/policy";
 
+import StatusNotice from "@/components/common/status-notice";
+import LoadingSpinner from "@/components/loading/loading-spinner";
 import { PolicyCard } from "@/components/policy/policy-card";
+
+import { Policy } from "@/types/policy";
 
 export default function PolicyList() {
   const router = useRouter();
-  const { data: policyList } = usePolicyList();
+  const { data: policyList, isLoading, isError, error } = usePolicyList();
 
   return (
     <>
@@ -28,13 +32,47 @@ export default function PolicyList() {
         </button>
         <h1 className="text-title-4 font-medium">정책 전체</h1>
       </header>
-      <ul className="mt-5 font-pretendard font-semibold">
-        {policyList?.map((policy) => (
-          <li key={policy.id}>
-            <PolicyCard policy={policy} />
-          </li>
-        ))}
-      </ul>
+      <PolicyListBody
+        policyList={policyList}
+        isLoading={isLoading}
+        isError={isError}
+        errorMessage={error?.message}
+      />
     </>
+  );
+}
+
+/** 목록 자리에 들어갈 내용을 로딩·실패·빈 결과·정상 네 갈래로 나눈다. */
+function PolicyListBody({
+  policyList,
+  isLoading,
+  isError,
+  errorMessage,
+}: {
+  policyList?: Policy[];
+  isLoading: boolean;
+  isError: boolean;
+  errorMessage?: string;
+}) {
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError) {
+    return <StatusNotice>{errorMessage}</StatusNotice>;
+  }
+
+  if (!policyList || policyList.length === 0) {
+    return <StatusNotice>등록된 정책이 없습니다.</StatusNotice>;
+  }
+
+  return (
+    <ul className="mt-5 font-pretendard font-semibold">
+      {policyList.map((policy) => (
+        <li key={policy.id}>
+          <PolicyCard policy={policy} />
+        </li>
+      ))}
+    </ul>
   );
 }
