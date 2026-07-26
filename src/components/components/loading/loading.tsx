@@ -14,7 +14,11 @@ const Lottie = dynamic(() => import("react-lottie-player"), { ssr: false });
 
 const LoadingPresenter = () => {
   return (
-    <div className="relative z-50 h-screen w-screen bg-[#F7F7FA]">
+    <div
+      role="status"
+      aria-live="polite"
+      className="relative z-50 h-screen w-screen bg-[#F7F7FA]"
+    >
       <div className="absolute top-[35%] h-[150px] w-full py-4">
         {/* 스크립트가 늦게 도착해도 레이아웃이 밀리지 않도록 높이를 고정한다. */}
         <div className="flex h-[60px] w-full justify-center">
