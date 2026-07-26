@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import React, { useState } from "react";
 
 import TooltipModal from "./policy-tooltip-modal";
@@ -22,7 +22,6 @@ export default function PolicySwiper({
 }: {
   policyCards: PolicyRecommend[];
 }) {
-  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(1);
 
   const handleSlideChange = (swiper: SwiperCore) => {
@@ -83,12 +82,13 @@ export default function PolicySwiper({
                     </div>
                   </div>
                 </div>
-                <div
-                  className="mt-[10px] flex h-[48px] cursor-pointer items-center justify-center rounded-[16px] border-[1px] border-po-gray-300 bg-[#CDCED614] text-text-4 text-po-gray-600 duration-500 hover:bg-po-cyan-1 hover:text-po-cyan-2"
-                  onClick={() => router.push(`policy/details/${item.id}`)}
+                {/* 선행 슬래시가 없어 /policy 에서 누르면 /policy/policy/... 로 이동했다. */}
+                <Link
+                  href={`/policy/details/${item.id}`}
+                  className="mt-[10px] flex h-[48px] items-center justify-center rounded-[16px] border-[1px] border-po-gray-300 bg-[#CDCED614] text-text-4 text-po-gray-600 duration-500 hover:bg-po-cyan-1 hover:text-po-cyan-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2"
                 >
                   상세 보기
-                </div>
+                </Link>
               </div>
             </div>
           </SwiperSlide>

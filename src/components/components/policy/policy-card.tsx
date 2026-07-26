@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { findPolicyCategory } from "@/constants/policy";
 
@@ -10,13 +8,12 @@ import { Policy } from "@/types/policy";
 export function PolicyCard({ policy }: { policy: Policy }) {
   const { id, name, title, category, likeCount, hateCount, commentCount } =
     policy;
-  const router = useRouter();
   const policyCategory = findPolicyCategory(category);
 
   return (
-    <div
-      className="mb-[10px] cursor-pointer rounded-2xl border-[1px] border-white bg-white px-[20px]  py-[24px] leading-[140%] shadow-[0_4px_6px_#0000000A] duration-500 hover:-translate-y-1 hover:border-po-cyan-2"
-      onClick={() => router.push(`/policy/details/${id}`)}
+    <Link
+      href={`/policy/details/${id}`}
+      className="mb-[10px] block rounded-2xl border-[1px] border-white bg-white px-[20px] py-[24px] leading-[140%] shadow-[0_4px_6px_#0000000A] duration-500 hover:-translate-y-1 hover:border-po-cyan-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2"
     >
       <div className="flex">
         <div className="flex-grow">
@@ -55,6 +52,6 @@ export function PolicyCard({ policy }: { policy: Policy }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
