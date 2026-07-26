@@ -30,7 +30,8 @@ const MESSAGE_BY_STATUS: Record<number, string> = {
   500: "서버에 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",
 };
 
-const toApiError = (error: unknown): ApiError => {
+/** 인터셉터가 사용하는 변환 함수. 상태별 분기를 검증할 수 있도록 노출한다. */
+export const toApiError = (error: unknown): ApiError => {
   if (!isAxiosError(error)) {
     return new ApiError("알 수 없는 오류가 발생했습니다.");
   }
