@@ -28,11 +28,13 @@ export default function PolicyList() {
         </button>
         <h1 className="text-title-4 font-medium">정책 전체</h1>
       </header>
-      <div className="mt-5 font-pretendard font-semibold">
+      <ul className="mt-5 font-pretendard font-semibold">
         {policyList?.map((policy) => (
-          <PolicyCard key={policy.id} policy={policy} />
+          <li key={policy.id}>
+            <PolicyCard policy={policy} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 }

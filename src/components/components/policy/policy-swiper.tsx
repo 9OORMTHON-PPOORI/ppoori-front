@@ -49,17 +49,17 @@ export default function PolicySwiper({
                 className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
               >
                 <div className="flex flex-col justify-center">
-                  <div className="font-lato mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px] text-[13px] font-black text-po-gray-500">
+                  <div className="mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px] font-lato text-[13px] font-black text-po-gray-500">
                     <p>{item.currentIndex}</p>
                     <p>/</p>
                     <p>{item.totalIndex}</p>
                   </div>
-                  <h5 className="mb-[4px] line-clamp-1 text-center text-text-4">
+                  <p className="mb-[4px] line-clamp-1 text-center text-text-4">
                     {item.name}
-                  </h5>
-                  <h3 className="mb-[18px] line-clamp-2 text-center text-title-2">
+                  </p>
+                  <h2 className="mb-[18px] line-clamp-2 text-center text-title-2">
                     {item.title}
-                  </h3>
+                  </h2>
                 </div>
                 <div className="relative min-h-[186px] rounded-[16px] bg-po-cyan-1">
                   <p className="mb-[18px] line-clamp-5 flex max-h-[130px] px-[20px] pt-[20px] text-text-3 text-po-cyan-2">

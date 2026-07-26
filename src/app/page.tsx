@@ -10,9 +10,7 @@ import { UserSelectButton } from "@/components/components/button/user-select-but
 import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
 import { Button } from "@/components/ui/button";
 
-import useUserInfoStore, {
-  useUserInfoHydrated,
-} from "@/store/user-info-store";
+import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
 
 import { POLICY_CATEGORIES, YOUTH_TARGETS } from "@/constants/policy";
 
