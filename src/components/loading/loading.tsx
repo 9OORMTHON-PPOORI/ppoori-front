@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import React from "react";
 
-import lottieJson from "../../../../public/lottie/loading-bubble.json";
+import lottieJson from "../../../public/lottie/loading-bubble.json";
 
 /**
  * react-lottie-player가 의존하는 lottie-web은 모듈 평가 시점에 document로

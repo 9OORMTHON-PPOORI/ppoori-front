@@ -3,16 +3,16 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import Transition from "@/components/common/aniamte-presence";
+import { POLICY_CATEGORIES, YOUTH_TARGETS } from "@/constants/policy";
+
+import { InterestSelectButton } from "@/components/button/interest-select-button";
+import { UserSelectButton } from "@/components/button/user-select-button";
+import Transition from "@/components/common/animate-presence";
 import Layout from "@/components/common/layout";
-import { InterestSelectButton } from "@/components/components/button/interset-select-button";
-import { UserSelectButton } from "@/components/components/button/user-select-button";
-import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
+import { SplashScreen } from "@/components/splash-screen/splash-screen";
 import { Button } from "@/components/ui/button";
 
 import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
-
-import { POLICY_CATEGORIES, YOUTH_TARGETS } from "@/constants/policy";
 
 /** 스플래시 애니메이션이 끝까지 재생되는 시간. */
 const SPLASH_DURATION_MS = 5000;

@@ -10,25 +10,29 @@
     "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "rules": {
     "no-unused-vars": "off",
-    "no-console": "warn",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/no-unescaped-entities": "off",
     "react/display-name": "off",
     "react/jsx-curly-brace-presence": [
-      "warn",
+      "error",
       { "props": "never", "children": "never" }
     ],
-    "@typescript-eslint/no-explicit-any": ["warn", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+
+    // 이펙트 의존성 누락은 값이 낡은 채로 남는 버그로 이어지므로 경고가 아닌 오류로 다룬다.
+    "react-hooks/exhaustive-deps": "error",
 
     //#region  //*=========== Unused Import ===========
-    "@typescript-eslint/no-unused-vars": "warn",
-    "unused-imports/no-unused-imports": "warn",
+    "@typescript-eslint/no-unused-vars": "error",
+    "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
-      "warn",
+      "error",
       {
         "vars": "all",
         "varsIgnorePattern": "^_",
@@ -39,9 +43,9 @@
     //#endregion  //*======== Unused Import ===========
 
     //#region  //*=========== Import Sort ===========
-    "simple-import-sort/exports": "warn",
+    "simple-import-sort/exports": "error",
     "simple-import-sort/imports": [
-      "warn",
+      "error",
       {
         "groups": [
           // ext library & side effect imports
@@ -54,8 +58,8 @@
           ["^@/lib/hooks"],
           // utils
           ["^@/lib/utils"],
-          // static data
-          ["^@/data"],
+          // constants
+          ["^@/constants"],
           // components
           ["^@/components", "^@/container"],
           // zustand store
