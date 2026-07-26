@@ -10,7 +10,9 @@ import { UserSelectButton } from "@/components/components/button/user-select-but
 import { SplashScreen } from "@/components/components/splash-screen/splashScreen";
 import { Button } from "@/components/ui/button";
 
-import useUserInfoStore from "@/store/user-info-store";
+import useUserInfoStore, {
+  useUserInfoHydrated,
+} from "@/store/user-info-store";
 
 import { POLICY_CATEGORIES, YOUTH_TARGETS } from "@/constants/policy";
 
@@ -21,6 +23,8 @@ export default function Home() {
   const [step, setStep] = useState(1);
   const [isSplashDone, setIsSplashDone] = useState(false);
   const { target, interest, setTarget, setInterest } = useUserInfoStore();
+  // 이전 방문에서 고른 값을 복원한다. 스플래시가 재생되는 동안 완료된다.
+  useUserInfoHydrated();
 
   const router = useRouter();
 
