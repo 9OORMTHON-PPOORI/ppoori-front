@@ -42,6 +42,19 @@ const useUserInfoStore = create<UserInfoStore>()(
 );
 
 /**
+ * 복원은 앱 전체에서 한 번이면 된다.
+ * 훅을 쓰는 컴포넌트마다 rehydrate를 부르면 같은 저장소를 여러 번 읽는다.
+ * localStorage는 동기지만 rehydrate는 비동기 스토리지도 지원해 Promise를 돌려줄 수 있다.
+ */
+let restorePromise: Promise<unknown> | null = null;
+
+const restoreUserInfoOnce = () => {
+  restorePromise ??= Promise.resolve(useUserInfoStore.persist.rehydrate());
+
+  return restorePromise;
+};
+
+/**
  * persist 복원이 끝났는지 알려준다.
  *
  * 저장된 선택값에 따라 화면이 달라지는 곳에서는 복원 전에 그리면 안 된다.
@@ -52,10 +65,15 @@ export const useUserInfoHydrated = () => {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    // localStorage는 동기지만 rehydrate는 비동기 스토리지도 지원해 Promise를 돌려줄 수 있다.
-    void Promise.resolve(useUserInfoStore.persist.rehydrate()).then(() =>
-      setIsHydrated(true)
-    );
+    let isMounted = true;
+
+    void restoreUserInfoOnce().then(() => {
+      if (isMounted) setIsHydrated(true);
+    });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return isHydrated;
