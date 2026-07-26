@@ -5,6 +5,8 @@ const require = createRequire(import.meta.url);
 
 const withPWA = require("@ducanh2912/next-pwa").default({
   dest: "public",
+  // 개발 중에는 서비스워커가 이전 빌드를 캐시해 변경 사항이 반영되지 않는다.
+  disable: process.env.NODE_ENV === "development",
 });
 
 /**
@@ -24,7 +26,6 @@ const isHttpOrigin = (value) =>
 
 const nextConfig = {
   images: {
-    domains: ["*", "loremflickr.com"],
     minimumCacheTTL: 31536000,
     formats: ["image/webp"],
   },
