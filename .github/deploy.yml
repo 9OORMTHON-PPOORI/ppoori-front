@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 jobs:
   build:
@@ -23,9 +23,9 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.AUTO_ACTIONS }}
         with:
-          source-directory: 'output'
-          destination-github-username: 'S-jooyoung'
-          destination-repository-name: 'jejucart-front'
+          source-directory: "output"
+          destination-github-username: "S-jooyoung"
+          destination-repository-name: "jejucart-front"
           user-email: ${{ secrets.EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
