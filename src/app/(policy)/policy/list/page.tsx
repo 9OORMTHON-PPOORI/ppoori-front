@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 
 import { PolicyCard } from "@/components/components/policy/policy-card";
 
-import { usePolicy } from "@/lib/hook/policy";
+import { usePolicyList } from "@/lib/hook/policy";
 
 export default function PolicyList() {
   const router = useRouter();
-  const { data: policyList } = usePolicy();
+  const { data: policyList } = usePolicyList();
 
   return (
     <>
