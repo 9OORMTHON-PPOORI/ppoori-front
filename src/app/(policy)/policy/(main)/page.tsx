@@ -1,6 +1,6 @@
 import { IS_SERVICE_CLOSED } from "@/constants/feature-flags";
 
-import PolicyRecommendation from "@/components/policy/policy-recommendation";
+import PolicyRecommendationLazy from "@/components/policy/policy-recommendation-lazy";
 import ServiceClosedNotice from "@/components/policy/service-closed-notice";
 
 export default function PolicyMainPage() {
@@ -8,5 +8,5 @@ export default function PolicyMainPage() {
     return <ServiceClosedNotice />;
   }
 
-  return <PolicyRecommendation />;
+  return <PolicyRecommendationLazy />;
 }
