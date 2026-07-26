@@ -14,10 +14,12 @@ const Lottie = dynamic(() => import("react-lottie-player"), { ssr: false });
 
 const LoadingPresenter = () => {
   return (
+    // 전면 오버레이다. h-screen w-screen으로 두면 상위 패딩만큼 문서가 길어져
+    // 스크롤이 생기고, 100vw가 스크롤바 폭을 무시해 가로 스크롤까지 유발한다.
     <div
       role="status"
       aria-live="polite"
-      className="relative z-50 h-screen w-screen bg-[#F7F7FA]"
+      className="fixed inset-0 z-50 bg-[#F7F7FA]"
     >
       <div className="absolute top-[35%] h-[150px] w-full py-4">
         {/* 스크립트가 늦게 도착해도 레이아웃이 밀리지 않도록 높이를 고정한다. */}

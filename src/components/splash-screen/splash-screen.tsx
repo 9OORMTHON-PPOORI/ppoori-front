@@ -3,7 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export function SplashScreen() {
+/**
+ * @param onComplete 스태거를 포함한 등장 애니메이션이 모두 끝났을 때 호출된다.
+ */
+export function SplashScreen({ onComplete }: { onComplete?: () => void }) {
   const container = {
     initial: {
       opacity: 1,
@@ -42,6 +45,7 @@ export function SplashScreen() {
         variants={container}
         initial="initial"
         animate="animate"
+        onAnimationComplete={onComplete}
       >
         <motion.div className="absolute bottom-0" variants={item}>
           <Image
