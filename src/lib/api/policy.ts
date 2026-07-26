@@ -2,16 +2,97 @@ import { requestData } from "@/lib/api/client";
 
 import {
   Policy,
+  PolicyComment,
   PolicyDetail,
   PolicyRecommend,
   PostPolicyCommentProps,
 } from "@/types/policy";
 
-export const getPolicy = () =>
-  requestData<Policy[]>({ method: "GET", url: "/policy/all" });
+/**
+ * 백엔드 응답 형태. snake_case 표기는 이 파일 밖으로 나가지 않고,
+ * 아래 매퍼를 통해 도메인 타입으로 변환된다.
+ */
+interface PolicyResponse {
+  id: number;
+  name: string;
+  title: string;
+  category: string;
+  hate_count: number;
+  like_count: number;
+  total_comment: number;
+}
 
-export const getPolicyDetail = (id: string) =>
-  requestData<PolicyDetail>({ method: "GET", url: `/policy/${id}` });
+interface PolicyDetailResponse extends Omit<PolicyResponse, "total_comment"> {
+  subject: string;
+  detail: string[] | null;
+  department: string;
+  contact: string;
+  comments: PolicyComment[] | null;
+}
+
+interface PolicyRecommendResponse {
+  id: number;
+  curr_idx: number;
+  total_idx: number;
+  name: string;
+  title: string;
+  summary: string;
+}
+
+const toPolicy = (response: PolicyResponse): Policy => ({
+  id: response.id,
+  name: response.name,
+  title: response.title,
+  category: response.category,
+  likeCount: response.like_count,
+  hateCount: response.hate_count,
+  commentCount: response.total_comment,
+});
+
+// 목록 필드가 비어 오는 경우가 있어 빈 배열로 정규화한다.
+// 화면에서 `detail?.map()`으로 매번 방어하지 않도록 경계에서 한 번 처리한다.
+const toPolicyDetail = (response: PolicyDetailResponse): PolicyDetail => ({
+  id: response.id,
+  name: response.name,
+  title: response.title,
+  category: response.category,
+  subject: response.subject,
+  detail: response.detail ?? [],
+  department: response.department,
+  contact: response.contact,
+  likeCount: response.like_count,
+  hateCount: response.hate_count,
+  comments: response.comments ?? [],
+});
+
+const toPolicyRecommend = (
+  response: PolicyRecommendResponse
+): PolicyRecommend => ({
+  id: response.id,
+  currentIndex: response.curr_idx,
+  totalIndex: response.total_idx,
+  name: response.name,
+  title: response.title,
+  summary: response.summary,
+});
+
+export const getPolicy = async (): Promise<Policy[]> => {
+  const response = await requestData<PolicyResponse[]>({
+    method: "GET",
+    url: "/policy/all",
+  });
+
+  return response.map(toPolicy);
+};
+
+export const getPolicyDetail = async (id: string): Promise<PolicyDetail> => {
+  const response = await requestData<PolicyDetailResponse>({
+    method: "GET",
+    url: `/policy/${id}`,
+  });
+
+  return toPolicyDetail(response);
+};
 
 export const postPolicyComment = ({ comment, id }: PostPolicyCommentProps) =>
   requestData<string>({
@@ -38,9 +119,14 @@ export interface PolicyRecommendParams {
   target: string;
 }
 
-export const postPolicyRecommend = (params: PolicyRecommendParams) =>
-  requestData<PolicyRecommend[]>({
+export const postPolicyRecommend = async (
+  params: PolicyRecommendParams
+): Promise<PolicyRecommend[]> => {
+  const response = await requestData<PolicyRecommendResponse[]>({
     method: "POST",
     url: "/recommend",
     data: params,
   });
+
+  return response.map(toPolicyRecommend);
+};

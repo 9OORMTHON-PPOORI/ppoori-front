@@ -17,11 +17,6 @@ import {
   usePolicyLike,
 } from "@/lib/hook/policy";
 
-interface PolicyCommentType {
-  writer: string;
-  content: string;
-}
-
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [liked, setLiked] = useState(false);
@@ -163,7 +158,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 onClick={() => handleLike()}
               >
                 <h5 className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.like_count}
+                  {policyDetails?.likeCount}
                 </h5>
                 <div
                   className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${liked ? "text-po-cyan-2" : "text-po-gray-600"}`}
@@ -176,7 +171,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 onClick={() => handleHate()}
               >
                 <h5 className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.hate_count}
+                  {policyDetails?.hateCount}
                 </h5>
                 <div
                   className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${hated ? "text-po-cyan-2" : "text-po-gray-600"}`}
@@ -186,7 +181,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
               </div>
             </div>
             <div className="rounded-[16px] bg-po-gray-200 p-5 px-[20px] py-[24px] font-normal">
-              {policyDetails?.comments.map((data: PolicyCommentType) => (
+              {policyDetails?.comments.map((data) => (
                 <div key={data.content} className="mb-6">
                   <div className="mb-[6px] flex items-end justify-between">
                     <div className="flex items-center">
