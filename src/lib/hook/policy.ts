@@ -11,6 +11,7 @@ import {
   getPolicyDetail,
   patchPolicyHate,
   patchPolicyLike,
+  PolicyRecommendParams,
   postPolicyComment,
   postPolicyRecommend,
 } from "@/lib/api/policy";
@@ -69,9 +70,9 @@ export const usePolicyComment = (
 };
 
 export const usePolicyRecommend = (
-  options?: UseMutationOptions<PolicyRecommend[], Error, Record<string, string>>
+  options?: UseMutationOptions<PolicyRecommend[], Error, PolicyRecommendParams>
 ) => {
-  return useMutation<PolicyRecommend[], Error, Record<string, string>>({
+  return useMutation<PolicyRecommend[], Error, PolicyRecommendParams>({
     mutationFn: postPolicyRecommend,
     ...options,
   });
