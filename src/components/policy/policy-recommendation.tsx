@@ -3,9 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { InterestSelectButton } from "@/components/components/button/interset-select-button";
-import LoadingPresenter from "@/components/components/loading/loading";
-import PolicySwiper from "@/components/components/policy/policy-swiper";
+import { usePolicyRecommend } from "@/lib/hooks/policy";
+
+import {
+  findPolicyCategory,
+  findYouthTarget,
+  POLICY_CATEGORIES,
+} from "@/constants/policy";
+
+import { InterestSelectButton } from "@/components/button/interest-select-button";
+import LoadingPresenter from "@/components/loading/loading";
+import PolicySwiper from "@/components/policy/policy-swiper";
 import {
   Drawer,
   DrawerClose,
@@ -15,13 +23,6 @@ import {
 } from "@/components/ui/drawer";
 
 import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
-
-import {
-  findPolicyCategory,
-  findYouthTarget,
-  POLICY_CATEGORIES,
-} from "@/constants/policy";
-import { usePolicyRecommend } from "@/lib/hook/policy";
 
 /** 추천 결과를 대신해 화면 가운데에 띄우는 안내. */
 function CenteredNotice({ children }: { children: React.ReactNode }) {

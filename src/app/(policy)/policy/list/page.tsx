@@ -3,9 +3,9 @@
 import { CaretLeftIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 
-import { PolicyCard } from "@/components/components/policy/policy-card";
+import { usePolicyList } from "@/lib/hooks/policy";
 
-import { usePolicyList } from "@/lib/hook/policy";
+import { PolicyCard } from "@/components/policy/policy-card";
 
 export default function PolicyList() {
   const router = useRouter();

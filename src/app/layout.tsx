@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 
 import { MetaData, ViewPort } from "@/constants/config";
+
 import ReactQueryProvider from "@/provider/query-provider";
 
 const pretendard = localFont({

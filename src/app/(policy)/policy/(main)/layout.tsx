@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 
-import { UserSelectButton } from "@/components/components/button/user-select-button";
+import { YOUTH_TARGETS } from "@/constants/policy";
+
+import { UserSelectButton } from "@/components/button/user-select-button";
 import {
   Drawer,
   DrawerClose,
@@ -12,8 +14,6 @@ import {
 } from "@/components/ui/drawer";
 
 import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
-
-import { YOUTH_TARGETS } from "@/constants/policy";
 
 export default function RootLayout({
   children,
