@@ -19,6 +19,7 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerFooter,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
@@ -112,6 +113,8 @@ export default function PolicyRecommendation() {
             </span>
           </DrawerTrigger>
           <DrawerContent>
+            {/* Radix Dialog는 Title을 접근 가능한 이름으로 참조한다. */}
+            <DrawerTitle className="sr-only">관심 분야 선택</DrawerTitle>
             <DrawerFooter>
               <div className="mt-[24px] grid grid-cols-2 place-items-center gap-3">
                 {POLICY_CATEGORIES.map(({ label, iconSrc }) => (
