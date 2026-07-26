@@ -16,6 +16,8 @@ import {
 import usePolicyLoadingStore from "@/store/policy-loading-store";
 import useUserInfoStore from "@/store/user-info-store";
 
+import { YOUTH_TARGETS } from "@/constants/policy";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,14 +56,7 @@ export default function RootLayout({
           <DrawerContent>
             <DrawerFooter>
               <div className="mt-[24px] grid grid-cols-2 place-items-center gap-3">
-                {[
-                  "대학생",
-                  "취준생",
-                  "재직자",
-                  "신혼부부",
-                  "농어업인",
-                  "예술가",
-                ].map((label) => (
+                {YOUTH_TARGETS.map(({ label }) => (
                   <UserSelectButton
                     key={label}
                     target={target}
