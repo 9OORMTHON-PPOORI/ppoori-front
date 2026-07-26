@@ -11,9 +11,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import useUserInfoStore, {
-  useUserInfoHydrated,
-} from "@/store/user-info-store";
+import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
 
 import { YOUTH_TARGETS } from "@/constants/policy";
 

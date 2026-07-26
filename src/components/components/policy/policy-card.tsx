@@ -43,10 +43,12 @@ export function PolicyCard({ policy }: { policy: Policy }) {
             <div className="flex items-center gap-1 text-po-gray-600">
               <Image
                 src="/icon/speech-bubble.svg"
-                alt="speech-bubble"
+                alt=""
+                aria-hidden
                 width={16}
                 height={16}
               />
+              <span className="sr-only">댓글</span>
               <p className="text-[13px] font-black">{commentCount}</p>
             </div>
           </div>

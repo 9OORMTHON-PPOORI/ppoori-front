@@ -3,7 +3,7 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useId, useState } from "react";
 
 import LoadingSpinner from "@/components/components/loading/loading-spinner";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
   const [liked, setLiked] = useState(false);
   const [hated, setHated] = useState(false);
   const [comment, setComment] = useState("");
+  const commentInputId = useId();
 
   const { data: policyDetails, isLoading: policyDetailsLoading } =
     usePolicyDetail(params.id);
@@ -83,29 +84,29 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
               </div>
             ) : null}
             <div className="mb-2">
-              <h2 className="p-0 text-title-1 text-po-gray-800">
+              <h1 className="p-0 text-title-1 text-po-gray-800">
                 {policyDetails?.name}
-              </h2>
+              </h1>
             </div>
             <div>
-              <h5 className="text-title-4 text-po-gray-700">
+              <p className="text-title-4 text-po-gray-700">
                 {policyDetails?.title}
-              </h5>
+              </p>
             </div>
             <div className="mb-12 mt-4 border-[1px] border-b-0 border-po-gray-300" />
             <div className="mr-12">
               <div className="mb-8">
-                <div className="mb-[10px] text-title-3 text-po-gray-800">
+                <h2 className="mb-[10px] text-title-3 text-po-gray-800">
                   지원대상
-                </div>
+                </h2>
                 <div className="text-text-2 text-po-gray-700">
                   {policyDetails?.subject}
                 </div>
               </div>
               <div className="mb-8">
-                <div className="mb-[10px] text-title-3 text-po-gray-800">
+                <h2 className="mb-[10px] text-title-3 text-po-gray-800">
                   지원내용
-                </div>
+                </h2>
                 <ul className="list-none text-text-2 text-po-gray-700">
                   {policyDetails?.detail.map(
                     (detail: string, index: number) => (
@@ -117,9 +118,9 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 </ul>
               </div>
               <div className="mb-[50px]">
-                <div className="mb-[10px] text-title-3 text-po-gray-800">
+                <h2 className="mb-[10px] text-title-3 text-po-gray-800">
                   문의처
-                </div>
+                </h2>
                 <div className="flex max-w-[278px] items-start gap-[10px] text-text-2 text-po-gray-700">
                   <p className="max-w-[133px]">{policyDetails?.department}</p>
                   <a
@@ -128,7 +129,8 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                   >
                     <Image
                       src="/icon/call.svg"
-                      alt="callIcon"
+                      alt=""
+                      aria-hidden
                       width={16}
                       height={16}
                     />
@@ -172,33 +174,47 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 </span>
               </button>
             </div>
-            <div className="rounded-[16px] bg-po-gray-200 p-5 px-[20px] py-[24px] font-normal">
-              {policyDetails?.comments.map((data) => (
-                <div key={data.content} className="mb-6">
-                  <div className="mb-[6px] flex items-end justify-between">
-                    <div className="flex items-center">
-                      <Image
-                        src="/icon/comment.svg"
-                        alt="commentIcon"
-                        width={24}
-                        height={24}
-                        className="mr-[2px]"
-                      />
-                      <span className="text-text-4 text-po-gray-600">
-                        {data.writer}
+            <section className="rounded-[16px] bg-po-gray-200 p-5 px-[20px] py-[24px] font-normal">
+              <h2 className="sr-only">
+                댓글 {policyDetails?.comments.length ?? 0}개
+              </h2>
+              <ul>
+                {/*
+                  백엔드가 댓글 식별자를 내려주지 않는다. content만 쓰면 같은
+                  내용의 댓글 두 개가 key를 공유하므로 작성자와 순서를 함께 쓴다.
+                */}
+                {policyDetails?.comments.map((data, index) => (
+                  <li key={`${data.writer}-${index}`} className="mb-6">
+                    <div className="mb-[6px] flex items-end justify-between">
+                      <div className="flex items-center">
+                        <Image
+                          src="/icon/comment.svg"
+                          alt=""
+                          aria-hidden
+                          width={24}
+                          height={24}
+                          className="mr-[2px]"
+                        />
+                        <span className="text-text-4 text-po-gray-600">
+                          {data.writer}
+                        </span>
+                      </div>
+                      <span className="text-caption text-po-gray-500">
+                        방금 전
                       </span>
                     </div>
-                    <span className="text-caption text-po-gray-500">
-                      방금 전
-                    </span>
-                  </div>
-                  <div className="mx-[26px] text-text-1 text-po-gray-700">
-                    {data.content}
-                  </div>
-                </div>
-              ))}
-              <form className="flex" onSubmit={(e) => handleCommentSubmit(e)}>
+                    <p className="mx-[26px] text-text-1 text-po-gray-700">
+                      {data.content}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <form className="flex" onSubmit={handleCommentSubmit}>
+                <label htmlFor={commentInputId} className="sr-only">
+                  댓글 입력
+                </label>
                 <Input
+                  id={commentInputId}
                   placeholder="댓글을 입력하세요"
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
@@ -206,18 +222,20 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                 />
                 <Button
                   type="submit"
+                  aria-label="댓글 등록"
                   className="h-[48px] rounded-2xl"
                   disabled={!comment}
                 >
                   <Image
                     src="/icon/airplane.svg"
-                    alt="airplane"
+                    alt=""
+                    aria-hidden
                     width={24}
                     height={24}
                   />
                 </Button>
               </form>
-            </div>
+            </section>
           </div>
         </div>
       </div>

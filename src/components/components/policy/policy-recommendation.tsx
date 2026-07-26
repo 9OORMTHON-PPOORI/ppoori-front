@@ -14,9 +14,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import useUserInfoStore, {
-  useUserInfoHydrated,
-} from "@/store/user-info-store";
+import useUserInfoStore, { useUserInfoHydrated } from "@/store/user-info-store";
 
 import {
   findPolicyCategory,
@@ -92,9 +90,13 @@ export default function PolicyRecommendation() {
 
   return (
     <div>
+      {/* 화면에는 분야 선택 버튼이 제목 역할을 하지만, 문서에는 제목이 필요하다. */}
+      <h1 className="sr-only">{selectedCategory.label} 맞춤 정책 추천</h1>
       <div className="mt-8 flex justify-center text-title-4">
         <Drawer>
-          <DrawerTrigger aria-label={`관심 분야 ${selectedCategory.label} 변경`}>
+          <DrawerTrigger
+            aria-label={`관심 분야 ${selectedCategory.label} 변경`}
+          >
             <span className="flex items-center gap-[8px]">
               <span className="font-pretendard text-title-4 text-white">
                 {selectedCategory.label}

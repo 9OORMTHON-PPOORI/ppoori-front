@@ -73,6 +73,5 @@ const CATEGORY_BY_LABEL = new Map<string, PolicyCategory>(
 export const findYouthTarget = (label: string): YouthTarget | undefined =>
   TARGET_BY_LABEL.get(label);
 
-export const findPolicyCategory = (
-  label: string
-): PolicyCategory | undefined => CATEGORY_BY_LABEL.get(label);
+export const findPolicyCategory = (label: string): PolicyCategory | undefined =>
+  CATEGORY_BY_LABEL.get(label);
