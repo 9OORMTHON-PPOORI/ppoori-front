@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 import TooltipModal from "./policy-tooltip-modal";
 
@@ -15,39 +15,27 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperCore } from "swiper/types";
 
 export default function PolicySwiper({
   policyCards,
 }: {
   policyCards: PolicyRecommend[];
 }) {
-  const [activeIndex, setActiveIndex] = useState(1);
-
-  const handleSlideChange = (swiper: SwiperCore) => {
-    setActiveIndex(swiper.activeIndex);
-  };
-
   return (
     <Swiper
       className="max-w-[460px]"
       effect="cards"
-      onSlideChange={handleSlideChange}
       grabCursor={true}
       initialSlide={0}
       modules={[EffectCards]}
       centeredSlides={false}
       loop={true}
     >
-      {policyCards?.map((item: PolicyRecommend, index: number) => {
-        const targetColor = activeIndex === index ? "bg-white" : "bg-white";
-
+      {policyCards.map((item) => {
         return (
-          <SwiperSlide key={index} className="pt-[50px]">
+          <SwiperSlide key={item.id} className="pt-[50px]">
             <div className="relative m-auto max-w-[390px] px-10 pb-[43px]">
-              <div
-                className={`min-h-[446px] w-full rounded-3xl ${targetColor} px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700`}
-              >
+              <div className="min-h-[446px] w-full rounded-3xl bg-white px-8 pb-[42px] pt-[24px] shadow-[0_16px_32px_rgba(0,0,0,0.2)] duration-700">
                 <div className="flex flex-col justify-center">
                   <div className="mb-[22px] mt-[10px] flex h-[18px] justify-center gap-[1px] font-lato text-[13px] font-black text-po-gray-500">
                     <p>{item.currentIndex}</p>
