@@ -14,6 +14,7 @@ import {
 
 import { findPolicyCategory } from "@/constants/policy";
 
+import StatusNotice from "@/components/common/status-notice";
 import LoadingSpinner from "@/components/loading/loading-spinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,8 +26,12 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
   const [comment, setComment] = useState("");
   const commentInputId = useId();
 
-  const { data: policyDetails, isLoading: policyDetailsLoading } =
-    usePolicyDetail(params.id);
+  const {
+    data: policyDetails,
+    isLoading: policyDetailsLoading,
+    isError,
+    error,
+  } = usePolicyDetail(params.id);
   const { mutate: policyComment } = usePolicyComment(params.id, {
     onSuccess: () => setComment(""),
   });
@@ -62,6 +67,16 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   if (policyDetailsLoading) return <LoadingSpinner />;
 
+  // 실패를 다루지 않으면 이후 마크업이 전부 undefined로 채워진 빈 껍데기가 되고,
+  // 문의처는 tel:undefined 링크로, 반응 수는 0으로 단언되어 렌더된다.
+  if (isError || !policyDetails) {
+    return (
+      <StatusNotice>
+        {error?.message ?? "정책 정보를 불러오지 못했습니다."}
+      </StatusNotice>
+    );
+  }
+
   return (
     <>
       <nav className="mb-3 flex h-[50px] max-w-[390px] items-center justify-end">
@@ -86,12 +101,12 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             ) : null}
             <div className="mb-2">
               <h1 className="p-0 text-title-1 text-po-gray-800">
-                {policyDetails?.name}
+                {policyDetails.name}
               </h1>
             </div>
             <div>
               <p className="text-title-4 text-po-gray-700">
-                {policyDetails?.title}
+                {policyDetails.title}
               </p>
             </div>
             <div className="mb-12 mt-4 border-[1px] border-b-0 border-po-gray-300" />
@@ -101,7 +116,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                   지원대상
                 </h2>
                 <div className="text-text-2 text-po-gray-700">
-                  {policyDetails?.subject}
+                  {policyDetails.subject}
                 </div>
               </div>
               <div className="mb-8">
@@ -109,13 +124,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                   지원내용
                 </h2>
                 <ul className="list-none text-text-2 text-po-gray-700">
-                  {policyDetails?.detail.map(
-                    (detail: string, index: number) => (
-                      <li key={`${detail}-${index}`} className="mb-[10px]">
-                        {detail}
-                      </li>
-                    )
-                  )}
+                  {policyDetails.detail.map((detail: string, index: number) => (
+                    <li key={`${detail}-${index}`} className="mb-[10px]">
+                      {detail}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="mb-[50px]">
@@ -123,9 +136,9 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                   문의처
                 </h2>
                 <div className="flex max-w-[278px] items-start gap-[10px] text-text-2 text-po-gray-700">
-                  <p className="max-w-[133px]">{policyDetails?.department}</p>
+                  <p className="max-w-[133px]">{policyDetails.department}</p>
                   <a
-                    href={`tel:${policyDetails?.contact}`}
+                    href={`tel:${policyDetails.contact}`}
                     className="ml-1 flex items-center gap-[2px] text-base font-normal text-po-cyan-2"
                   >
                     <Image
@@ -136,7 +149,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
                       height={16}
                     />
                     <span className="min-w-[115px] truncate">
-                      {policyDetails?.contact}
+                      {policyDetails.contact}
                     </span>
                   </a>
                 </div>
@@ -147,11 +160,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
               <button
                 type="button"
                 onClick={handleLike}
-                aria-label={`좋아요 ${policyDetails?.likeCount ?? 0}개, 누르면 좋아요를 남깁니다`}
+                aria-label={`좋아요 ${policyDetails.likeCount}개, 누르면 좋아요를 남깁니다`}
                 className={`group flex w-full flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2 ${liked ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
               >
                 <span className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.likeCount}
+                  {policyDetails.likeCount}
                 </span>
                 <span
                   className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${liked ? "text-po-cyan-2" : "text-po-gray-600"}`}
@@ -162,11 +175,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
               <button
                 type="button"
                 onClick={handleHate}
-                aria-label={`별로예요 ${policyDetails?.hateCount ?? 0}개, 누르면 별로예요를 남깁니다`}
+                aria-label={`별로예요 ${policyDetails.hateCount}개, 누르면 별로예요를 남깁니다`}
                 className={`group flex w-full flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2 ${hated ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
               >
                 <span className="text-2xl font-black text-po-gray-700">
-                  {policyDetails?.hateCount}
+                  {policyDetails.hateCount}
                 </span>
                 <span
                   className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${hated ? "text-po-cyan-2" : "text-po-gray-600"}`}
@@ -177,14 +190,14 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             </div>
             <section className="rounded-[16px] bg-po-gray-200 p-5 px-[20px] py-[24px] font-normal">
               <h2 className="sr-only">
-                댓글 {policyDetails?.comments.length ?? 0}개
+                댓글 {policyDetails.comments.length}개
               </h2>
               <ul>
                 {/*
                   백엔드가 댓글 식별자를 내려주지 않는다. content만 쓰면 같은
                   내용의 댓글 두 개가 key를 공유하므로 작성자와 순서를 함께 쓴다.
                 */}
-                {policyDetails?.comments.map((data, index) => (
+                {policyDetails.comments.map((data, index) => (
                   <li key={`${data.writer}-${index}`} className="mb-6">
                     <div className="mb-[6px] flex items-end justify-between">
                       <div className="flex items-center">
