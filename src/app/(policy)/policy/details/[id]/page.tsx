@@ -5,17 +5,18 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useId, useState } from "react";
 
-import LoadingSpinner from "@/components/components/loading/loading-spinner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-
-import { findPolicyCategory } from "@/constants/policy";
 import {
   usePolicyComment,
   usePolicyDetail,
   usePolicyHate,
   usePolicyLike,
-} from "@/lib/hook/policy";
+} from "@/lib/hooks/policy";
+
+import { findPolicyCategory } from "@/constants/policy";
+
+import LoadingSpinner from "@/components/loading/loading-spinner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function PolicyDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
