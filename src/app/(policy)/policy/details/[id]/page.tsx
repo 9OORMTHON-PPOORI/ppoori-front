@@ -62,13 +62,15 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <nav className="mb-3 flex h-[50px] max-w-[390px] items-center">
-        <div
-          className="flex w-full items-center justify-end"
+      <nav className="mb-3 flex h-[50px] max-w-[390px] items-center justify-end">
+        <button
+          type="button"
           onClick={() => router.back()}
+          aria-label="닫기"
+          className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2"
         >
           <Cross1Icon className="h-[24px] w-[24px]" />
-        </div>
+        </button>
       </nav>
       <div className="mb-5 font-pretendard font-semibold">
         <div className="flex items-center justify-center">
@@ -139,32 +141,36 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
             </div>
 
             <div className="mb-5 flex justify-center gap-[10px]">
-              <div
-                className={`group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500  ${liked ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
-                onClick={() => handleLike()}
+              <button
+                type="button"
+                onClick={handleLike}
+                aria-label={`좋아요 ${policyDetails?.likeCount ?? 0}개, 누르면 좋아요를 남깁니다`}
+                className={`group flex w-full flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2 ${liked ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
               >
-                <h5 className="text-2xl font-black text-po-gray-700">
+                <span className="text-2xl font-black text-po-gray-700">
                   {policyDetails?.likeCount}
-                </h5>
-                <div
+                </span>
+                <span
                   className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${liked ? "text-po-cyan-2" : "text-po-gray-600"}`}
                 >
                   좋아요
-                </div>
-              </div>
-              <div
-                className={`group flex w-full cursor-pointer flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500  ${hated ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
-                onClick={() => handleHate()}
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={handleHate}
+                aria-label={`별로예요 ${policyDetails?.hateCount ?? 0}개, 누르면 별로예요를 남깁니다`}
+                className={`group flex w-full flex-col items-center justify-center rounded-[16px] border-[1px] border-solid px-[23px] py-[15px] text-po-gray-600 duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-po-cyan-2 ${hated ? "border-po-cyan-2 bg-po-cyan-1" : "border-gray-300 bg-[#CDCED614] hover:border-po-gray-300 hover:bg-[#CDCED633]"}`}
               >
-                <h5 className="text-2xl font-black text-po-gray-700">
+                <span className="text-2xl font-black text-po-gray-700">
                   {policyDetails?.hateCount}
-                </h5>
-                <div
+                </span>
+                <span
                   className={`text-text-4 font-medium duration-500 group-active:text-po-cyan-2 ${hated ? "text-po-cyan-2" : "text-po-gray-600"}`}
                 >
                   별로예요
-                </div>
-              </div>
+                </span>
+              </button>
             </div>
             <div className="rounded-[16px] bg-po-gray-200 p-5 px-[20px] py-[24px] font-normal">
               {policyDetails?.comments.map((data) => (
