@@ -77,12 +77,13 @@ const toPolicyRecommend = (
 });
 
 export const getPolicy = async (): Promise<Policy[]> => {
-  const response = await requestData<PolicyResponse[]>({
+  const response = await requestData<PolicyResponse[] | null>({
     method: "GET",
     url: "/policy/all",
   });
 
-  return response.map(toPolicy);
+  // 상세 응답과 마찬가지로 목록도 null로 내려올 수 있다.
+  return (response ?? []).map(toPolicy);
 };
 
 export const getPolicyDetail = async (id: string): Promise<PolicyDetail> => {
@@ -122,11 +123,11 @@ export interface PolicyRecommendParams {
 export const postPolicyRecommend = async (
   params: PolicyRecommendParams
 ): Promise<PolicyRecommend[]> => {
-  const response = await requestData<PolicyRecommendResponse[]>({
+  const response = await requestData<PolicyRecommendResponse[] | null>({
     method: "POST",
     url: "/recommend",
     data: params,
   });
 
-  return response.map(toPolicyRecommend);
+  return (response ?? []).map(toPolicyRecommend);
 };

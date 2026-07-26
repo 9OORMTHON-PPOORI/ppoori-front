@@ -140,7 +140,9 @@ export const usePolicyComment = (
  */
 export const usePolicyRecommend = (
   params: PolicyRecommendParams | undefined,
-  options?: PolicyQueryOptions<PolicyRecommend[]>
+  // enabled는 params 유무로 결정하므로 호출부가 넘기지 못하게 막는다.
+  // 허용해 두면 스프레드 뒤에서 조용히 덮어써 계약과 동작이 어긋난다.
+  options?: Omit<PolicyQueryOptions<PolicyRecommend[]>, "enabled">
 ) =>
   useQuery({
     ...options,

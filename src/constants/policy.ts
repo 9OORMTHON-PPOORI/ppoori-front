@@ -57,21 +57,15 @@ export const POLICY_CATEGORIES = [
 export type PolicyCategory = (typeof POLICY_CATEGORIES)[number];
 export type PolicyCategoryLabel = PolicyCategory["label"];
 
-// 라벨로 조회하는 곳이 목록·상세·추천 세 군데라 매번 배열을 순회하지 않도록 색인해 둔다.
-const TARGET_BY_LABEL = new Map<string, YouthTarget>(
-  YOUTH_TARGETS.map((target) => [target.label, target])
-);
-
-const CATEGORY_BY_LABEL = new Map<string, PolicyCategory>(
-  POLICY_CATEGORIES.map((category) => [category.label, category])
-);
-
 /**
- * 저장소에 남아 있던 값이나 API 응답이 현재 목록에 없는 라벨일 수 있으므로
- * 조회 실패를 undefined로 돌려주고 호출부가 처리하도록 한다.
+ * 라벨로 항목을 찾는다.
+ *
+ * 조회를 이 함수로만 하도록 모아 두어, 호출부가 배열 구조에 직접 의존하지
+ * 않게 한다. 저장소에 남아 있던 값이나 API가 보낸 새 카테고리처럼 목록에
+ * 없는 라벨이 들어올 수 있으므로 실패는 undefined로 돌려주고 호출부가 판단한다.
  */
 export const findYouthTarget = (label: string): YouthTarget | undefined =>
-  TARGET_BY_LABEL.get(label);
+  YOUTH_TARGETS.find((target) => target.label === label);
 
 export const findPolicyCategory = (label: string): PolicyCategory | undefined =>
-  CATEGORY_BY_LABEL.get(label);
+  POLICY_CATEGORIES.find((category) => category.label === label);
