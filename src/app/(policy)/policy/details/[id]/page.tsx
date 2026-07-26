@@ -23,27 +23,13 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
   const [hated, setHated] = useState(false);
   const [comment, setComment] = useState("");
 
-  const {
-    data: policyDetails,
-    refetch: detailsRefetch,
-    isLoading: policyDetailsLoading,
-  } = usePolicyDetail(params.id);
-  const { mutate: policyComment } = usePolicyComment({
-    onSuccess: () => {
-      detailsRefetch();
-      setComment("");
-    },
+  const { data: policyDetails, isLoading: policyDetailsLoading } =
+    usePolicyDetail(params.id);
+  const { mutate: policyComment } = usePolicyComment(params.id, {
+    onSuccess: () => setComment(""),
   });
-  const { mutate: policyLike } = usePolicyLike({
-    onSuccess: () => {
-      detailsRefetch();
-    },
-  });
-  const { mutate: policyHate } = usePolicyHate({
-    onSuccess: () => {
-      detailsRefetch();
-    },
-  });
+  const { mutate: policyLike } = usePolicyLike(params.id);
+  const { mutate: policyHate } = usePolicyHate(params.id);
 
   const policyCategory = policyDetails
     ? findPolicyCategory(policyDetails.category)
@@ -51,11 +37,11 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   const handleCommentSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    policyComment({ comment, id: params.id });
+    policyComment(comment);
   };
 
   const handleHate = () => {
-    policyHate(params.id);
+    policyHate();
     setHated(true);
 
     setTimeout(() => {
@@ -65,7 +51,7 @@ export default function PolicyDetails({ params }: { params: { id: string } }) {
 
   const handleLike = () => {
     setLiked(true);
-    policyLike(params.id);
+    policyLike();
 
     setTimeout(() => {
       setLiked(false);
